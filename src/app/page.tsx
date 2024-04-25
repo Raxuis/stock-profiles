@@ -4,7 +4,7 @@ import { Header } from '@/layout/Header';
 import { Link } from 'next-view-transitions'
 
 
-export default async function Home() {
+export default function Home() {
 
   const isAboutPage = true;
 

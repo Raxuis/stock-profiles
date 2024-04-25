@@ -1,0 +1,18 @@
+{
+  "WillLuke.nextjs.addTypesOnSave": true,
+  "WillLuke.nextjs.hasPrompted": true,
+  "conventionalCommits.scopes": [
+    "Reviews",
+    "Product / admin space",
+    "products",
+    "pricing",
+    "stripe",
+    "payment results",
+    "subscription",
+    "emails",
+    "header",
+    "landing page",
+    "session",
+    "dashboard"
+  ]
+}

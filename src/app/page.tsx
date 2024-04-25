@@ -1,14 +1,20 @@
+import { Layout } from '@/components/layout'
+import { buttonVariants } from '@/components/ui/ui/button';
+import { Header } from '@/layout/Header';
 import { Link } from 'next-view-transitions'
 
 
 export default async function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center text-white">
-      <div>
-        <p>General Kenobi!</p>
-        <Link href='/about'>Go to /about</Link>
-      </div>
-    </main>
+    <Layout>
+      <Header />
+      <Link className={buttonVariants(
+        {
+          variant: 'link',
+          size: 'lg',
+        }
+      )} href='/about'>Go to /about</Link>
+    </Layout>
   );
 }

@@ -1,14 +1,21 @@
+import { Layout } from '@/components/layout'
+import { buttonVariants } from '@/components/ui/ui/button'
+import { Header } from '@/layout/Header'
 import { Link } from 'next-view-transitions'
 import React from 'react'
 
 const About = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center text-white">
-      <div>
-        <p>Hello There!</p>
-        <Link href='/'>Go to /</Link>
-      </div>
-    </main>
+    <Layout>
+      <Header />
+      <Link className={buttonVariants(
+        {
+          variant: 'link',
+          size: 'lg',
+        }
+      )} href='/'>Go to /</Link>
+      <p>Hello There!</p>
+    </Layout>
   )
 }
 

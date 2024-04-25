@@ -6,8 +6,6 @@ import { Link } from 'next-view-transitions'
 
 export default function Home() {
 
-  const isAboutPage = true;
-
   return (
     <Layout>
       <Header />
@@ -26,8 +24,8 @@ export default function Home() {
             }
           )}
           href='/'
-          aria-disabled={isAboutPage ? 'true' : 'false'}
-          style={{ pointerEvents: isAboutPage ? 'none' : 'auto', opacity: isAboutPage ? 0.5 : 1 }}
+          aria-disabled={true}
+          style={{ pointerEvents: 'none', opacity: 0.5 }}
         >
           Already in Home
         </Link>

@@ -5,7 +5,6 @@ import { Link } from 'next-view-transitions'
 import React from 'react'
 
 const About = () => {
-  const isAboutPage = true;
 
   return (
     <Layout>
@@ -25,8 +24,8 @@ const About = () => {
             }
           )}
           href='/about'
-          aria-disabled={isAboutPage ? 'true' : 'false'}
-          style={{ pointerEvents: isAboutPage ? 'none' : 'auto', opacity: isAboutPage ? 0.5 : 1 }}
+          aria-disabled={true}
+          style={{ pointerEvents: 'none', opacity: 0.5 }}
         >
           Already in About
         </Link>

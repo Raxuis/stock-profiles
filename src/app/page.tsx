@@ -9,12 +9,20 @@ export default async function Home() {
   return (
     <Layout>
       <Header />
-      <Link className={buttonVariants(
-        {
-          variant: 'link',
-          size: 'lg',
-        }
-      )} href='/about'>Go to /about</Link>
+      <div className='flex w-full flex-row justify-center gap-10'>
+        <Link className={buttonVariants(
+          {
+            variant: 'outline',
+            size: 'lg',
+          }
+        )} href='/about'>Go to About</Link>
+        <Link className={buttonVariants(
+          {
+            variant: 'outline',
+            size: 'lg',
+          }
+        )} href='/about'>Go to Home</Link>
+      </div>
     </Layout>
   );
 }

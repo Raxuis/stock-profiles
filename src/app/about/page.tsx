@@ -8,13 +8,20 @@ const About = () => {
   return (
     <Layout>
       <Header />
-      <Link className={buttonVariants(
-        {
-          variant: 'link',
-          size: 'lg',
-        }
-      )} href='/'>Go to /</Link>
-      <p>Hello There!</p>
+      <div className='flex w-full flex-row justify-center gap-10'>
+        <Link className={buttonVariants(
+          {
+            variant: 'outline',
+            size: 'lg',
+          }
+        )} href='/'>Go to Home</Link>
+        <Link className={buttonVariants(
+          {
+            variant: 'outline',
+            size: 'lg',
+          }
+        )} href='/about'>Go to About</Link>
+      </div>
     </Layout>
   )
 }

@@ -55,12 +55,10 @@ const Block = ({ className, ...rest }: Props) => {
 }
 
 const HeaderBlock = () => {
-  const words = "Hi, I'm Raphaël | Raxuis. A junior Front End Developer"
+  const words = "Hi, I'm Raphaël | Raxuis. A junior Front End Developer."
   return <Block className='col-span-12 row-span-2 md:col-span-6'>
     <Image src='/edited-raph.jpg' alt='raphael-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
-    <h1 className='mb-12 text-2xl font-medium leading-tight'>
-      <TextGenerateEffect words={words} />
-    </h1>
+    <TextGenerateEffect words={words} />
     <Link href='https://raphaelraclot.vercel.app/' className={buttonVariants(
       {
         variant: 'link',
@@ -112,7 +110,7 @@ const AboutBlock = () => {
   return (
     <Block className='col-span-12 text-2xl leading-snug'>
       <p>
-        My passions are Basketball, Formula 1, coding and cybersecurity. {" "}
+        My passions are Basketball, Fitness, Formula 1, coding and cybersecurity. {" "}
         <span className='text-zinc-400'>
           I mainly code in React and Tailwind CSS. However, I&apos;m really curious so I&apos;ve already tried Prisma, NextJS, Svelte, PHP, Vanilla JavaScript, SCSS, Python, C, MySQL, Bash. Finally, for React, I use TypeScript for my code&apos;s safety.
         </span>
@@ -123,7 +121,9 @@ const AboutBlock = () => {
 
 const LocationBlock = () => {
   return (
-    <Block className='col-span-12 flex flex-col items-center gap-4 md:col-span-3'>
+    <Block whileHover={{
+      transform: 'translateY(+5px)'
+    }} className='col-span-12 flex flex-col items-center gap-4 md:col-span-3'>
       <ReactCountryFlag countryCode="FR" svg style={{
         width: '1.5em',
         height: '1.5em',

@@ -12,7 +12,7 @@ export const Header = () => {
       <Layout className="flex flex-row items-center gap-4">
         <Link href="/" className="flex flex-1 items-center gap-2">
           <Image src="/favicon.ico" priority={true} width={42} height={42} alt="get-infos logo" />
-          <p>Get-Infos</p>
+          <p className="text-lg">Get-Infos</p>
         </Link>
         {usePathname() == '/'
           ? <Link href="/about" className={buttonVariants(

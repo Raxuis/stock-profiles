@@ -17,6 +17,7 @@
     "icon",
     "pages",
     "homepage",
-    "routes"
+    "routes",
+    "keys"
   ]
 }

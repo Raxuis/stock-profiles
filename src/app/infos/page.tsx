@@ -6,6 +6,7 @@ const Infos = () => {
   return (
     <Layout>
       <Header />
+      <p className='text-3xl'>Just testing</p>
     </Layout>
   )
 }

@@ -19,10 +19,21 @@ const Bento = () => {
         <HeaderBlock />
         <SocialsBlock />
         <AboutBlock />
-        <LocationBlock />
-        <FormulaDriverBLock />
-        <TVSeriesBLock />
-        <NBAPlayerBLock />
+        <MoreAboutBlock title={'France'} description={'Location'}>
+          <ReactCountryFlag countryCode="FR" svg style={{
+            width: '50px',
+            height: '50px',
+          }} />
+        </MoreAboutBlock>
+        <MoreAboutBlock title={'Charles Leclerc'} description={'Favorite Formula Driver'}>
+          <Image src='/charles-leclerc.webp' alt='charles-leclerc-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
+        </MoreAboutBlock>
+        <MoreAboutBlock title={'Mr Robot'} description={'Favorite TV Series'}>
+          <Image src='/mrrobot.jpeg' alt='mr-robot-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
+        </MoreAboutBlock>
+        <MoreAboutBlock title={'LeBron James'} description={'Favorite NBA Player'}>
+          <Image src='/lebron-james.png' alt='lebron-james-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
+        </MoreAboutBlock>
       </motion.div>
     </div>
   )
@@ -122,59 +133,22 @@ const AboutBlock = () => {
   )
 };
 
-const LocationBlock = () => {
-  return (
-    <Block whileHover={{
-      transform: 'translateY(+5px)'
-    }} className='col-span-12 flex flex-col items-center justify-around gap-4 md:col-span-3'>
-      <ReactCountryFlag countryCode="FR" svg style={{
-        width: '50px',
-        height: '50px',
-      }} />
-      <div className='flex flex-col items-center'>
-        <p className='text-xl text-zinc-400'>France</p>
-        <p className='text-xs text-zinc-500'>Location</p>
-      </div>
-    </Block>
-  )
-}
-const FormulaDriverBLock = () => {
-  return (
-    <Block whileHover={{
-      transform: 'translateY(+5px)'
-    }} className='col-span-12 flex flex-col items-center justify-around gap-4 md:col-span-3'>
-      <Image src='/charles-leclerc.webp' alt='charles-leclerc-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
-      <div className='flex flex-col items-center'>
-        <p className='text-xl text-zinc-400'>Charles Leclerc</p>
-        <p className='text-xs text-zinc-500'>Favorite Formula Driver</p>
-      </div>
-    </Block>
-  )
+
+type MoreProps = {
+  children?: React.ReactNode;
+  title: string;
+  description: string;
 }
 
-const TVSeriesBLock = () => {
+const MoreAboutBlock = ({ children, title, description }: MoreProps) => {
   return (
     <Block whileHover={{
       transform: 'translateY(+5px)'
     }} className='col-span-12 flex flex-col items-center justify-around gap-4 md:col-span-3'>
-      <Image src='/mrrobot.jpeg' alt='mr-robot-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
+      {children}
       <div className='flex flex-col items-center'>
-        <p className='text-xl text-zinc-400'>Mr Robot</p>
-        <p className='text-xs text-zinc-500'>Favorite TV Series</p>
-      </div>
-    </Block>
-  )
-}
-
-const NBAPlayerBLock = () => {
-  return (
-    <Block whileHover={{
-      transform: 'translateY(+5px)'
-    }} className='col-span-12 flex flex-col items-center justify-around gap-4 md:col-span-3'>
-      <Image src='/lebron-james.png' alt='lebron-james-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
-      <div className='flex flex-col items-center'>
-        <p className='text-xl text-zinc-400'>LeBron James</p>
-        <p className='text-xs text-zinc-500'>Favorite NBA Player</p>
+        <p className='text-xl text-zinc-400'>{title}</p>
+        <p className='text-xs text-zinc-500'>{description}</p>
       </div>
     </Block>
   )

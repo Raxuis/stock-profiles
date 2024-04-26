@@ -9,27 +9,6 @@ const About = () => {
   return (
     <Layout>
       <Header />
-      <div className='flex w-full flex-row justify-center gap-10'>
-        <Link className={buttonVariants(
-          {
-            variant: 'outline',
-            size: 'lg',
-          }
-        )} href='/'>Go to Home</Link>
-        <Link
-          className={buttonVariants(
-            {
-              variant: 'default',
-              size: 'lg'
-            }
-          )}
-          href='/about'
-          aria-disabled={true}
-          style={{ pointerEvents: 'none', opacity: 0.5 }}
-        >
-          Already in About
-        </Link>
-      </div>
     </Layout>
   )
 }

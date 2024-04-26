@@ -69,7 +69,7 @@ const Block = ({ className, ...rest }: Props) => {
 }
 
 const HeaderBlock = () => {
-  const words = "Hi, I'm Raphaël | Raxuis. A junior Front End Developer."
+  const words = "Hi, I'm Raphaël | Raxuis. A Junior Front End Developer."
   return <Block className='col-span-12 row-span-2 md:col-span-6'>
     <Image src='/edited-raph.jpg' alt='raphael-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
     <TextGenerateEffect words={words} />

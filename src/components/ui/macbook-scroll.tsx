@@ -68,18 +68,18 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="flex  min-h-[200vh] shrink-0 scale-[0.35] flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100  md:py-80"
+      className="flex min-h-[200vh] shrink-0 scale-[0.35] flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-32"
     >
       <motion.h2
         style={{
           translateY: textTransform,
           opacity: textOpacity,
         }}
-        className="mb-20 text-center text-3xl font-bold text-neutral-800 dark:text-white"
+        className="mb-20 text-center text-3xl font-bold text-white"
       >
         {title || (
           <span>
-            This Macbook is built with Tailwindcss. <br /> No kidding.
+            Get-Infos <br /> Made by Raphaël | Raxuis
           </span>
         )}
       </motion.h2>
@@ -92,7 +92,7 @@ export const MacbookScroll = ({
         translate={translate}
       />
       {/* Base area */}
-      <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
+      <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-gray-200">
         {/* above keyboard bar */}
         <div className="relative h-10 w-full">
           <div className="absolute inset-x-0 mx-auto h-4 w-4/5 bg-[#050505]" />
@@ -111,7 +111,7 @@ export const MacbookScroll = ({
         <Trackpad />
         <div className="absolute inset-x-0 bottom-0 mx-auto h-2 w-20 rounded-t-3xl bg-gradient-to-t from-[#272729] to-[#050505]" />
         {showGradient && (
-          <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black"></div>
+          <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-white via-white to-transparent"></div>
         )}
         {badge && <div className="absolute bottom-4 left-4">{badge}</div>}
       </div>
@@ -655,7 +655,7 @@ export const OptionKey = ({ className }: { className: string }) => {
 const GetInfosLogo = () => {
   return (
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-      width="25%" className="mx-auto" viewBox="0 0 1079 1079" enable-background="new 0 0 1079 1079">
+      width="25%" className="mx-auto opacity-75" viewBox="0 0 1079 1079" enable-background="new 0 0 1079 1079">
       <path fill="#000000" opacity="1.000000" stroke="none"
         d="
 M607.000000,1080.000000 

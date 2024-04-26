@@ -65,7 +65,7 @@ const Block = ({ className, ...rest }: Props) => {
       damping: 50,
       mass: 3
     }}
-    className={twMerge("col-span-4 rounded-lg border border-zinc-700 bg-zinc-800 p-6", className)} {...rest} />
+    className={twMerge("col-span-4 rounded-lg border p-6", className)} {...rest} />
 }
 
 const HeaderBlock = () => {

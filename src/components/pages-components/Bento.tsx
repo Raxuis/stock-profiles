@@ -8,6 +8,7 @@ import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { FaGithub, FaStackOverflow, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Link } from 'next-view-transitions';
 import ReactCountryFlag from "react-country-flag"
+import { TextGenerateEffect } from "../ui/text-generate-effect";
 
 const Bento = () => {
   return (
@@ -54,13 +55,11 @@ const Block = ({ className, ...rest }: Props) => {
 }
 
 const HeaderBlock = () => {
+  const words = "Hi, I'm Raphaël | Raxuis. A junior Front End Developer"
   return <Block className='col-span-12 row-span-2 md:col-span-6'>
     <Image src='/edited-raph.jpg' alt='raphael-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
     <h1 className='mb-12 text-2xl font-medium leading-tight'>
-      Hi, I&apos;m Raphaël | Raxuis. {" "}
-      <span className="text-zinc-400">
-        A junior Front End Developer
-      </span>
+      <TextGenerateEffect words={words} />
     </h1>
     <Link href='https://raphaelraclot.vercel.app/' className={buttonVariants(
       {

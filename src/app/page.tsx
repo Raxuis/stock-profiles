@@ -51,7 +51,7 @@ const Badge = ({ className }: { className?: string }) => {
 			viewBox="0 0 512 512"
 			fill="none"
 			className={className}
-			enable-background="new 0 0 512 512">
+			enableBackground="new 0 0 512 512">
 			<path fill="#000000" opacity="1.000000" stroke="none"
 				d="
 M322.000000,513.000000 

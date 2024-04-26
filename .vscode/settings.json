@@ -16,6 +16,7 @@
     "dashboard",
     "icon",
     "pages",
-    "homepage"
+    "homepage",
+    "routes"
   ]
 }

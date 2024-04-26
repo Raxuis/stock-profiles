@@ -655,7 +655,7 @@ export const OptionKey = ({ className }: { className: string }) => {
 const GetInfosLogo = () => {
   return (
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-      width="25%" className="mx-auto opacity-75" viewBox="0 0 1079 1079" enable-background="new 0 0 1079 1079">
+      width="25%" className="mx-auto opacity-75" viewBox="0 0 1079 1079" enableBackground="new 0 0 1079 1079">
       <path fill="#000000" opacity="1.000000" stroke="none"
         d="
 M607.000000,1080.000000 

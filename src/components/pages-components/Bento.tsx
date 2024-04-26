@@ -20,6 +20,9 @@ const Bento = () => {
         <SocialsBlock />
         <AboutBlock />
         <LocationBlock />
+        <FormulaDriverBLock />
+        <TVSeriesBLock />
+        <NBAPlayerBLock />
       </motion.div>
     </div>
   )
@@ -123,12 +126,56 @@ const LocationBlock = () => {
   return (
     <Block whileHover={{
       transform: 'translateY(+5px)'
-    }} className='col-span-12 flex flex-col items-center gap-4 md:col-span-3'>
+    }} className='col-span-12 flex flex-col items-center justify-around gap-4 md:col-span-3'>
       <ReactCountryFlag countryCode="FR" svg style={{
-        width: '1.5em',
-        height: '1.5em',
+        width: '50px',
+        height: '50px',
       }} />
-      <p className='text-xl text-zinc-400'>France</p>
+      <div className='flex flex-col items-center'>
+        <p className='text-xl text-zinc-400'>France</p>
+        <p className='text-xs text-zinc-500'>Location</p>
+      </div>
+    </Block>
+  )
+}
+const FormulaDriverBLock = () => {
+  return (
+    <Block whileHover={{
+      transform: 'translateY(+5px)'
+    }} className='col-span-12 flex flex-col items-center justify-around gap-4 md:col-span-3'>
+      <Image src='/charles-leclerc.webp' alt='charles-leclerc-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
+      <div className='flex flex-col items-center'>
+        <p className='text-xl text-zinc-400'>Charles Leclerc</p>
+        <p className='text-xs text-zinc-500'>Favorite Formula Driver</p>
+      </div>
+    </Block>
+  )
+}
+
+const TVSeriesBLock = () => {
+  return (
+    <Block whileHover={{
+      transform: 'translateY(+5px)'
+    }} className='col-span-12 flex flex-col items-center justify-around gap-4 md:col-span-3'>
+      <Image src='/mrrobot.jpeg' alt='mr-robot-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
+      <div className='flex flex-col items-center'>
+        <p className='text-xl text-zinc-400'>Mr Robot</p>
+        <p className='text-xs text-zinc-500'>Favorite TV Series</p>
+      </div>
+    </Block>
+  )
+}
+
+const NBAPlayerBLock = () => {
+  return (
+    <Block whileHover={{
+      transform: 'translateY(+5px)'
+    }} className='col-span-12 flex flex-col items-center justify-around gap-4 md:col-span-3'>
+      <Image src='/lebron-james.png' alt='lebron-james-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
+      <div className='flex flex-col items-center'>
+        <p className='text-xl text-zinc-400'>LeBron James</p>
+        <p className='text-xs text-zinc-500'>Favorite NBA Player</p>
+      </div>
     </Block>
   )
 }

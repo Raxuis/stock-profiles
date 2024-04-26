@@ -1,44 +1,59 @@
+"use client";
 import { Layout } from '@/components/layout'
 import { MacbookScroll } from '@/components/ui/macbook-scroll';
 import { Header } from '@/layout/Header';
 import { Link } from 'next-view-transitions';
+import { motion } from 'framer-motion';
 
 
 export default function Home() {
 
-  return (
-    <Layout>
-      <Header />
-      <div className="w-full overflow-hidden">
-        <MacbookScroll
-          title={
-            <span className='text-primary'>
-              Get-Infos <br /> Made by Raphaël | Raxuis
-            </span>
-          }
-          badge={
-            <Link href="https://raphaelraclot.vercel.app/">
-              <Badge className="size-10 -rotate-12 rounded-full object-cover duration-300 hover:scale-105" />
-            </Link>
-          }
-          src={`/darkmode-products-page.jpeg`}
-          showGradient={false}
-        />
-      </div>
-    </Layout>
-  )
+	return (
+		<Layout>
+			<Header />
+			<motion.div initial={{
+				scale: 0.5,
+				y: -100,
+				opacity: 0,
+			}} animate={{
+				scale: 1,
+				y: 0,
+				opacity: 1
+			}} transition={{
+				type: 'spring',
+				stiffness: 600,
+				damping: 50,
+				mass: 3
+			}} className="w-full overflow-hidden">
+				<MacbookScroll
+					title={
+						<span className='text-primary'>
+							Get-Infos <br /> Made by Raphaël | Raxuis
+						</span>
+					}
+					badge={
+						<Link href="https://raphaelraclot.vercel.app/">
+							<Badge className="size-10 -rotate-12 rounded-full object-cover duration-300 hover:scale-105" />
+						</Link>
+					}
+					src={`/darkmode-products-page.jpeg`}
+					showGradient={false}
+				/>
+			</motion.div>
+		</Layout >
+	)
 }
 const Badge = ({ className }: { className?: string }) => {
-  return (
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-      width="24"
-      height="24"
-      viewBox="0 0 512 512"
-      fill="none"
-      className={className}
-      enable-background="new 0 0 512 512">
-      <path fill="#000000" opacity="1.000000" stroke="none"
-        d="
+	return (
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+			width="24"
+			height="24"
+			viewBox="0 0 512 512"
+			fill="none"
+			className={className}
+			enable-background="new 0 0 512 512">
+			<path fill="#000000" opacity="1.000000" stroke="none"
+				d="
 M322.000000,513.000000 
 	C214.692734,513.000000 107.885460,513.000000 1.039095,513.000000 
 	C1.039095,342.401031 1.039095,171.802063 1.039095,1.101549 
@@ -71,8 +86,8 @@ M192.500076,103.164291
 	C334.034973,126.077011 304.883759,107.342796 266.418152,104.271423 
 	C242.236832,102.340599 217.814377,103.429893 192.500076,103.164291 
 z"/>
-      <path fill="#FEFEFE" opacity="1.000000" stroke="none"
-        d="
+			<path fill="#FEFEFE" opacity="1.000000" stroke="none"
+				d="
 M193.000092,103.164291 
 	C217.814377,103.429893 242.236832,102.340599 266.418152,104.271423 
 	C304.883759,107.342796 334.034973,126.077011 348.786224,162.634842 
@@ -108,8 +123,8 @@ M307.541504,167.054001
 	C275.806183,250.630966 287.062988,247.294098 296.075562,238.867432 
 	C315.283783,220.907928 319.875793,192.783783 307.541504,167.054001 
 z"/>
-      <path fill="#010101" opacity="1.000000" stroke="none"
-        d="
+			<path fill="#010101" opacity="1.000000" stroke="none"
+				d="
 M307.717682,167.385376 
 	C319.875793,192.783783 315.283783,220.907928 296.075562,238.867432 
 	C287.062988,247.294098 275.806183,250.630966 263.860107,251.988892 
@@ -120,6 +135,6 @@ M307.717682,167.385376
 	C228.666214,136.108749 245.861328,135.696579 262.922821,136.998474 
 	C283.070892,138.535919 298.060577,149.027313 307.717682,167.385376 
 z"/>
-    </svg>
-  );
+		</svg>
+	);
 };

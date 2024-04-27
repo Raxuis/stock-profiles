@@ -38,15 +38,14 @@ const Infos = () => {
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
-      title: "Nice One.",
+      title: "Your Stock's Symbol :",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
+        <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">{data.symbol}</p>
       ),
     })
+    // const stocks = await getStocks(data.symbol);
   }
   // const Stocks = async () => {
   //   try {
@@ -65,7 +64,7 @@ const Infos = () => {
     <Layout>
       <Header />
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 sm:w-2/3">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 sm:w-3/4">
           <FormField
             control={form.control}
             name="symbol"

@@ -6,13 +6,14 @@ import { env } from '@/env';
 //   req: string;
 //   res: JSON;
 // }
-export default async function getStocks() {
+export default async function getStocks(symbol: string) {
   try {
-    const response = await axios.get('https://financialmodelingprep.com/api/v3/search?query=AA', {
+    const response = await axios.get('https://financialmodelingprep.com/api/v3/search', {
       headers: {
         'Content-Type': 'application/json',
       },
       params: {
+        query: symbol,
         apikey: env.STOCKS_API_KEY
       }
     });

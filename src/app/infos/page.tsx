@@ -19,11 +19,12 @@ import {
 import { z } from "zod"
 import { toast } from "@/components/ui/use-toast"
 
-const letterRegex = /^[a-zA-Z]+$/;
+const letterRegex = /^[A-Z]+$/;
+
 
 const FormSchema = z.object({
   symbol: z.string().regex(letterRegex, {
-    message: "Stock's symbol must contain only letters.",
+    message: "Stock's symbol must contain only capital letters.",
   }).max(5, {
     message: "Stock's symbol mustn't be more than 5 characters.",
   }).min(3, {

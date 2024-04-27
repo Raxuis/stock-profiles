@@ -6,7 +6,7 @@ import { useQueryState } from 'nuqs'
 import { useState } from 'react';
 import getStocks from '@/features/queries/stocks';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import {
@@ -21,10 +21,34 @@ import { z } from "zod"
 import { toast } from "@/components/ui/use-toast"
 import { useRouter } from 'next/navigation';
 import type { StockDatasType } from "@/types/StockDatas";
+import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { Link } from 'next-view-transitions';
 
 
 const letterRegex = /^[A-Z]+$/;
 let stocksData: StockDatasType[];
+
+const Badge = ({ value, currency }: { value: number, currency: string }) => {
+  const isPositive = value > 0
+  const isNegative = value < 0
+
+  if (isNaN(value)) return null
+
+  const positiveClassname = 'bg-green-900/25 text-green-400 ring-green-400/25'
+  const negativeClassname = 'bg-red-900/25 text-red-400 ring-red-400/25'
+
+  return (
+    <span
+      className={`inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${isPositive
+        ? positiveClassname
+        : negativeClassname
+        }`}>
+      {isPositive ? <ArrowUpRight className='size-3' /> : null}
+      {isNegative ? <ArrowDownRight className='size-3' /> : null}
+      {value} {currency}
+    </span>
+  )
+}
 
 
 const FormSchema = z.object({
@@ -63,9 +87,7 @@ const Infos = () => {
       toast({
         title: "❌ You entered a wrong symbol ❌",
         description: (
-          <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 text-red-500">{
-            String(error)
-          }</p>
+          <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 text-red-500">Try rewriting your query.</p>
         ),
       })
     }
@@ -87,31 +109,52 @@ const Infos = () => {
   return (
     <Layout>
       <Header />
-      {stocksData == null ? (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 sm:w-3/4">
-            <FormField
-              control={form.control}
-              name="symbol"
-              render={({ field }) => (
-                <FormItem className='w-full'>
-                  <FormLabel>Stock&apos;s Symbol</FormLabel>
-                  <FormControl>
-                    <Input autoFocus placeholder="Symbol" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" className='max-sm:w-full'>Search</Button>
-          </form>
-        </Form>
-      ) : (
-        <div>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 sm:w-3/4">
+          <FormField
+            control={form.control}
+            name="symbol"
+            render={({ field }) => (
+              <FormItem className='w-full'>
+                <FormLabel>Stock&apos;s Symbol</FormLabel>
+                <FormControl>
+                  <Input autoFocus placeholder="Symbol" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" className='max-sm:w-full'>Search</Button>
+        </form>
+      </Form>
+      {stocksData && (
+        <div className='pt-8'>
           {stocksData.map((stock) => (
-            <div key={stock.symbol}>
-              <p>Symbol: {stock.symbol}</p>
-              <p>Price: {stock.price}</p>
+            <div key={stock.symbol} className="flex items-center justify-stretch space-x-10 rounded-lg border p-6">
+              {stock.image ? <img src={stock.image} alt={stock.symbol} className='h-1/2' /> : null}
+              <div className='flex flex-col items-center space-y-6'>
+                {stock.companyName ? <p className='text-3xl'>{stock.companyName} {stock.symbol}</p> : null}
+                <div className='flex gap-4'>
+                  {stock.price ? <p className='text-xl'>Price : {stock.price} {stock.currency}</p> : null}
+                  {
+                    stock.changes ? <Badge
+                      value={stock.changes}
+                      currency={stock.currency}
+                    />
+                      : null}
+                </div>
+                {
+                  stock.ceo ? <p className='text-xl'>CEO: {stock.ceo}</p> : null
+                }
+                {
+                  stock.website ? <Link href={stock.website} className={buttonVariants(
+                    {
+                      variant: 'outline',
+                      size: 'lg',
+                    }
+                  )}>Website: {stock.website}</Link> : null
+                }
+              </div>
             </div>
           ))}
         </div>

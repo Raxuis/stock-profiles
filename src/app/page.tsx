@@ -41,15 +41,7 @@ export default function Home() {
 					showGradient={false}
 				/>
 			</motion.div>
-			<motion.div initial={{
-				x: -100
-			}} whileInView={{
-				x: 0
-			}} className="flex min-h-screen shrink-0 scale-[0.9] flex-col items-center justify-start py-16 text-center [perspective:800px] sm:scale-100 sm:py-32"
-			>
-				<p className='text-3xl'>We will help you invest on the best stocks!</p>
-				<ProblemsSection />
-			</motion.div>
+			<ProblemsSection />
 		</Layout >
 	)
 }

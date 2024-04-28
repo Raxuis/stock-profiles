@@ -3,12 +3,12 @@ import React from 'react';
 import { motion, MotionProps } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import Image from 'next/image';
-import { buttonVariants } from '../ui/button';
+import { buttonVariants } from '../../ui/button';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { FaGithub, FaStackOverflow, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Link } from 'next-view-transitions';
 import ReactCountryFlag from "react-country-flag"
-import { TextGenerateEffect } from "../ui/text-generate-effect";
+import { TextGenerateEffect } from "../../ui/text-generate-effect";
 
 const Bento = () => {
   return (

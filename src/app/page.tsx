@@ -4,6 +4,7 @@ import { MacbookScroll } from '@/components/ui/macbook-scroll';
 import { Header } from '@/layout/Header';
 import { Link } from 'next-view-transitions';
 import { motion } from 'framer-motion';
+import { ProblemsSection } from '@/components/pages-components/home/ProblemsSection';
 
 
 export default function Home() {
@@ -28,7 +29,7 @@ export default function Home() {
 				<MacbookScroll
 					title={
 						<p className='text-primary'>
-							<span className='text-5xl'>Stocks Profile</span> <br /> <span className='text-xl text-zinc-500 duration-500 hover:text-white'> Dive into detailed profiles of companies, exploring their financial performance, market trends, and potential investment opportunities. From stock history to analyst ratings, our platform offers a wealth of data to empower your investment decisions.</span>
+							<span className='text-5xl'>Stocks Profiles</span> <br /> <span className='text-xl text-zinc-500 duration-500 hover:text-white'> Dive into detailed profiles of companies, exploring their financial performance, market trends, and potential investment opportunities. From stock history to analyst ratings, our platform offers a wealth of data to empower your investment decisions.</span>
 						</p>
 					}
 					badge={
@@ -39,6 +40,15 @@ export default function Home() {
 					src={`/stocks-profiles.png`}
 					showGradient={false}
 				/>
+			</motion.div>
+			<motion.div initial={{
+				x: -100
+			}} whileInView={{
+				x: 0
+			}} className="flex min-h-screen shrink-0 scale-[0.9] flex-col items-center justify-start py-16 text-center [perspective:800px] sm:scale-100 sm:py-32"
+			>
+				<p className='text-3xl'>We will help you invest on the best stocks!</p>
+				<ProblemsSection />
 			</motion.div>
 		</Layout >
 	)

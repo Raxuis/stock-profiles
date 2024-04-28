@@ -79,7 +79,7 @@ export const MacbookScroll = ({
       >
         {title || (
           <span>
-            Stocks Profile <br /> Dive into detailed profiles of companies, exploring their financial performance, market trends, and potential investment opportunities. From stock history to analyst ratings, our platform offers a wealth of data to empower your investment decisions.
+            Stocks Profiles <br /> Dive into detailed profiles of companies, exploring their financial performance, market trends, and potential investment opportunities. From stock history to analyst ratings, our platform offers a wealth of data to empower your investment decisions.
           </span>
         )}
       </motion.h2>
@@ -766,23 +766,6 @@ M345.160858,747.518433
 	C379.814423,706.520264 369.712585,698.267700 358.283386,697.994141 
 	C345.591797,697.690308 335.378204,704.855103 331.853516,716.534607 
 	C328.243591,728.496277 333.032227,740.091980 345.160858,747.518433 
-z"/>
-      <path fill="#C011FF" opacity="1.000000" stroke="none"
-        d="
-M700.827759,368.965576 
-	C694.085144,353.473236 700.524048,337.408844 715.257996,332.202728 
-	C729.754517,327.080475 745.320251,335.287140 749.401733,350.204041 
-	C752.815002,362.678711 746.365845,375.904968 734.381531,381.008026 
-	C721.818726,386.357483 708.611877,381.726715 700.827759,368.965576 
-z"/>
-      <path fill="#C011FF" opacity="1.000000" stroke="none"
-        d="
-M344.829132,747.335266 
-	C333.032227,740.091980 328.243591,728.496277 331.853516,716.534607 
-	C335.378204,704.855103 345.591797,697.690308 358.283386,697.994141 
-	C369.712585,698.267700 379.814423,706.520264 382.407928,718.209961 
-	C384.688782,728.490417 381.785553,737.441040 373.655701,744.160461 
-	C365.027008,751.292053 355.328491,752.069519 344.829132,747.335266 
 z"/>
     </svg>)
 };

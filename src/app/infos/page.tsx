@@ -1,9 +1,9 @@
 "use client";
 import { Layout } from '@/components/layout'
 import { Header } from '@/layout/Header'
-import React from 'react'
-import { useQueryState } from 'nuqs'
-import { useState } from 'react';
+import React, { useEffect } from 'react'
+// import { useQueryState } from 'nuqs'
+// import { useState } from 'react';
 import getStocks from '@/features/queries/stocks';
 import { Input } from '@/components/ui/input';
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/form"
 import { z } from "zod"
 import { toast } from "@/components/ui/use-toast"
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import type { StockDatasType } from "@/types/StockDatas";
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'next-view-transitions';
@@ -27,6 +27,7 @@ import { Link } from 'next-view-transitions';
 
 const letterRegex = /^[A-Z]+$/;
 let stocksData: StockDatasType[];
+
 
 const Badge = ({ value, currency }: { value: number, currency: string }) => {
   const isPositive = value > 0
@@ -63,8 +64,9 @@ const FormSchema = z.object({
 
 
 const Infos = () => {
-  const router = useRouter();
-  // const [symbol, setSymbol] = useQueryState('symbol', { defaultValue: '' });
+  // const router = useRouter();
+  const localStockSymbol = localStorage.getItem('stockSymbol') || "";
+  const localStockSymbolFormatted: StockDatasType[] = localStockSymbol ? JSON.parse(localStockSymbol) : [];
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -82,6 +84,7 @@ const Infos = () => {
           <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">You successfully made a query!</p>
         ),
       })
+      localStorage.setItem("stockSymbol", JSON.stringify(stocksData));
       // router.push('/stocks-profile', stocksData);
     } catch (error) {
       toast({
@@ -127,12 +130,12 @@ const Infos = () => {
           <Button type="submit" className='max-sm:w-full'>Search</Button>
         </form>
       </Form>
-      {stocksData && (
+      {localStockSymbolFormatted !== null ? (
         <div className='pt-8'>
-          {stocksData.map((stock) => (
-            <div key={stock.symbol} className="flex items-center justify-stretch space-x-10 rounded-lg border p-6">
+          {localStockSymbolFormatted.map((stock) => (
+            <div key={stock.symbol} className="flex max-sm:flex-col items-center justify-stretch space-x-10 rounded-lg border p-12">
               {stock.image ? <img src={stock.image} alt={stock.symbol} className='h-1/2' /> : null}
-              <div className='flex flex-col items-center space-y-6'>
+              <div className='flex flex-col items-center max-sm:pt-6 space-y-6'>
                 {stock.companyName ? <p className='text-3xl'>{stock.companyName} {stock.symbol}</p> : null}
                 <div className='flex gap-4'>
                   {stock.price ? <p className='text-xl'>Price : {stock.price} {stock.currency}</p> : null}
@@ -158,9 +161,42 @@ const Infos = () => {
             </div>
           ))}
         </div>
+      ) : (
+        stocksData && (
+          <div className='pt-8'>
+            {stocksData.map((stock) => (
+              <div key={stock.symbol} className="flex max-sm:flex-col items-center justify-stretch space-x-10 rounded-lg border p-12">
+                {stock.image ? <img src={stock.image} alt={stock.symbol} className='h-1/2' /> : null}
+                <div className='flex flex-col items-center max-sm:pt-6 space-y-6'>
+                  {stock.companyName ? <p className='text-3xl'>{stock.companyName} {stock.symbol}</p> : null}
+                  <div className='flex gap-4'>
+                    {stock.price ? <p className='text-xl'>Price : {stock.price} {stock.currency}</p> : null}
+                    {
+                      stock.changes ? <Badge
+                        value={stock.changes}
+                        currency={stock.currency}
+                      />
+                        : null}
+                  </div>
+                  {
+                    stock.ceo ? <p className='text-xl'>CEO: {stock.ceo}</p> : null
+                  }
+                  {
+                    stock.website ? <Link href={stock.website} className={buttonVariants(
+                      {
+                        variant: 'outline',
+                        size: 'lg',
+                      }
+                    )}>Website: {stock.website}</Link> : null
+                  }
+                </div>
+              </div>
+            ))}
+          </div>
+        )
       )}
     </Layout>
   );
-};
+}
 
 export default Infos;

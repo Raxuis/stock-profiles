@@ -27,16 +27,16 @@ export default function Home() {
 			}} className="w-full overflow-hidden">
 				<MacbookScroll
 					title={
-						<span className='text-primary'>
-							Get-Infos <br /> Made by Raphaël | Raxuis
-						</span>
+						<p className='text-primary'>
+							<span className='text-5xl'>Stocks Profile</span> <br /> <span className='text-xl text-zinc-500 duration-500 hover:text-white'> Dive into detailed profiles of companies, exploring their financial performance, market trends, and potential investment opportunities. From stock history to analyst ratings, our platform offers a wealth of data to empower your investment decisions.</span>
+						</p>
 					}
 					badge={
 						<Link href="https://raphaelraclot.vercel.app/">
 							<Badge className="size-10 -rotate-12 rounded-full object-cover duration-300 hover:scale-105" />
 						</Link>
 					}
-					src={`/darkmode-products-page.jpeg`}
+					src={`/stocks-profiles.png`}
 					showGradient={false}
 				/>
 			</motion.div>

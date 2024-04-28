@@ -13,8 +13,8 @@ export const Header = () => {
     <header className="w-full border-b border-border">
       <Layout className="flex items-center gap-4 sm:flex-row">
         <Link href="/" className="group flex flex-1 items-center gap-2">
-          <Image src="/favicon.ico" priority={true} width={42} height={42} alt="get-infos logo" className="duration-500 group-hover:scale-110" />
-          <p className="text-lg">Get-Infos</p>
+          <Image src="/icon.png" priority={true} width={42} height={42} alt="stocks-profiles-logo" className="duration-500 group-hover:scale-110" />
+          <p className="text-lg">Stocks Profiles</p>
         </Link>
         {pathname === '/' ? (
           <div className="flex gap-4">

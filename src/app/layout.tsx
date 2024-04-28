@@ -13,9 +13,9 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Get-Infos",
-  description: "Welcome to Get-Infos, your ultimate destination for comprehensive and reliable information on a wide array of subjects.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  title: "Stocks Profiles",
+  description: "Welcome to Stocks Profiles, your ultimate destination for comprehensive information on every stock.",
+  icons: [{ rel: "icon", url: "/icon.png" }],
 };
 
 export default function RootLayout({

@@ -18,6 +18,7 @@
     "pages",
     "homepage",
     "routes",
-    "keys"
+    "keys",
+    "global"
   ]
 }

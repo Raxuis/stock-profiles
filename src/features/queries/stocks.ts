@@ -12,7 +12,6 @@ export default async function getStocks(symbol: string) {
         apikey: env.STOCKS_API_KEY
       }
     });
-    console.log('submitted');
     return response.data.length < 1 ? (() => { throw new Error(); })() : response.data;
 
   } catch (error) {

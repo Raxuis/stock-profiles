@@ -1,7 +1,7 @@
 "use client";
 import { Layout } from '@/components/layout'
 import { Header } from '@/layout/Header'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // import { useQueryState } from 'nuqs'
 // import { useState } from 'react';
 import getStocks from '@/features/queries/stocks';
@@ -46,7 +46,7 @@ const Badge = ({ value, currency }: { value: number, currency: string }) => {
         }`}>
       {isPositive ? <ArrowUpRight className='size-3' /> : null}
       {isNegative ? <ArrowDownRight className='size-3' /> : null}
-      {value} {currency}
+      {value > 0 ? `+${value}` : value} {currency}
     </span>
   )
 }
@@ -65,8 +65,21 @@ const FormSchema = z.object({
 
 const Infos = () => {
   // const router = useRouter();
-  const localStockSymbol = localStorage.getItem('stockSymbol') || "";
-  const localStockSymbolFormatted: StockDatasType[] = localStockSymbol ? JSON.parse(localStockSymbol) : [];
+  // TODO: Fix this issue localStorage is not defined with useEffect()
+  const [localStockSymbolFormatted, setLocalStockSymbolFormatted] = useState<StockDatasType[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (typeof window !== 'undefined') {
+        const localStockSymbol = localStorage.getItem('stockSymbol') || '';
+        if (localStockSymbol) {
+          setLocalStockSymbolFormatted(JSON.parse(localStockSymbol));
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -85,6 +98,7 @@ const Infos = () => {
         ),
       })
       localStorage.setItem("stockSymbol", JSON.stringify(stocksData));
+      setLocalStockSymbolFormatted(stocksData);
       // router.push('/stocks-profile', stocksData);
     } catch (error) {
       toast({

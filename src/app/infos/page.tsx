@@ -32,8 +32,8 @@ const FormSchema = z.object({
     message: "Stock's symbol must contain only capital letters.",
   }).max(5, {
     message: "Stock's symbol mustn't be more than 5 characters.",
-  }).min(3, {
-    message: "Stock's symbol must be at least 3 characters.",
+  }).min(2, {
+    message: "Stock's symbol must be at least 2 characters.",
   }),
 });
 

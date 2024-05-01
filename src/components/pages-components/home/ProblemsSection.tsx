@@ -10,10 +10,7 @@ export const ProblemsSection = () => {
 
   async function handleClick() {
     toast({
-      title: "📈 Wow 📈",
-      description: (
-        <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That's one small step for man, one giant leap for Stocks!</p>
-      ),
+      description: "That's only a demo...",
     });
   }
   const words = 'What is the price of Apple\'s Stock?';

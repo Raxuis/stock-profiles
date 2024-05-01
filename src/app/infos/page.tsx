@@ -63,24 +63,36 @@ const Infos = () => {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      stocksData = await getStocks(data.symbol);
-      toast({
-        title: "🥳 Wow 🥳",
-        description: (
-          <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That's one small step for man, one giant leap for Stocks!</p>
-        ),
-      })
-      localStorage.setItem("stockSymbol", JSON.stringify(stocksData));
-      setLocalStockSymbolFormatted(stocksData);
+      let alreadySearched = false;
+
+      localStockSymbolFormatted.forEach((stock) => {
+        if (stock.symbol === data.symbol) {
+          alreadySearched = true;
+          throw new Error('Already searched');
+        }
+      });
+
+      if (!alreadySearched) {
+        stocksData = await getStocks(data.symbol);
+        toast({
+          title: "📈 Wow 📈",
+          description: (
+            <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That's one small step for man, one giant leap for Stocks!</p>
+          ),
+        });
+        localStorage.setItem("stockSymbol", JSON.stringify(stocksData));
+        setLocalStockSymbolFormatted(stocksData);
+      }
     } catch (error) {
       toast({
         title: "❌ You entered a wrong symbol ❌",
         description: (
           <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 text-red-500">Please, try rewriting your Stock Symbol. 😀</p>
         ),
-      })
+      });
     }
   }
+
 
   return (
     <Layout>
@@ -140,48 +152,7 @@ const Infos = () => {
               </CardContent>
             </Card>))}
         </div>
-      ) : (
-        stocksData && (
-          <div className='mt-8 flex justify-center'>
-            {stocksData.map((stock) => (
-              <Card key={stock.symbol} className='w-full sm:w-2/3 md:w-1/2'>
-                <CardHeader>
-                  {stock.image ? <img src={stock.image} alt={stock.symbol} className='size-20' /> : null}
-                  <div className='flex flex-col space-y-1.5 p-6'>
-                    {stock.companyName ? <CardTitle className='flex items-center'> {stock.companyName} {stock.symbol}</CardTitle> : null}
-                    {
-                      stock.ceo ? <CardDescription>CEO: {stock.ceo}</CardDescription> : null
-                    }
-                  </div>
-                </CardHeader>
-                <CardContent className='flex flex-col space-y-6'>
-                  <div className='space-y-4'>
-                    {stock.sector ? <p>Sector: {stock.sector}</p> : null}
-                    <div className='flex gap-4'>
-                      {stock.price ? <p className='text-xl'>Price : {stock.price} {stock.currency}</p> : null}
-                      {
-                        stock.changes ? <Badge
-                          value={stock.changes}
-                          currency={stock.currency}
-                        />
-                          : null}
-                    </div>
-                  </div>
-                  {stock.sector ? <p className='text-xl'>Sector : {stock.sector}</p> : null}
-                  {
-                    stock.website ? <Link href={stock.website} className={buttonVariants(
-                      {
-                        variant: 'outline',
-                        size: 'lg',
-                      }
-                    )}>Website: {stock.website}</Link> : null
-                  }
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )
-      )}
+      ) : null}
     </Layout>
   );
 }

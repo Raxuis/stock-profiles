@@ -6,7 +6,6 @@ import { Link } from 'next-view-transitions';
 import { motion } from 'framer-motion';
 import { ProblemsSection } from '@/components/pages-components/home/ProblemsSection';
 
-
 export default function Home() {
 
 	return (

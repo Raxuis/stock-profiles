@@ -104,7 +104,7 @@ const Infos = () => {
         </form>
       </Form>
       {localStockSymbolFormatted !== null ? (
-        <div className='mt-8'>
+        <div className='mt-8 flex justify-center'>
           {localStockSymbolFormatted.map((stock) => (
             <Card key={stock.symbol} className='w-full sm:w-2/3 md:w-1/2'>
               <CardHeader>
@@ -117,14 +117,17 @@ const Infos = () => {
                 </div>
               </CardHeader>
               <CardContent className='flex flex-col space-y-6'>
-                <div className='flex gap-4'>
-                  {stock.price ? <p className='text-xl'>Price : {stock.price} {stock.currency}</p> : null}
-                  {
-                    stock.changes ? <Badge
-                      value={stock.changes}
-                      currency={stock.currency}
-                    />
-                      : null}
+                <div className='space-y-4'>
+                  {stock.sector ? <p>Sector: {stock.sector}</p> : null}
+                  <div className='flex gap-4'>
+                    {stock.price ? <p className='text-xl'>Price: {stock.price} {stock.currency}</p> : null}
+                    {
+                      stock.changes ? <Badge
+                        value={stock.changes}
+                        currency={stock.currency}
+                      />
+                        : null}
+                  </div>
                 </div>
                 {
                   stock.website ? <Link href={stock.website} className={buttonVariants(
@@ -139,7 +142,7 @@ const Infos = () => {
         </div>
       ) : (
         stocksData && (
-          <div className='mt-8'>
+          <div className='mt-8 flex justify-center'>
             {stocksData.map((stock) => (
               <Card key={stock.symbol} className='w-full sm:w-2/3 md:w-1/2'>
                 <CardHeader>
@@ -152,15 +155,19 @@ const Infos = () => {
                   </div>
                 </CardHeader>
                 <CardContent className='flex flex-col space-y-6'>
-                  <div className='flex gap-4'>
-                    {stock.price ? <p className='text-xl'>Price : {stock.price} {stock.currency}</p> : null}
-                    {
-                      stock.changes ? <Badge
-                        value={stock.changes}
-                        currency={stock.currency}
-                      />
-                        : null}
+                  <div className='space-y-4'>
+                    {stock.sector ? <p>Sector: {stock.sector}</p> : null}
+                    <div className='flex gap-4'>
+                      {stock.price ? <p className='text-xl'>Price : {stock.price} {stock.currency}</p> : null}
+                      {
+                        stock.changes ? <Badge
+                          value={stock.changes}
+                          currency={stock.currency}
+                        />
+                          : null}
+                    </div>
                   </div>
+                  {stock.sector ? <p className='text-xl'>Sector : {stock.sector}</p> : null}
                   {
                     stock.website ? <Link href={stock.website} className={buttonVariants(
                       {

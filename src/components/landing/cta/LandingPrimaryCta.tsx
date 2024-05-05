@@ -123,10 +123,10 @@ export const LandingPrimaryImageCtaSection = ({
       className={clsx(
         'flex w-full flex-col items-center justify-center gap-8 py-12 lg:py-16',
         withBackground && variant === 'primary'
-          ? 'bg-primary-100/20 dark:bg-primary-900/10'
+          ? 'bg-primary'
           : '',
         withBackground && variant === 'secondary'
-          ? 'bg-secondary-100/20 dark:bg-secondary-900/10'
+          ? 'bg-secondary'
           : '',
         withBackgroundGlow || imagePerspective !== 'none'
           ? 'overflow-x-hidden'
@@ -165,10 +165,10 @@ export const LandingPrimaryImageCtaSection = ({
         {imageSrc ? (
           <>
             {withBackgroundGlow ? (
-              <div className="pointer-events-none absolute hidden size-full justify-center lg:flex">
+              <div className="pointer-events-none absolute hidden size-full justify-center lg:flex ">
                 <GlowBg
                   className={clsx(
-                    'z-0 h-auto w-full dark:opacity-50 lg:w-1/2',
+                    'z-0 h-auto w-full dark:opacity-50 lg:w-1/2 ',
                     imagePosition === 'center' ? 'top-5' : ' -top-1/3',
                     imagePerspective === 'paper' ? 'opacity-70' : 'opacity-100',
                   )}
@@ -178,7 +178,7 @@ export const LandingPrimaryImageCtaSection = ({
             ) : null}
 
             {imagePosition === 'center' ? (
-              <section className={clsx('mt-6 w-full md:mt-8')}>
+              <section className={clsx('mt-6 w-full md:mt-8 border-white border-2 rounded-lg border-opacity-30')}>
                 <Image
                   className={clsx(
                     'w-full overflow-hidden rounded-md',

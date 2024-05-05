@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react'
-import getStocks from '@/features/queries/stocks';
+import { cookieGetter, cookieSetter } from '@/features/functions/cookies';
+import getStocks from '@/features/functions/stocks';
 import { Input } from '@/components/ui/input';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -43,6 +44,11 @@ const Infos = () => {
     const fetchData = async () => {
       if (typeof window !== 'undefined') {
         const localStockSymbol = localStorage.getItem('stockSymbol') || '';
+        const existingSymbol = await cookieGetter();
+        if (existingSymbol == undefined) {
+          console.log(JSON.parse(localStockSymbol))
+          await cookieSetter(JSON.parse(localStockSymbol).value);
+        }
         if (localStockSymbol) {
           setLocalStockSymbolFormatted(JSON.parse(localStockSymbol));
         }
@@ -61,26 +67,25 @@ const Infos = () => {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      let alreadySearched = false;
+      const existingSymbol = await cookieGetter();
+      if (existingSymbol === data.symbol) {
+        throw new Error('Already searched');
+      }
 
-      localStockSymbolFormatted.forEach((stock) => {
-        if (stock.symbol === data.symbol) {
-          alreadySearched = true;
-          throw new Error('Already searched');
-        }
+      stocksData = await getStocks(data.symbol);
+
+      toast({
+        title: "📈 Wow 📈",
+        description: (
+          <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That's one small step for man, one giant leap for Stocks!</p>
+        ),
       });
 
-      if (!alreadySearched) {
-        stocksData = await getStocks(data.symbol);
-        toast({
-          title: "📈 Wow 📈",
-          description: (
-            <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That's one small step for man, one giant leap for Stocks!</p>
-          ),
-        });
-        localStorage.setItem("stockSymbol", JSON.stringify(stocksData));
-        setLocalStockSymbolFormatted(stocksData);
-      }
+      localStorage.setItem("stockSymbol", JSON.stringify(stocksData));
+
+      setLocalStockSymbolFormatted(stocksData);
+
+      await cookieSetter(data.symbol);
     } catch (error) {
       toast({
         title: "❌ You entered a wrong symbol ❌",
@@ -90,6 +95,7 @@ const Infos = () => {
       });
     }
   }
+
 
 
   return (

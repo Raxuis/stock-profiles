@@ -6,9 +6,18 @@ import { LandingSocialProof } from '@/components/landing/social-proof/LandingSoc
 import { LandingSocialProofBand } from '@/components/landing/social-proof/LandingSocialProofBand';
 import { LandingSocialProofBandItem } from '@/components/landing/social-proof/LandingSocialProofBandItem';
 import { buttonVariants } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 const LandingSection = () => {
   return (
-    <>
+    <motion.div
+      initial={{
+        y: -100
+      }}
+      whileInView={{
+        y: 0
+      }}
+      transition={{ type: "spring", stiffness: 100 }}
+      viewport={{ once: true }} >
       {/* <LandingPrimaryImageCtaSection
         title="Stocks Profiles"
         description="Dive into detailed profiles of companies, exploring their financial performance, market trends, and potential investment opportunities. From stock history to analyst ratings, our platform offers a wealth of data to empower your investment decisions."
@@ -86,7 +95,7 @@ const LandingSection = () => {
         />
       </LandingPrimaryImageCtaSection>
 
-    </>
+    </motion.div>
   )
 }
 

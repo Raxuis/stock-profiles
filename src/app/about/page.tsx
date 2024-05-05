@@ -6,10 +6,7 @@ import React from 'react'
 const About = () => {
 
   return (
-    <Layout>
-      <Header />
-      <Bento />
-    </Layout>
+    <Bento />
   )
 }
 

@@ -5,13 +5,14 @@ import { Header } from '@/layout/Header';
 import { Link } from 'next-view-transitions';
 import { motion } from 'framer-motion';
 import { ProblemsSection } from '@/components/pages-components/home/ProblemsSection';
+import LandingSection from '@/components/pages-components/home/LandingSection';
 
 export default function Home() {
 
 	return (
-		<Layout>
-			<Header />
-			<motion.div initial={{
+		<>
+			<LandingSection />
+			{/* <motion.div initial={{
 				scale: 0.5,
 				y: -100,
 				opacity: 0,
@@ -39,9 +40,9 @@ export default function Home() {
 					src={`/stocks-profiles.png`}
 					showGradient={false}
 				/>
-			</motion.div>
+			</motion.div> */}
 			<ProblemsSection />
-		</Layout >
+		</ >
 	)
 }
 const Badge = ({ className }: { className?: string }) => {

@@ -1,6 +1,4 @@
 "use client";
-import { Layout } from '@/components/layout'
-import { Header } from '@/layout/Header'
 import React, { useEffect, useState } from 'react'
 import getStocks from '@/features/queries/stocks';
 import { Input } from '@/components/ui/input';
@@ -95,8 +93,7 @@ const Infos = () => {
 
 
   return (
-    <Layout>
-      <Header />
+    <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 sm:w-3/4">
           <FormField
@@ -153,7 +150,7 @@ const Infos = () => {
             </Card>))}
         </div>
       ) : null}
-    </Layout>
+    </>
   );
 }
 

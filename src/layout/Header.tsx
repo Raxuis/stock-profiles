@@ -1,22 +1,26 @@
 "use client";
 import Image from "next/image"
-import { Layout } from "@/components/layout"
-import { Link } from "next-view-transitions";
-import { usePathname } from 'next/navigation'
+import { Layout } from "@/components/layout";
+// import { usePathname } from 'next/navigation'
 import { buttonVariants } from "@/components/ui/button";
+import { DropdownMenuItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu";
+import { Home, MoreHorizontal, Spline } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { IconBurger } from "@tabler/icons-react";
+import Link from "next/link";
 
 
 export const Header = () => {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   return (
     <header className="w-full border-b border-border">
-      <Layout className="flex items-center gap-4 sm:flex-row">
+      <Layout className="flex flex-row items-center">
         <Link href="/" className="group flex flex-1 items-center gap-2">
           <Image src="/icon.png" priority={true} width={42} height={42} alt="stocks-profiles-logo" className="duration-500 group-hover:scale-110" />
           <p className="text-lg">Stocks Profiles</p>
         </Link>
-        {pathname === '/' ? (
+        {/* {pathname === '/' ? (
           <div className="flex gap-4">
             <Link href="/infos" className={buttonVariants(
               {
@@ -69,7 +73,32 @@ export const Header = () => {
               Home
             </Link>
           </div>
-        )}
+        )} */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <IconBurger />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem asChild>
+              <Link href="/" className="w-full">
+                <Home size={16} className="mr-2" />
+                Home
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/infos" className="w-full">
+                <Spline size={16} className="mr-2" />
+                Stocks
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/about" className="w-full">
+                <MoreHorizontal size={16} className="mr-2" />
+                About
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </Layout>
     </header>
   )

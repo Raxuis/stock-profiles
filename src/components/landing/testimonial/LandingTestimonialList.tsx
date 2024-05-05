@@ -35,7 +35,7 @@ export const LandingTestimonialListSection = ({
   return (
     <section
       className={clsx(
-        'w-full flex justify-center items-center py-12 lg:py-16 flex-col relative isolate',
+        'relative isolate flex w-full flex-col items-center justify-center py-12 lg:py-16',
         withBackground && variant === 'primary'
           ? 'bg-primary-100/20 dark:bg-primary-900/10'
           : '',
@@ -46,9 +46,9 @@ export const LandingTestimonialListSection = ({
         className,
       )}
     >
-      <div className="w-full p-6 max-w-full container-wide relative flex flex-col items-center">
+      <div className="container-wide relative flex w-full max-w-full flex-col items-center p-6">
         {title ? (
-          <h2 className="text-center text-3xl font-semibold leading-tight md:leading-tight max-w-xs sm:max-w-none md:text-4xl lg:text-5xl">
+          <h2 className="max-w-xs text-center text-3xl font-semibold leading-tight sm:max-w-none md:text-4xl md:leading-tight lg:text-5xl">
             {title}
           </h2>
         ) : (
@@ -65,7 +65,7 @@ export const LandingTestimonialListSection = ({
       {withBackgroundGlow ? (
         <>
           <div
-            className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-25 blur-3xl pointer-events-none"
+            className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-25 blur-3xl"
             aria-hidden="true"
           >
             <div
@@ -85,7 +85,7 @@ export const LandingTestimonialListSection = ({
             />
           </div>
           <div
-            className="absolute inset-x-0 top-0 -z-10 flex transform-gpu overflow-hidden pt-32 opacity-20 blur-3xl sm:pt-40 xl:justify-end pointer-events-none"
+            className="pointer-events-none absolute inset-x-0 top-0 -z-10 flex transform-gpu overflow-hidden pt-32 opacity-20 blur-3xl sm:pt-40 xl:justify-end"
             aria-hidden="true"
           >
             <div
@@ -109,7 +109,7 @@ export const LandingTestimonialListSection = ({
 
       <section
         className={clsx(
-          'w-full p-6 max-w-full container-wide relative grid grid-cols-12 gap-8 items-stretch',
+          'container-wide relative grid w-full max-w-full grid-cols-12 items-stretch gap-8 p-6',
           containerClassName,
         )}
       >

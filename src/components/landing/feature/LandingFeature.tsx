@@ -23,10 +23,10 @@ export const LandingFeature = ({
     <div className={clsx('flex flex-col gap-4 py-4', className)}>
       <div
         className={clsx(
-          'flex items-center justify-center w-16 h-16 rounded-md',
+          'flex size-16 items-center justify-center rounded-md',
           variant === 'primary'
-            ? 'bg-primary-100/30 border border-primary-100/70 dark:border-primary-900 dark:bg-primary-900/70 text-primary-500'
-            : 'bg-secondary-100/30 border border-secondary-100/70 dark:border-secondary-900 dark:bg-secondary-900/70 text-secondary-500',
+            ? 'bg-primary-100/30 border-primary-100/70 dark:border-primary-900 dark:bg-primary-900/70 text-primary-500 border'
+            : 'bg-secondary-100/30 border-secondary-100/70 dark:border-secondary-900 dark:bg-secondary-900/70 text-secondary-500 border',
         )}
         aria-describedby="icon"
       >

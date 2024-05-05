@@ -43,7 +43,7 @@ export const LandingSocialProof = ({
             className={clsx(
               'relative',
               !disableAnimation
-                ? 'md:group-hover:-ml-0.5 transition-all duration-300'
+                ? 'transition-all duration-300 md:group-hover:-ml-0.5'
                 : '',
               index === 1 || index === 2 ? `-ml-4` : '',
               index === 3 ? `-ml-5` : '',
@@ -57,7 +57,7 @@ export const LandingSocialProof = ({
         {showRating ? <LandingRating /> : null}
 
         {!children ? (
-          <p className="text-xs max-w-sm">
+          <p className="max-w-sm text-xs">
             from {numberText}+ {suffixText}
           </p>
         ) : (

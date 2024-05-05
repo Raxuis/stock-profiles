@@ -62,7 +62,7 @@ export const LandingProductFeaturesGrid = ({
   return (
     <section
       className={clsx(
-        'w-full flex justify-center items-center gap-8 p-6 py-12 lg:py-16 flex-col',
+        'flex w-full flex-col items-center justify-center gap-8 p-6 py-12 lg:py-16',
         withBackground && variant === 'primary'
           ? 'bg-primary-100/20 dark:bg-primary-900/10'
           : '',
@@ -80,7 +80,7 @@ export const LandingProductFeaturesGrid = ({
           )}
         >
           {title ? (
-            <h2 className="w-full text-3xl font-semibold leading-tight md:leading-tight max-w-sm sm:max-w-none md:text-4xl lg:text-5xl">
+            <h2 className="w-full max-w-sm text-3xl font-semibold leading-tight sm:max-w-none md:text-4xl md:leading-tight lg:text-5xl">
               {title}
             </h2>
           ) : (
@@ -88,7 +88,7 @@ export const LandingProductFeaturesGrid = ({
           )}
 
           {description ? (
-            <p className="w-full mt-6 md:text-xl">{description}</p>
+            <p className="mt-6 w-full md:text-xl">{description}</p>
           ) : (
             descriptionComponent
           )}
@@ -97,7 +97,7 @@ export const LandingProductFeaturesGrid = ({
 
       <div
         className={clsx(
-          '!p-0 relative isolate grid md:grid-cols-2 gap-4',
+          'relative isolate grid gap-4 !p-0 md:grid-cols-2',
           `${containerType}-container`,
         )}
       >

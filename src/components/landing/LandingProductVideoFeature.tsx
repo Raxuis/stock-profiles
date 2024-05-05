@@ -57,7 +57,7 @@ export const LandingProductVideoFeature = ({
   return (
     <section
       className={clsx(
-        'w-full flex flex-col justify-center items-center gap-8 py-12 lg:py-16',
+        'flex w-full flex-col items-center justify-center gap-8 py-12 lg:py-16',
         withBackground && variant === 'primary'
           ? 'bg-primary-100/20 dark:bg-primary-900/10'
           : '',
@@ -70,10 +70,10 @@ export const LandingProductVideoFeature = ({
     >
       <div
         className={clsx(
-          'w-full p-6 flex flex-col items-center relative',
+          'relative flex w-full flex-col items-center p-6',
           videoPosition === 'center'
             ? 'container-narrow'
-            : 'max-w-full container-ultrawide grid lg:grid-cols-12 gap-8 lg:gap-16',
+            : 'container-ultrawide grid max-w-full gap-8 lg:grid-cols-12 lg:gap-16',
           textPosition === 'center' ? 'items-center' : 'items-start',
           innerClassName,
         )}
@@ -86,7 +86,7 @@ export const LandingProductVideoFeature = ({
             'flex flex-col gap-4 lg:col-span-5',
             videoPosition === 'left' && 'lg:col-start-8 lg:row-start-1',
             textPosition === 'center'
-              ? 'md:max-w-lg items-center text-center'
+              ? 'items-center text-center md:max-w-lg'
               : 'items-start',
           )}
         >
@@ -106,9 +106,9 @@ export const LandingProductVideoFeature = ({
         </div>
 
         {withBackgroundGlow ? (
-          <div className="hidden lg:flex justify-center w-full h-full absolute pointer-events-none">
+          <div className="pointer-events-none absolute hidden size-full justify-center lg:flex">
             <GlowBg
-              className={clsx('w-full lg:w-1/2 h-auto z-0')}
+              className={clsx('z-0 h-auto w-full lg:w-1/2')}
               variant={backgroundGlowVariant}
             />
           </div>
@@ -117,11 +117,11 @@ export const LandingProductVideoFeature = ({
         {videoSrc ? (
           <>
             {videoPosition === 'center' ? (
-              <section className="w-full mt-auto pt-6 md:pt-8">
+              <section className="mt-auto w-full pt-6 md:pt-8">
                 <VideoPlayer
                   className={clsx(
                     'w-full rounded-md lg:col-span-7',
-                    zoomOnHover ? 'hover:scale-110 transition-all' : '',
+                    zoomOnHover ? 'transition-all hover:scale-110' : '',
                   )}
                   poster={videoPoster}
                   src={videoSrc}
@@ -138,7 +138,7 @@ export const LandingProductVideoFeature = ({
               <VideoPlayer
                 className={clsx(
                   'w-full rounded-md lg:col-span-7',
-                  zoomOnHover ? 'hover:scale-110 transition-all' : '',
+                  zoomOnHover ? 'transition-all hover:scale-110' : '',
                 )}
                 poster={videoPoster}
                 src={videoSrc}

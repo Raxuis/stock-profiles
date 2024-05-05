@@ -37,11 +37,11 @@ export const LandingTestimonial = ({
       target="_blank"
       rel="noopener noreferrer"
       className={clsx(
-        'w-full inline-block bg-white dark:bg-neutral-900 rounded-2xl shadow-md ring-1 ring-gray-900/5',
+        'inline-block w-full rounded-2xl bg-white shadow-md ring-1 ring-gray-900/5 dark:bg-neutral-900',
         featured ? 'shadow-xl' : 'p-6',
         missingUrl
-          ? 'cursor-default pointer-events-none'
-          : 'cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors',
+          ? 'pointer-events-none cursor-default'
+          : 'cursor-pointer transition-colors hover:bg-gray-100 dark:hover:bg-neutral-800',
         className,
       )}
     >
@@ -68,15 +68,15 @@ export const LandingTestimonial = ({
           <Image
             width={100}
             height={100}
-            className="h-10 w-10 flex-none rounded-full bg-gray-50"
+            className="size-10 flex-none rounded-full bg-gray-50"
             src={imageSrc}
             alt=""
           />
           <div className="flex-auto">
-            <div className="font-semibold flex gap-0.5 items-center">
+            <div className="flex items-center gap-0.5 font-semibold">
               {name}{' '}
               {verified && (
-                <BadgeCheck className="flex-shrink-0 fill-blue-500 text-white w-4 h-4" />
+                <BadgeCheck className="size-4 shrink-0 fill-blue-500 text-white" />
               )}
             </div>
             <div className="text-gray-600">{`${handle}`}</div>

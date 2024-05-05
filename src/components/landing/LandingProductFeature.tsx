@@ -60,7 +60,7 @@ export const LandingProductFeature = ({
   return (
     <section
       className={clsx(
-        'w-full flex flex-col justify-center items-center gap-8 py-12 lg:py-16',
+        'flex w-full flex-col items-center justify-center gap-8 py-12 lg:py-16',
         withBackground && variant === 'primary'
           ? 'bg-primary-100/20 dark:bg-primary-900/10'
           : '',
@@ -76,10 +76,10 @@ export const LandingProductFeature = ({
     >
       <div
         className={clsx(
-          'w-full p-6 flex flex-col items-center relative',
+          'relative flex w-full flex-col items-center p-6',
           imagePosition === 'center'
             ? 'container-narrow'
-            : 'max-w-full container-wide grid lg:grid-cols-2',
+            : 'container-wide grid max-w-full lg:grid-cols-2',
           innerClassName,
         )}
         style={{
@@ -91,7 +91,7 @@ export const LandingProductFeature = ({
             'flex flex-col gap-4',
             imagePosition === 'left' && 'lg:col-start-2 lg:row-start-1',
             textPosition === 'center'
-              ? 'md:max-w-lg items-center text-center'
+              ? 'items-center text-center md:max-w-lg'
               : 'items-start',
           )}
         >
@@ -113,10 +113,10 @@ export const LandingProductFeature = ({
         {imageSrc ? (
           <>
             {withBackgroundGlow ? (
-              <div className="hidden lg:flex justify-center w-full h-full absolute pointer-events-none">
+              <div className="pointer-events-none absolute hidden size-full justify-center lg:flex">
                 <GlowBg
                   className={clsx(
-                    'w-full lg:w-1/2 h-auto z-0 dark:opacity-50',
+                    'z-0 h-auto w-full dark:opacity-50 lg:w-1/2',
                     imagePosition === 'center' ? 'top-5' : ' -top-1/3',
                     imagePerspective === 'paper' ? 'opacity-70' : 'opacity-100',
                   )}
@@ -126,10 +126,10 @@ export const LandingProductFeature = ({
             ) : null}
 
             {imagePosition === 'center' ? (
-              <section className="w-full mt-auto pt-4 md:pt-6">
+              <section className="mt-auto w-full pt-4 md:pt-6">
                 <Image
                   className={clsx(
-                    'w-full rounded-md overflow-hidden',
+                    'w-full overflow-hidden rounded-md',
                     imageShadow === 'soft' && 'shadow-md',
                     imageShadow === 'hard' && 'hard-shadow',
                   )}
@@ -146,7 +146,7 @@ export const LandingProductFeature = ({
                 className={clsx(
                   'relative w-full rounded-md',
                   zoomOnHover
-                    ? 'lg:scale-90 hover:scale-100 transition-all'
+                    ? 'transition-all hover:scale-100 lg:scale-90'
                     : '',
                   imageShadow === 'soft' && 'shadow-md',
                   imageShadow === 'hard' && 'hard-shadow',

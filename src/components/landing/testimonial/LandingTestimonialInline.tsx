@@ -22,7 +22,7 @@ export const LandingTestimonialInline = ({
   return (
     <section
       className={clsx(
-        'w-full flex justify-center items-center gap-8 p-6 py-12 lg:py-16 flex-col',
+        'flex w-full flex-col items-center justify-center gap-8 p-6 py-12 lg:py-16',
         withBackground && variant === 'primary'
           ? 'bg-primary-100/20 dark:bg-primary-900/10'
           : '',
@@ -34,7 +34,7 @@ export const LandingTestimonialInline = ({
     >
       <div
         className={clsx(
-          '!p-0 relative isolate grid md:grid-cols-2 lg:grid-cols-4 gap-4',
+          'relative isolate grid gap-4 !p-0 md:grid-cols-2 lg:grid-cols-4',
           `${containerType}-container`,
         )}
       >

@@ -18,11 +18,11 @@ export const LandingDiscount = ({
   animated?: boolean;
 }) => {
   return (
-    <p className={clsx('flex flex-wrap gap-1 items-center text-sm', className)}>
-      <span className="text-green-500 flex gap-1 items-center flex-shrink-0">
+    <p className={clsx('flex flex-wrap items-center gap-1 text-sm', className)}>
+      <span className="flex shrink-0 items-center gap-1 text-green-500">
         <GiftIcon
           className={clsx(
-            'w-5 h-5 relative -top-0.5',
+            'relative -top-0.5 size-5',
             animated ? 'animate-pulse' : '',
           )}
         />{' '}

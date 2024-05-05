@@ -31,10 +31,10 @@ export const LandingAvatar = ({
       width={width}
       height={height}
       className={clsx(
-        'rounded-full border-2 border-solid border-primary-100',
-        size === 'small' ? 'w-6 h-6' : '',
-        size === 'medium' ? 'h-9 w-9' : '',
-        size === 'large' ? 'h-16 w-16' : '',
+        'border-primary-100 rounded-full border-2 border-solid',
+        size === 'small' ? 'size-6' : '',
+        size === 'medium' ? 'size-9' : '',
+        size === 'large' ? 'size-16' : '',
         className,
       )}
     />

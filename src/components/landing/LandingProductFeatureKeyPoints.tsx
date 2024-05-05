@@ -28,7 +28,7 @@ export const LandingProductFeatureKeyPoints = ({
             <dt className="inline font-semibold text-gray-900 dark:text-gray-100">
               <CheckIcon
                 className={clsx(
-                  'h-5 w-5 inline -mt-0.5',
+                  '-mt-0.5 inline size-5',
                   variant === 'primary'
                     ? 'text-primary-500'
                     : 'text-secondary-500',

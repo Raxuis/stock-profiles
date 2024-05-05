@@ -65,8 +65,8 @@ export const LandingProductHuntAward = ({
           viewBox="0 0 1241 1996"
           className={clsx(
             'relative',
-            size === 'default' && 'h-11 -mt-1',
-            size === 'small' && 'h-9  -mt-0.5',
+            size === 'default' && '-mt-1 h-11',
+            size === 'small' && '-mt-0.5  h-9',
           )}
         >
           <g clipPath="url(#a)">
@@ -84,7 +84,7 @@ export const LandingProductHuntAward = ({
 
         <div
           className={clsx(
-            '-mx-1 h-full flex flex-col justify-between items-center font-sans',
+            '-mx-1 flex h-full flex-col items-center justify-between font-sans',
             textContainerClassName,
             size === 'default' && 'py-0.5',
           )}
@@ -117,8 +117,8 @@ export const LandingProductHuntAward = ({
           viewBox="0 0 1241 1996"
           className={clsx(
             'relative',
-            size === 'default' && 'h-11 -mt-1',
-            size === 'small' && 'h-9  -mt-0.5',
+            size === 'default' && '-mt-1 h-11',
+            size === 'small' && '-mt-0.5  h-9',
           )}
         >
           <g clipPath="url(#a)" fill="currentColor">

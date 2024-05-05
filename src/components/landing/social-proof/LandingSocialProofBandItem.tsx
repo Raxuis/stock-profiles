@@ -23,18 +23,18 @@ export const LandingSocialProofBandItem = ({
       {graphic ? (
         <>
           {graphic === 'checkmark' ? (
-            <CheckCheckIcon className="w-4 h-4 text-green-500 mr-1.5" />
+            <CheckCheckIcon className="mr-1.5 size-4 text-green-500" />
           ) : null}
           {graphic === 'magic' ? (
-            <Wand2Icon className="w-4 h-4 text-yellow-500 mr-1.5" />
+            <Wand2Icon className="mr-1.5 size-4 text-yellow-500" />
           ) : null}
 
           {graphic === 'trophy' ? (
-            <TrophyIcon className="w-4 h-4 text-yellow-500 mr-1.5" />
+            <TrophyIcon className="mr-1.5 size-4 text-yellow-500" />
           ) : null}
 
           {graphic === 'gift' ? (
-            <GiftIcon className="w-4 h-4 text-green-500 mr-1.5" />
+            <GiftIcon className="mr-1.5 size-4 text-green-500" />
           ) : null}
 
           {graphic === 'rating' ? (

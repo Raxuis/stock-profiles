@@ -37,7 +37,7 @@ const LandingPrimaryCtaContent = ({
       {leadingComponent}
 
       {title ? (
-        <h1 className="text-4xl lg:text-5xl lg:leading-14 font-semibold md:max-w-xl">
+        <h1 className="lg:leading-14 text-4xl font-semibold md:max-w-xl lg:text-5xl">
           {title}
         </h1>
       ) : (
@@ -45,14 +45,14 @@ const LandingPrimaryCtaContent = ({
       )}
 
       {description ? (
-        <p className="md:text-lg md:max-w-lg">{description}</p>
+        <p className="md:max-w-lg md:text-lg">{description}</p>
       ) : (
         descriptionComponent
       )}
 
       <div
         className={clsx(
-          'flex flex-wrap gap-4 mt-2',
+          'mt-2 flex flex-wrap gap-4',
           textPosition === 'center' ? 'justify-center' : 'justify-start',
           childrenClassName,
         )}
@@ -121,7 +121,7 @@ export const LandingPrimaryImageCtaSection = ({
   return (
     <section
       className={clsx(
-        'w-full flex flex-col justify-center items-center gap-8 py-12 lg:py-16',
+        'flex w-full flex-col items-center justify-center gap-8 py-12 lg:py-16',
         withBackground && variant === 'primary'
           ? 'bg-primary-100/20 dark:bg-primary-900/10'
           : '',
@@ -137,10 +137,10 @@ export const LandingPrimaryImageCtaSection = ({
     >
       <div
         className={clsx(
-          'w-full p-6 flex flex-col gap-8 relative',
+          'relative flex w-full flex-col gap-8 p-6',
           imagePosition === 'center'
             ? 'container-narrow'
-            : 'max-w-full container-wide grid lg:grid-cols-2 items-center',
+            : 'container-wide grid max-w-full items-center lg:grid-cols-2',
           textPosition === 'center' ? 'items-center' : 'items-start',
           innerClassName,
         )}
@@ -165,10 +165,10 @@ export const LandingPrimaryImageCtaSection = ({
         {imageSrc ? (
           <>
             {withBackgroundGlow ? (
-              <div className="hidden lg:flex justify-center w-full h-full absolute pointer-events-none">
+              <div className="pointer-events-none absolute hidden size-full justify-center lg:flex">
                 <GlowBg
                   className={clsx(
-                    'w-full lg:w-1/2 h-auto z-0 dark:opacity-50',
+                    'z-0 h-auto w-full dark:opacity-50 lg:w-1/2',
                     imagePosition === 'center' ? 'top-5' : ' -top-1/3',
                     imagePerspective === 'paper' ? 'opacity-70' : 'opacity-100',
                   )}
@@ -178,10 +178,10 @@ export const LandingPrimaryImageCtaSection = ({
             ) : null}
 
             {imagePosition === 'center' ? (
-              <section className={clsx('w-full mt-6 md:mt-8')}>
+              <section className={clsx('mt-6 w-full md:mt-8')}>
                 <Image
                   className={clsx(
-                    'w-full rounded-md overflow-hidden',
+                    'w-full overflow-hidden rounded-md',
                     imageShadow === 'soft' && 'shadow-md',
                     imageShadow === 'hard' && 'hard-shadow',
                   )}
@@ -196,7 +196,7 @@ export const LandingPrimaryImageCtaSection = ({
             {imagePosition === 'left' || imagePosition === 'right' ? (
               <Image
                 className={clsx(
-                  'w-full rounded-md relative z-10',
+                  'relative z-10 w-full rounded-md',
                   imageShadow === 'soft' && 'shadow-md',
                   imageShadow === 'hard' && 'hard-shadow',
                   imagePerspective === 'left' && 'lg:perspective-left',
@@ -205,7 +205,7 @@ export const LandingPrimaryImageCtaSection = ({
                   imagePerspective === 'bottom-lg' &&
                   'lg:perspective-bottom-lg',
                   imagePerspective === 'paper' &&
-                  'lg:ml-[7%] lg:perspective-paper',
+                  'lg:perspective-paper lg:ml-[7%]',
                   imagePerspective === 'none' ? 'my-4' : 'my-8',
                 )}
                 alt={imageAlt}
@@ -281,7 +281,7 @@ export const LandingPrimaryVideoCtaSection = ({
   return (
     <section
       className={clsx(
-        'w-full flex flex-col justify-center items-center gap-8 py-12 lg:py-16',
+        'flex w-full flex-col items-center justify-center gap-8 py-12 lg:py-16',
         withBackground && variant === 'primary'
           ? 'bg-primary-100/20 dark:bg-primary-900/10'
           : '',
@@ -294,10 +294,10 @@ export const LandingPrimaryVideoCtaSection = ({
     >
       <div
         className={clsx(
-          'w-full p-6 flex flex-col gap-8 relative',
+          'relative flex w-full flex-col gap-8 p-6',
           videoPosition === 'center'
             ? 'container-narrow'
-            : 'max-w-full container-wide grid lg:grid-cols-2 items-center',
+            : 'container-wide grid max-w-full items-center lg:grid-cols-2',
           textPosition === 'center' ? 'items-center' : 'items-start',
           innerClassName,
         )}
@@ -322,10 +322,10 @@ export const LandingPrimaryVideoCtaSection = ({
         {videoSrc ? (
           <>
             {withBackgroundGlow ? (
-              <div className="hidden lg:flex justify-center w-full h-full absolute pointer-events-none">
+              <div className="pointer-events-none absolute hidden size-full justify-center lg:flex">
                 <GlowBg
                   className={clsx(
-                    'w-full lg:w-1/2 h-auto z-0 dark:opacity-50',
+                    'z-0 h-auto w-full dark:opacity-50 lg:w-1/2',
                     videoPosition === 'center' ? 'top-5' : ' -top-1/3',
                   )}
                   variant={backgroundGlowVariant}
@@ -334,10 +334,10 @@ export const LandingPrimaryVideoCtaSection = ({
             ) : null}
 
             {videoPosition === 'center' ? (
-              <section className={clsx('w-full mt-6 md:mt-8')}>
+              <section className={clsx('mt-6 w-full md:mt-8')}>
                 <VideoPlayer
                   className={clsx(
-                    'w-full rounded-md overflow-hidden',
+                    'w-full overflow-hidden rounded-md',
                     videoShadow === 'soft' && 'shadow-md',
                     videoShadow === 'hard' && 'hard-shadow',
                   )}
@@ -355,7 +355,7 @@ export const LandingPrimaryVideoCtaSection = ({
             {videoPosition === 'left' || videoPosition === 'right' ? (
               <VideoPlayer
                 className={clsx(
-                  'w-full rounded-md overflow-hidden',
+                  'w-full overflow-hidden rounded-md',
                   videoShadow === 'soft' && 'shadow-md',
                   videoShadow === 'hard' && 'hard-shadow',
                 )}
@@ -413,7 +413,7 @@ export const LandingPrimaryTextCtaSection = ({
   return (
     <section
       className={clsx(
-        'w-full flex flex-col justify-center items-center gap-8 py-12 lg:py-16',
+        'flex w-full flex-col items-center justify-center gap-8 py-12 lg:py-16',
         withBackground && variant === 'primary'
           ? 'bg-primary-100/20 dark:bg-primary-900/10'
           : '',
@@ -425,10 +425,10 @@ export const LandingPrimaryTextCtaSection = ({
     >
       <div
         className={clsx(
-          'w-full p-6 flex flex-col gap-8 relative',
+          'relative flex w-full flex-col gap-8 p-6',
           textPosition === 'center'
             ? 'container-narrow'
-            : 'max-w-full container-wide',
+            : 'container-wide max-w-full',
           textPosition === 'center' ? 'items-center' : 'items-start',
           innerClassName,
         )}

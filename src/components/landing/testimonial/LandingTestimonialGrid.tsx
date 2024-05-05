@@ -40,7 +40,7 @@ export const LandingTestimonialGrid = ({
   return (
     <section
       className={clsx(
-        'w-full flex flex-col justify-center items-center gap-8 py-12 lg:py-16',
+        'flex w-full flex-col items-center justify-center gap-8 py-12 lg:py-16',
         withBackground && variant === 'primary'
           ? 'bg-primary-100/20 dark:bg-primary-900/10'
           : '',
@@ -51,9 +51,9 @@ export const LandingTestimonialGrid = ({
         className,
       )}
     >
-      <div className="w-full p-6 max-w-full container-wide relative flex flex-col items-center">
+      <div className="container-wide relative flex w-full max-w-full flex-col items-center p-6">
         {title ? (
-          <h2 className="md:text-center text-3xl font-semibold leading-tight md:leading-tight max-w-xs sm:max-w-none md:text-4xl lg:text-5xl">
+          <h2 className="max-w-xs text-3xl font-semibold leading-tight sm:max-w-none md:text-center md:text-4xl md:leading-tight lg:text-5xl">
             {title}
           </h2>
         ) : (
@@ -71,7 +71,7 @@ export const LandingTestimonialGrid = ({
         {withBackgroundGlow ? (
           <>
             <div
-              className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-25 blur-3xl pointer-events-none"
+              className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-25 blur-3xl"
               aria-hidden="true"
             >
               <div
@@ -91,7 +91,7 @@ export const LandingTestimonialGrid = ({
               />
             </div>
             <div
-              className="absolute inset-x-0 top-0 -z-10 flex transform-gpu overflow-hidden pt-32 opacity-20 blur-3xl sm:pt-40 xl:justify-end pointer-events-none"
+              className="pointer-events-none absolute inset-x-0 top-0 -z-10 flex transform-gpu overflow-hidden pt-32 opacity-20 blur-3xl sm:pt-40 xl:justify-end"
               aria-hidden="true"
             >
               <div
@@ -116,7 +116,7 @@ export const LandingTestimonialGrid = ({
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div
             className={clsx(
-              'mx-auto max-w-2xl xl:mx-0 xl:max-w-none text-sm leading-6 text-gray-900 dark:text-gray-100 columns-1 md:columns-2 xl:columns-3 gap-4',
+              'mx-auto max-w-2xl columns-1 gap-4 text-sm leading-6 text-gray-900 dark:text-gray-100 md:columns-2 xl:mx-0 xl:max-w-none xl:columns-3',
               containerClassName,
             )}
           >

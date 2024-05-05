@@ -25,9 +25,9 @@ export const LandingRating = ({
           <div
             key={index}
             className={clsx(
-              size === 'small' ? 'h-3 w-3' : '',
-              size === 'medium' ? 'h-4 w-4' : '',
-              size === 'large' ? 'h-5 w-5' : '',
+              size === 'small' ? 'size-3' : '',
+              size === 'medium' ? 'size-4' : '',
+              size === 'large' ? 'size-5' : '',
             )}
           >
             {
@@ -37,19 +37,19 @@ export const LandingRating = ({
               index + 1 === Math.ceil(rating) ? (
                 <div className="relative" key={index}>
                   <StarIcon
-                    className="absolute top-0 left-0 w-full h-full text-gray-300 fill-gray-300"
+                    className="absolute left-0 top-0 size-full fill-gray-300 text-gray-300"
                     aria-hidden="true"
                   />
 
                   <StarHalfIcon
-                    className="relative z-10 w-full h-full text-yellow-400 fill-yellow-400"
+                    className="relative z-10 size-full fill-yellow-400 text-yellow-400"
                     aria-hidden="true"
                   />
                 </div>
               ) : (
                 <StarIcon
                   key={index}
-                  className={clsx('w-full h-full', {
+                  className={clsx('size-full', {
                     'text-yellow-400 fill-yellow-400': index < rating,
                     'text-gray-300 fill-gray-300': index >= rating,
                   })}

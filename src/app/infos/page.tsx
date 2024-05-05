@@ -145,12 +145,12 @@ const Infos = () => {
                   </div>
                 </div>
                 {
-                  stock.website ? <Link href={stock.website} className={buttonVariants(
+                  stock.website ? <a href={stock.website} target='_blank' className={buttonVariants(
                     {
                       variant: 'outline',
                       size: 'lg',
                     }
-                  )}>Website: {stock.website}</Link> : null
+                  )}>Website: {stock.website}</a> : null
                 }
               </CardContent>
             </Card>))}

@@ -11,6 +11,8 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@clerk/elements": "^0.3.3",
+    "@clerk/nextjs": "^5.0.7",
     "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",

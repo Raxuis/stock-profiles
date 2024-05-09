@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Custom404() {
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
       <Image src="/NotFound.png" width={600} height={600} alt='404 image' />
       <Link href='/' className={buttonVariants({
         variant: 'link',

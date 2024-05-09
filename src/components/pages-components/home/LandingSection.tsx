@@ -75,7 +75,7 @@ const LandingSection = () => {
         </Button>
 
         <LandingSocialProof
-          className="mt-6 w-full flex justify-center"
+          className="mt-6 flex w-full justify-center"
           showRating
           numberOfUsers={23400}
           avatarItems={[

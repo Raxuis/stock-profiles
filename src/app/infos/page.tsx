@@ -19,7 +19,6 @@ import Badge from '@/components/pages-components/infos/Badge';
 import { z } from "zod"
 import { toast } from "@/components/ui/use-toast"
 import type { StockDatasType } from "@/types/StockDatas";
-import { Link } from 'next-view-transitions';
 
 
 const letterRegex = /^[A-Z]+$/;
@@ -77,7 +76,7 @@ const Infos = () => {
       toast({
         title: "📈 Wow 📈",
         description: (
-          <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That's one small step for man, one giant leap for Stocks!</p>
+          <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That&apos;s one small step for man, one giant leap for Stocks!</p>
         ),
       });
 
@@ -123,21 +122,21 @@ const Infos = () => {
           {localStockSymbolFormatted.map((stock) => (
             <Card key={stock.symbol} className='w-full sm:w-2/3 md:w-1/2'>
               <CardHeader>
-                {stock.image ? <img src={stock.image} alt={stock.symbol} className='size-20' /> : null}
+                {stock.image !== null ? <img src={stock.image} alt={stock.symbol} className='size-20' /> : null}
                 <div className='flex flex-col space-y-1.5 p-6'>
-                  {stock.companyName ? <CardTitle className='flex items-center'> {stock.companyName} {stock.symbol}</CardTitle> : null}
+                  {stock.companyName !== null ? <CardTitle className='flex items-center'> {stock.companyName} {stock.symbol}</CardTitle> : null}
                   {
-                    stock.ceo ? <CardDescription>CEO: {stock.ceo}</CardDescription> : null
+                    stock.ceo !== null ? <CardDescription>CEO: {stock.ceo}</CardDescription> : null
                   }
                 </div>
               </CardHeader>
               <CardContent className='flex flex-col space-y-6'>
                 <div className='space-y-4'>
-                  {stock.sector ? <p>Sector: {stock.sector}</p> : null}
+                  {stock.sector !== null ? <p>Sector: {stock.sector}</p> : null}
                   <div className='flex gap-4'>
-                    {stock.price ? <p className='text-xl'>Price: {stock.price} {stock.currency}</p> : null}
+                    {stock.price !== null ? <p className='text-xl'>Price: {stock.price} {stock.currency}</p> : null}
                     {
-                      stock.changes ? <Badge
+                      stock.changes !== null ? <Badge
                         value={stock.changes}
                         currency={stock.currency}
                       />
@@ -145,7 +144,7 @@ const Infos = () => {
                   </div>
                 </div>
                 {
-                  stock.website ? <a href={stock.website} target='_blank' className={buttonVariants(
+                  stock.website !== null ? <a href={stock.website} target='_blank' className={buttonVariants(
                     {
                       variant: 'outline',
                       size: 'lg',

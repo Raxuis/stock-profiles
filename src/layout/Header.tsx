@@ -2,11 +2,11 @@
 import Image from "next/image"
 import { Layout } from "@/components/layout";
 // import { usePathname } from 'next/navigation'
-import { buttonVariants } from "@/components/ui/button";
+// import { buttonVariants } from "@/components/ui/button";
 import { DropdownMenuItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu";
 import { Home, MoreHorizontal, Spline } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { IconBurger } from "@tabler/icons-react";
+// import { cn } from "@/lib/utils";
+import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
 
 
@@ -75,8 +75,8 @@ export const Header = () => {
           </div>
         )} */}
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <IconBurger />
+          <DropdownMenuTrigger className="focus:outline-none">
+            <RxHamburgerMenu size={20} />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem asChild>

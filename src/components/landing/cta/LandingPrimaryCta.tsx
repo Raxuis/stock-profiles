@@ -178,7 +178,7 @@ export const LandingPrimaryImageCtaSection = ({
             ) : null}
 
             {imagePosition === 'center' ? (
-              <section className={clsx('mt-6 w-full md:mt-8 border-white border-2 rounded-lg border-opacity-30')}>
+              <section className={clsx('mt-6 w-full rounded-lg border-2 border-white border-opacity-30 md:mt-8')}>
                 <Image
                   className={clsx(
                     'w-full overflow-hidden rounded-md',

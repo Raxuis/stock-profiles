@@ -23,7 +23,6 @@ interface DatePickerProps {
 export default function DateRangePicker({
   className, date, setDate
 }: DatePickerProps) {
-
   return (
     <div className={cn("grid gap-2", className)}>
       <Popover>

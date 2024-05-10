@@ -2,9 +2,8 @@
 
 import * as React from "react"
 import { CalendarIcon } from "@radix-ui/react-icons"
-import { addDays, format } from "date-fns"
+import { format } from "date-fns"
 import { DateRange } from "react-day-picker"
-
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -12,15 +11,18 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
-export function DatePickerWithRange({
-  className,
-}: React.HTMLAttributes<HTMLDivElement>) {
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(2023, 7, 10),
-    to: addDays(new Date(2023, 7, 10), 10),
-  })
+interface DatePickerProps {
+  className?: React.HTMLAttributes<HTMLDivElement>;
+  date: DateRange | undefined;
+  setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>
+}
+
+
+export default function DateRangePicker({
+  className, date, setDate
+}: DatePickerProps) {
 
   return (
     <div className={cn("grid gap-2", className)}>
@@ -30,7 +32,7 @@ export function DatePickerWithRange({
             id="date"
             variant={"outline"}
             className={cn(
-              "w-full sm:w-[300px] justify-center text-left font-normal",
+              "w-[300px] justify-start text-left font-normal",
               !date && "text-muted-foreground"
             )}
           >
@@ -57,6 +59,7 @@ export function DatePickerWithRange({
             selected={date}
             onSelect={setDate}
             numberOfMonths={1}
+            toDate={new Date()}
           />
         </PopoverContent>
       </Popover>

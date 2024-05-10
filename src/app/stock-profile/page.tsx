@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from 'react'
 import { cookieGetter, cookieSetter } from '@/features/functions/cookies';
-import getStocks from '@/features/functions/stocks';
+import getStockProfile from '@/features/functions/stock-profile';
 import { Input } from '@/components/ui/input';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -71,7 +72,7 @@ const StockProfile = () => {
         throw new Error('Already searched');
       }
 
-      stocksData = await getStocks(data.symbol);
+      stocksData = await getStockProfile(data.symbol);
 
       toast({
         title: "📈 Wow 📈",

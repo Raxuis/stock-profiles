@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { env } from '@/env';
 
-export default async function getStocks(symbol: string) {
+export default async function getStockProfile(symbol: string) {
   try {
     const response = await axios.get(`https://financialmodelingprep.com/api/v3/profile/${symbol}`, {
       headers: {

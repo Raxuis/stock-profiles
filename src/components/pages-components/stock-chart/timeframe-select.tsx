@@ -2,7 +2,9 @@ import React from 'react';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -20,21 +22,24 @@ export default function TimeframeSelect({ timeframe, setTimeFrame }: TimeFramePr
   return (
     <Select onValueChange={(value: string) => setTimeFrame(value as TimeframeType)} >
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Timeframe" />
+        <SelectValue placeholder="Select a Timeframe" />
       </SelectTrigger>
       <SelectContent>
-        {
-          timeframes.map((e) => {
-            return (
-              <SelectItem
-                key={e}
-                value={e}
-              >
-                {e}
-              </SelectItem>
-            );
-          })
-        }
+        <SelectGroup>
+          <SelectLabel>Timeframes</SelectLabel>
+          {
+            timeframes.map((e) => {
+              return (
+                <SelectItem
+                  key={e}
+                  value={e}
+                >
+                  {e}
+                </SelectItem>
+              );
+            })
+          }
+        </SelectGroup>
       </SelectContent>
     </Select>
   )

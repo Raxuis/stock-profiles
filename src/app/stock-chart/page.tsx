@@ -34,10 +34,6 @@ export default function StockChart() {
   const [timeframe, setTimeFrame] = useState<z.infer<typeof TimeframeSchema> | undefined>();
   const [symbol, setSymbol] = useState<z.infer<typeof StockSchema> | undefined>();
 
-  useEffect(() => {
-    console.log(symbol)
-  }, [symbol, setSymbol])
-
   // const form = useForm<z.infer<typeof FormSchema>>({
   //   resolver: zodResolver(FormSchema),
   // })

@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import Badge from '@/components/pages-components/infos/Badge';
+import Badge from '@/components/pages-components/stock-profile/Badge';
 import { z } from "zod"
 import { toast } from "@/components/ui/use-toast"
 import type { StockDatasType } from "@/types/StockDatas";
@@ -36,7 +36,7 @@ const FormSchema = z.object({
 });
 
 
-const Infos = () => {
+const StockProfile = () => {
   const [localStockSymbolFormatted, setLocalStockSymbolFormatted] = useState<StockDatasType[]>([]);
 
   useEffect(() => {
@@ -159,4 +159,4 @@ const Infos = () => {
   );
 }
 
-export default Infos;
+export default StockProfile;

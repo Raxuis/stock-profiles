@@ -2,7 +2,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image"
 import { Layout } from "@/components/layout";
 import { DropdownMenuItem, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu";
-import { Home, MoreHorizontal, Spline, User } from "lucide-react";
+import { Activity, Building2, Fingerprint, Home, User } from "lucide-react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
@@ -43,14 +43,20 @@ export const Header = async () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href="/infos" className="w-full">
-                <Spline size={16} className="mr-2" />
-                Stocks
+              <Link href="/stock-profile" className="w-full">
+                <Building2 size={16} className="mr-2" />
+                Stock Profile
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/stock-chart" className="w-full">
+                <Activity size={16} className="mr-2" />
+                Stock Chart
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link href="/about" className="w-full">
-                <MoreHorizontal size={16} className="mr-2" />
+                <Fingerprint size={16} className="mr-2" />
                 About
               </Link>
             </DropdownMenuItem>

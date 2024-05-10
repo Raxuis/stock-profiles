@@ -57,11 +57,10 @@ export default function StockChart() {
       if (!symbol || !timeframe || !date?.from || !date?.to) {
         toast({
           title: "You didn't fill all inputs..",
-          description: "❌ Please try again❌",
+          description: "❌ Please try again ❌",
         });
         return;
       }
-      console.log()
       const chartData = await getStockChart({
         symbol: symbol,
         timeframe: timeframe,
@@ -69,6 +68,10 @@ export default function StockChart() {
         to: format(date.to, "yyyy-MM-dd")
       });
       console.log(chartData);
+      toast({
+        title: "Nice One 🥳",
+        description: "Congratulations ! \n That's a hell of a query!"
+      })
     } catch (error) {
       toast({
         title: "An error occurred",

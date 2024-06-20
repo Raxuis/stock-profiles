@@ -4,7 +4,7 @@ import { LandingSocialProof } from '@/components/landing/social-proof/LandingSoc
 import { motion } from 'framer-motion';
 import { ConfettiButton } from './confetti';
 import Link from 'next/link';
-const LandingSection = (props) => {
+const LandingSection = () => {
   return (
     <motion.div
       initial={{

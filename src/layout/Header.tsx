@@ -15,7 +15,7 @@ export const Header = async () => {
     <header className="w-full border-b border-border">
       <Layout className="flex flex-row items-center">
         <Link href="/" className="group flex flex-1 items-center gap-2">
-          <Image src="/icon.png" priority={true} width={42} height={42} alt="stocks-profiles-logo" className="duration-500 group-hover:scale-110" />
+          <Image src="/icon.png" priority={true} width={30} height={30} alt="stocks-profiles-logo" className="duration-500 group-hover:scale-105" />
           <p className="text-lg">Stocks Profiles</p>
         </Link>
         {

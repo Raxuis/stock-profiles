@@ -11,6 +11,7 @@ import getStockChart from "@/features/functions/stock-chart";
 import { StockInput } from "@/components/pages-components/stock-chart/stock-input";
 import { format } from "date-fns";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { Card, CardContent } from "@/components/ui/card";
 
 const letterRegex = /^[A-Z]+$/;
 
@@ -41,6 +42,12 @@ const FormSchema = z.object({
 
 type FormSchemaType = z.infer<typeof FormSchema>;
 
+type StockData = {
+  date: string;
+  open: number;
+  close: number;
+};
+
 export default function StockChart() {
   const { handleSubmit, control, formState: { errors } } = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
@@ -51,18 +58,18 @@ export default function StockChart() {
     },
   });
 
-  const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState<StockData[]>([]);
 
   const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
     try {
-      const response = await getStockChart({
+      const response: StockData[] = await getStockChart({
         symbol: data.symbol,
         timeframe: data.timeframe,
         from: format(data.date.from, "yyyy-MM-dd"),
         to: format(data.date.to, "yyyy-MM-dd"),
       });
 
-      const sortedData = response.sort((a, b) => new Date(a.date) - new Date(b.date));
+      const sortedData = response.sort((a: StockData, b: StockData) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
       setChartData(sortedData);
       toast({
@@ -79,7 +86,7 @@ export default function StockChart() {
   };
 
   return (
-    <div className="w-full space-y-6 sm:w-3/4">
+    <div className="w-full space-y-6">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <Controller
           name="symbol"
@@ -106,17 +113,23 @@ export default function StockChart() {
       </form>
 
       {chartData.length > 0 && (
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart data={chartData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="close" stroke="#8884d8" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="open" stroke="#82ca9d" />
-          </LineChart>
-        </ResponsiveContainer>
+        <div className='flex justify-center'>
+          <Card className='w-full p-4 pt-8 mx-auto'>
+            <CardContent className='flex flex-col space-y-6'>
+              <ResponsiveContainer width="100%" height={400}>
+                <LineChart data={chartData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="date" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line type="monotone" dataKey="close" stroke="#8884d8" activeDot={{ r: 8 }} />
+                  <Line type="monotone" dataKey="open" stroke="#82ca9d" />
+                </LineChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        </div>
       )}
     </div>
   );

@@ -6,7 +6,10 @@ export const env = createEnv({
     NODE_ENV: z.enum(["production", "development"]),
     DATABASE_URL: z.string().url(),
     STOCKS_API_KEY: z.string(),
-    CLERK_SECRET_KEY: z.string()
+    GOOGLE_CLIENT_ID: z.string(),
+    GOOGLE_CLIENT_SECRET: z.string(),
+    AUTH_GITHUB_ID: z.string(),
+    AUTH_GITHUB_SECRET: z.string()
   },
   client: {
   },

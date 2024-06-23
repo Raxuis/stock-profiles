@@ -14,6 +14,7 @@
     "@clerk/elements": "^0.3.3",
     "@clerk/nextjs": "^5.0.7",
     "@hookform/resolvers": "^3.3.4",
+    "@prisma/client": "5.11.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",
@@ -83,6 +84,7 @@
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "prisma": "5.11.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },

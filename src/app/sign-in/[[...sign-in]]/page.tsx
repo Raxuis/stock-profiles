@@ -10,7 +10,7 @@ import { Icons } from '@/components/ui/icons';
 
 export default function SignInPage() {
   return (
-    <div className="grid w-full grow items-center px-4 sm:justify-center">
+    <div className="grid w-full grow items-center px-4 pt-10 sm:justify-center">
       <SignIn.Root>
         <Clerk.Loading>
           {(isGlobalLoading) => (

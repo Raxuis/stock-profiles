@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Icons } from '@/components/ui/icons';
 export default function Page() {
-  return <div className="grid w-full grow items-center px-4 sm:justify-center">
+  return <div className="grid w-full grow items-center px-4 pt-10 sm:justify-center">
     <SignUp.Root>
       <Clerk.Loading>
         {(isGlobalLoading) => (

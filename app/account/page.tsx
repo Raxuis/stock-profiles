@@ -37,7 +37,7 @@ export default async function Home() {
 
   return (
     <>
-      <p className="text-center text-3xl">Welcome {user!.name}!</p>
+      <p className="text-center text-3xl mt-6 sm:mt-10">Welcome {user!.name}!</p>
       <p>You've done {userQueriesCount} / {MAXUSERQUERIES} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
       {userQueriesCount >= MAXUSERQUERIES && (
         <p className="text-center text-sm">

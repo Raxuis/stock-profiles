@@ -31,7 +31,7 @@ const LandingSection = () => {
         </ConfettiButton>
 
         <Button size="xl" variant="outline">
-          <a href="#">Read more</a>
+          <a href="/about">Read more</a>
         </Button>
 
         <LandingSocialProof

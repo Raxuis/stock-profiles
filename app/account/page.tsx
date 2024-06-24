@@ -1,6 +1,16 @@
 import { currentUser } from "@/auth/current-user";
 import { Progress } from "@/components/ui/progress";
 import { prisma } from "@/prisma";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export default async function Home() {
   const user = await currentUser();
@@ -37,13 +47,23 @@ export default async function Home() {
       <Progress value={
         userQueriesCount
       } max={MAXUSERQUERIES} />
-      <ul>
-        {userQueries.map((query) => (
-          <li key={query.id}>
-            <p>{query.symbol} | Type : {query.type}</p>
-          </li>
-        ))}
-      </ul>
+      <Table>
+        <TableCaption>Your last queries.</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Symbol</TableHead>
+            <TableHead className="text-right">Type</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {userQueries.map((query) => (
+            <TableRow>
+              <TableCell className="font-medium">{query.symbol}</TableCell>
+              <TableCell className="text-right">{query.type}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </>
   );
 }

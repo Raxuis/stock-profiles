@@ -57,7 +57,7 @@ export default async function Home() {
         </TableHeader>
         <TableBody>
           {userQueries.map((query) => (
-            <TableRow>
+            <TableRow key={query.symbol}>
               <TableCell className="font-medium">{query.symbol}</TableCell>
               <TableCell className="text-right">{query.type}</TableCell>
             </TableRow>

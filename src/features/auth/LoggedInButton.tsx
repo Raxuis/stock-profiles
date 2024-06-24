@@ -1,6 +1,7 @@
 import { currentUser } from "@/auth/current-user";
 import { SignInButton } from "./SignInButton";
 import { LoggedInDropDown } from "./LoggedInDropDown";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const LoggedInButton = async () => {
   const user = await currentUser();
@@ -13,9 +14,10 @@ export const LoggedInButton = async () => {
   return (
     <div className="flex gap-2">
       {user.image && (
-        <div className="size-7 rounded-full">
-          <img src={user.image} className="rounded-full" />
-        </div>
+        <Avatar>
+          <AvatarImage src={user.image} className="size-8" />
+          <AvatarFallback>{user.name}</AvatarFallback>
+        </Avatar>
       )}
       <LoggedInDropDown />
     </div>

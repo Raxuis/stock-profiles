@@ -20,6 +20,7 @@ import Badge from '@/components/pages-components/stock-profile/Badge';
 import { z } from "zod"
 import { toast } from "@/components/ui/use-toast"
 import type { StockDatasType } from "@/types/StockDatas";
+import createQuery from '@/features/stock-profile/createQuery';
 
 
 const letterRegex = /^[A-Z]+$/;
@@ -86,6 +87,7 @@ const StockProfile = () => {
       setLocalStockSymbolFormatted(stocksData);
 
       await cookieSetter(data.symbol);
+      await createQuery(data.symbol, "StockProfile");
     } catch (error) {
       toast({
         title: "❌ You entered a wrong symbol ❌",

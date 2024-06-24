@@ -17,7 +17,7 @@ interface StockInputProps {
   setStock: React.Dispatch<React.SetStateAction<z.infer<typeof StockSchema> | undefined>>;
 }
 
-export function StockInput({ stock, setStock }: StockInputProps) {
+export function StockInput({ setStock }: StockInputProps) {
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5">
       <Label htmlFor="stock">Stock Symbol</Label>

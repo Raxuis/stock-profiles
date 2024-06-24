@@ -12,6 +12,7 @@ import { StockInput } from "@/components/pages-components/stock-chart/stock-inpu
 import { format } from "date-fns";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { Card, CardContent } from "@/components/ui/card";
+import createQuery from "@/features/stock-profile/createQuery";
 
 const letterRegex = /^[A-Z]+$/;
 
@@ -72,6 +73,7 @@ export default function StockChart() {
       const sortedData = response.sort((a: StockData, b: StockData) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
       setChartData(sortedData);
+      await createQuery(data.symbol, "StockChart");
       toast({
         title: "Nice One 🥳",
         description: "Congratulations! That's a hell of a query!",

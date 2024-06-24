@@ -54,6 +54,7 @@ model Query {
   userId    String
   author    User      @relation(fields: [userId], references: [id])
   type      QueryType
+  symbol    String
   createdAt DateTime  @default(now())
 }
 

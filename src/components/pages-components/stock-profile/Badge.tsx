@@ -1,6 +1,6 @@
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 
-const Badge = ({ value, currency }: { value: number, currency: string }) => {
+const Badge = ({ value, currency }) => {
   const isPositive = value > 0
   const isNegative = value < 0
 
@@ -17,7 +17,7 @@ const Badge = ({ value, currency }: { value: number, currency: string }) => {
         }`}>
       {isPositive ? <ArrowUpRight className='size-3' /> : null}
       {isNegative ? <ArrowDownRight className='size-3' /> : null}
-      {value > 0 ? `+${value}` : value} {currency}
+      {value > 0 ? `+${value.toFixed(2)}` : value.toFixed(2)} {currency}
     </span>
   )
 }

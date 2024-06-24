@@ -1,20 +1,17 @@
 "use client";
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { LogIn } from "lucide-react";
-import { signIn } from "next-auth/react";
+import { signInAction } from "./auth.action";
+import Social from "./social.types";
 
 export const SignInButton = () => {
   return <form>
-    <Button onClick={
-      async () => {
-        await signIn();
-      }
-    } className={buttonVariants(
-      {
-        variant: 'secondary',
-        size: 'sm',
-      }
-    )}>
+    <Button
+      variant="secondary"
+      size="sm"
+      onClick={async () => {
+        await signInAction(Social.Github)
+      }}>
       <LogIn size={16} className="mr-2" />
       Sign In</Button>
   </form>

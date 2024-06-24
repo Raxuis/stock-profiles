@@ -7,6 +7,6 @@ export const signOutAction = async () => {
   await signOut();
 };
 
-export const signInAction = async () => {
-  await signIn();
+export const signInAction = async (social: Social) => {
+  await signIn(social);
 };

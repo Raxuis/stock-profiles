@@ -28,15 +28,15 @@ export default async function Home() {
   return (
     <>
       <p className="text-center text-3xl">Welcome {user!.name}!</p>
-      <p>You've done {userQueriesCount} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
+      <p>You've done {userQueriesCount} / {MAXUSERQUERIES} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
       {userQueriesCount >= MAXUSERQUERIES && (
         <p className="text-center text-sm">
           You have reached the limit of {MAXUSERQUERIES} queries. Please subscribe to our PREMIUM plan.
         </p>
       )}
       <Progress value={
-        MAXUSERQUERIES
-      } max={100} />
+        userQueriesCount
+      } max={MAXUSERQUERIES} />
       <ul>
         {userQueries.map((query) => (
           <li key={query.id}>

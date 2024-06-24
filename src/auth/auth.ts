@@ -5,7 +5,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import { env } from "@/env"
 import { prisma } from "@/prisma"
 
-
 export const { handlers, auth: baseAuth, signIn, signOut } = NextAuth({
   theme: {
     logo: "/icon-title.png",

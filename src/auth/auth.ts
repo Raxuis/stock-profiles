@@ -15,4 +15,14 @@ export const { handlers, auth: baseAuth, signIn, signOut } = NextAuth({
     Google({ clientId: env.GOOGLE_CLIENT_ID, clientSecret: env.GOOGLE_CLIENT_SECRET }),
     GitHub({ clientId: env.AUTH_GITHUB_ID, clientSecret: env.AUTH_GITHUB_SECRET })
   ],
+  events: {
+    createUser: async (message) => {
+      const userId = message.user.id;
+      const userEmail = message.user.email;
+
+      if (!userEmail || !userId) {
+        return;
+      }
+    }
+  }
 })

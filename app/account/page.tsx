@@ -1,15 +1,15 @@
+import { currentUser } from "@/auth/current-user";
 import { buttonVariants } from "@/components/ui/button";
-import { auth, currentUser } from "@clerk/nextjs/server";
 import { Link } from "next-view-transitions";
 
 export default async function Home() {
-  const { userId } = auth();
-  if (userId) {
-    const user = await currentUser()
+  const user = await currentUser()
+  if (user) {
     console.log(user)
-    const welcomeMessage = user?.firstName || user?.username;
+    // const welcomeMessage = user?.firstName || user?.username;
     return (
-      <p className="pt-2 text-center text-3xl">Welcome {welcomeMessage != null ? welcomeMessage : 'User'}!</p>
+      <p>welcome</p>
+      // <p className="pt-2 text-center text-3xl">Welcome {welcomeMessage != null ? welcomeMessage : 'User'}!</p>
     )
   }
   return (

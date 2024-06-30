@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useState } from 'react'
-import { cookieGetter, cookieSetter } from '@/features/functions/cookies';
+import React, { useEffect, useState } from 'react';
 import getStockProfile from '@/features/functions/stock-profile';
 import { Input } from '@/components/ui/input';
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -33,11 +32,6 @@ const StockProfile = () => {
     const fetchData = async () => {
       if (typeof window !== 'undefined') {
         const localStockSymbol = localStorage.getItem('stockSymbol') || '';
-        const existingSymbol = await cookieGetter();
-        if (existingSymbol == undefined) {
-          console.log(JSON.parse(localStockSymbol));
-          await cookieSetter(JSON.parse(localStockSymbol).value);
-        }
         if (localStockSymbol) {
           setLocalStockSymbolFormatted(JSON.parse(localStockSymbol));
         }
@@ -56,10 +50,6 @@ const StockProfile = () => {
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     try {
-      const existingSymbol = await cookieGetter();
-      if (existingSymbol === data.symbol) {
-        throw new Error('Already searched');
-      }
 
       stocksData = await getStockProfile(data.symbol);
 
@@ -72,7 +62,6 @@ const StockProfile = () => {
 
       localStorage.setItem("stockSymbol", JSON.stringify(stocksData));
       setLocalStockSymbolFormatted(stocksData);
-      await cookieSetter(data.symbol);
       await createQuery(data.symbol, "StockProfile");
     } catch (error) {
       toast({

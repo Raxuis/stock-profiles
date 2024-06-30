@@ -6,16 +6,14 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { MAX_USER_QUERIES } from "@/constants/maxUserQueries";
 
 export default async function Home() {
   const user = await currentUser();
-
-  const MAXUSERQUERIES = 100;
   if (!user) {
     return <p className="text-center text-3xl">Please sign in</p>;
   }
@@ -33,22 +31,23 @@ export default async function Home() {
     orderBy: {
       createdAt: "desc",
     },
+    take: 10
   });
 
   return (
     <>
       <p className="text-center text-3xl mt-6 sm:mt-10">Welcome {user!.name}!</p>
-      <p>You've done {userQueriesCount} / {MAXUSERQUERIES} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
-      {userQueriesCount >= MAXUSERQUERIES && (
+      <p>You've done {userQueriesCount} / {MAX_USER_QUERIES} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
+      {userQueriesCount >= MAX_USER_QUERIES && (
         <p className="text-center text-sm">
-          You have reached the limit of {MAXUSERQUERIES} queries. Please subscribe to our PREMIUM plan.
+          You have reached the limit of {MAX_USER_QUERIES} queries. Please subscribe to our PREMIUM plan.
         </p>
       )}
       <Progress value={
         userQueriesCount
-      } max={MAXUSERQUERIES} />
+      } max={MAX_USER_QUERIES} />
       <Table>
-        <TableCaption>Your last queries.</TableCaption>
+        <TableCaption>Your 10 last queries.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Symbol</TableHead>

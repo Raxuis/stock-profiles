@@ -116,7 +116,7 @@ export default function StockChart() {
 
       {chartData.length > 0 && (
         <div className='flex justify-center'>
-          <Card className='w-full p-4 pt-8 mx-auto'>
+          <Card className='mx-auto w-full p-4 pt-8'>
             <CardContent className='flex flex-col space-y-6'>
               <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={chartData}>

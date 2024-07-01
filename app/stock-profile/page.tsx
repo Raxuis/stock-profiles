@@ -62,7 +62,7 @@ const StockProfile = () => {
       toast({
         title: "📈 Wow 📈",
         description: (
-          <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That&apos;'s one small step for man, one giant leap for Stocks!</p>
+          <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That&apos;s one small step for man, one giant leap for Stocks!</p>
         ),
       });
 
@@ -104,7 +104,7 @@ const StockProfile = () => {
           name="symbol"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Stock&apos;'s Symbol</FormLabel>
+              <FormLabel>Stock&apos;s Symbol</FormLabel>
               <FormControl>
                 <Input autoFocus placeholder="Symbol" {...field} />
               </FormControl>
@@ -112,7 +112,7 @@ const StockProfile = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className='max-sm:w-full mt-3'>Search</Button>
+        <Button type="submit" className='mt-3 max-sm:w-full'>Search</Button>
       </Form>
       {localStockSymbolFormatted && (
         <div className='mt-8 flex justify-center'>

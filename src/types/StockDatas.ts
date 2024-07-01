@@ -35,4 +35,5 @@ export type StockDatasType = {
   isActivelyTrading: boolean;
   isAdr: boolean;
   isFund: boolean;
+  queriedAt: string;
 };

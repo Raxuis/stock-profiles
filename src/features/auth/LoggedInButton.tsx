@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const LoggedInButton = async () => {
   const user = await currentUser();
-  console.log(user);
+  // console.log(user);
   if (!user) {
     return (
       <SignInButton />

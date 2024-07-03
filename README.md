@@ -1,29 +1,117 @@
-# Create T3 App
+<div align="center" id="top"> 
+  <img src="https://i.pinimg.com/564x/4f/1d/69/4f1d69018176870ca7a94c1e8a50c824.jpg" alt="Stocks Profiles" />
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+&#xa0;
 
-## What's next? How do I make an app with this?
+  <!-- <a href="https://stocksprofiles.netlify.app">Demo</a> -->
+</div>
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+<h1 align="center">Stocks Profiles</h1>
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+<p align="center">
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+  <a href="https://prisma.io"> 
+    <img width="122" height="20" src="https://made-with.prisma.io/dark.svg" alt="Prisma" />
+  </a>
 
-## Learn More
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Raxuis/stocks-profiles?color=56BEB8">
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Raxuis/stocks-profiles?color=56BEB8">
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Raxuis/stocks-profiles?color=56BEB8">
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+  <img alt="License" src="https://img.shields.io/github/license/Raxuis/stocks-profiles?color=56BEB8">
+</p>
 
-## How do I deploy this?
+<p align="center">
+  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <a href="https://github.com/Raxuis" target="_blank">Author</a>
+</p>
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+<br>
+
+## :dart: About
+
+Stocks Profiles is a web application that allows users to view and analyze stock prices. It provides a user-friendly interface for navigating through various stocks and their corresponding data.
+
+## :sparkles: Features
+
+:heavy_check_mark: Login with Google / GitHub\
+:heavy_check_mark: Get a stock profile\
+:heavy_check_mark: Get a stock chart\
+:heavy_check_mark: Manage your queries\
+
+## :rocket: Technologies
+
+The following tools were used in this project:
+
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Prisma](https://prisma.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+## :white_check_mark: Requirements
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Node](https://nodejs.org/en/), and [pnpm](https://pnpm.io/) installed.
+
+## :checkered_flag: Starting
+
+1. **Clone this project**
+
+   ```bash
+   $ git clone https://github.com/Raxuis/stocks-profiles
+   ```
+
+2. **Access the project directory**
+
+   ```bash
+   $ cd stocks-profiles
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   $ pnpm install
+   ```
+
+4. **Set up environment variables**
+
+   - Copy the `.env.example` file to create a new `.env` file:
+     ```bash
+     $ cp .env.example .env
+     ```
+   - Open the newly created `.env` file and fill in the required environment variables, particularly the PostgreSQL connection string:
+
+     ```
+     DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
+     ```
+
+     Replace `<username>`, `<password>`, `<host>`, `<port>`, and `<database>` with your PostgreSQL credentials and database information.
+
+5. **Run the project**
+
+   ```bash
+   $ pnpm dev
+   ```
+
+   The server will initialize at <http://localhost:3000>
+
+## :memo: License
+
+This project is under the MIT license. For more details, see the [LICENSE](LICENSE.md) file.
+
+Made with :heart: by <a href="https://github.com/Raxuis" target="_blank">Raphaël</a>
+
+&#xa0;
+
+<a href="#top">Back to top</a>
+
+---

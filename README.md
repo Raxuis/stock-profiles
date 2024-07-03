@@ -44,7 +44,7 @@ Stocks Profiles is a web application that allows users to view and analyze stock
 :heavy_check_mark: Login with Google / GitHub\
 :heavy_check_mark: Get a stock profile\
 :heavy_check_mark: Get a stock chart\
-:heavy_check_mark: Manage your queries\
+:heavy_check_mark: Manage your queries
 
 ## :rocket: Technologies
 

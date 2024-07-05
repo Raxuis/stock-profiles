@@ -36,7 +36,7 @@ export default async function Home() {
 
   return (
     <>
-      <p className="mt-6 text-center text-3xl sm:mt-10">Welcome {user!.name}!</p>
+      <p className="mt-6 text-center text-3xl sm:mt-10">Welcome {user.name}!</p>
       <p>You've done {userQueriesCount} / {MAX_USER_QUERIES} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
       {userQueriesCount >= MAX_USER_QUERIES && (
         <p className="text-center text-sm">
@@ -55,9 +55,11 @@ export default async function Home() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {userQueries.map((query) => (
+          {userQueries.map((query, index) => (
             <TableRow key={query.symbol}>
-              <TableCell className="font-medium">{query.symbol}</TableCell>
+              <TableCell className="font-medium">
+                {query.symbol} {index === 0 && '(most recent)'}
+              </TableCell>
               <TableCell className="text-right">{query.type}</TableCell>
             </TableRow>
           ))}

@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import Badge from '@/components/pages-components/stock-profile/Badge';
 import { z } from "zod";
 import { toast } from "@/components/ui/use-toast";
-import type { StockDatasType } from "@/types/StockDatas.type.";
+import type { StockDatasType } from "@/types/StockDatas.type";
 import createQuery from '@/features/stock-profile/createQuery';
 
 const letterRegex = /^[A-Z]+$/;

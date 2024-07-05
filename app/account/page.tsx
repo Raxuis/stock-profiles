@@ -33,7 +33,6 @@ export default async function Home() {
     },
     take: 10
   });
-  console.log(user);
 
   return (
     <>

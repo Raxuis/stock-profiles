@@ -33,6 +33,7 @@ export default async function Home() {
     },
     take: 10
   });
+  console.log(userQueries);
 
   return (
     <>
@@ -47,20 +48,22 @@ export default async function Home() {
         userQueriesCount
       } max={MAX_USER_QUERIES} />
       <Table>
-        <TableCaption>Your 10 last queries.</TableCaption>
+        <TableCaption className="mr-10">Your 10 last queries.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Symbol</TableHead>
-            <TableHead className="text-right">Type</TableHead>
+            <TableHead className="text-center">Type</TableHead>
+            <TableHead className="text-right">Created at</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {userQueries.map((query, index) => (
             <TableRow key={query.symbol}>
               <TableCell className="font-medium">
-                {query.symbol} {index === 0 && '(most recent)'}
+                {query.symbol} <span className="font-semibold">{index === 0 && '(most recent)'}</span>
               </TableCell>
-              <TableCell className="text-right">{query.type}</TableCell>
+              <TableCell className="text-center">{query.type}</TableCell>
+              <TableCell className="text-right">{query.createdAt.toLocaleString()}</TableCell>
             </TableRow>
           ))}
         </TableBody>

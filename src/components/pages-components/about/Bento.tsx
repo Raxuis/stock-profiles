@@ -89,33 +89,33 @@ const SocialsBlock = () => {
         rotate: '-2.5deg',
         scale: 1.05
       }} className='col-span-6 bg-blue-500 md:col-span-3'>
-        <Link href="https://www.x.com/i_haruki_i" className='grid h-full place-content-center text-3xl text-white'>
+        <a href="https://www.x.com/i_haruki_i" target='_blank' className='grid h-full place-content-center text-3xl text-white'>
           <FaTwitter />
-        </Link>
+        </a>
       </Block>
       <Block whileHover={{
         rotate: '2.5deg',
         scale: 1.05
       }} className='col-span-6 bg-card md:col-span-3'>
-        <Link href="https://github.com/raxuis" className='grid h-full place-content-center text-3xl text-white'>
+        <a href="https://github.com/raxuis" target='_blank' className='grid h-full place-content-center text-3xl text-white'>
           <FaGithub />
-        </Link>
+        </a>
       </Block>
       <Block whileHover={{
         rotate: '2.5deg',
         scale: 1.05
       }} className='col-span-6 bg-orange-500 md:col-span-3'>
-        <Link href="https://stackoverflow.com/users/22539453/haruki" className='grid h-full place-content-center text-3xl text-white'>
+        <a href="https://stackoverflow.com/users/22539453/haruki" target='_blank' className='grid h-full place-content-center text-3xl text-white'>
           <FaStackOverflow />
-        </Link>
+        </a>
       </Block>
       <Block whileHover={{
         rotate: '-2.5deg',
         scale: 1.05
       }} className='col-span-6 bg-red-500 md:col-span-3'>
-        <Link href="https://www.youtube.com/channel/UCni1RGwtSZXMZUzHeKukSjw" className='grid h-full place-content-center text-3xl text-white'>
+        <a href="https://www.youtube.com/channel/UCni1RGwtSZXMZUzHeKukSjw" target='_blank' className='grid h-full place-content-center text-3xl text-white'>
           <FaYoutube />
-        </Link>
+        </a>
       </Block>
     </>
   );

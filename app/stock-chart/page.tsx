@@ -10,9 +10,28 @@ import { toast } from "@/components/ui/use-toast";
 import getStockChart from "@/features/functions/stock-chart";
 import { StockInput } from "@/components/pages-components/stock-chart/stock-input";
 import { format } from "date-fns";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { Card, CardContent } from "@/components/ui/card";
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
+
 import createQuery from "@/features/stock-profile/createQuery";
+
 
 const letterRegex = /^[A-Z]+$/;
 
@@ -50,6 +69,19 @@ type StockData = {
 };
 
 export default function StockChart() {
+
+  const chartConfig = {
+    open: {
+      label: "Open",
+      color: "#82ca9d",
+    },
+    close: {
+      label: "Close",
+      color: "#8884d8",
+    },
+  } satisfies ChartConfig;
+
+
   const { handleSubmit, control, formState: { errors } } = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -71,6 +103,8 @@ export default function StockChart() {
       });
 
       const sortedData = response.sort((a: StockData, b: StockData) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      console.log(sortedData);
+
 
       setChartData(sortedData);
       await createQuery(data.symbol, "StockChart");
@@ -117,18 +151,53 @@ export default function StockChart() {
       {chartData.length > 0 && (
         <div className='flex justify-center'>
           <Card className='mx-auto w-full p-4 pt-8'>
+            <CardHeader className='flex flex-col space-y-2'>
+              <CardTitle>Stock Chart</CardTitle>
+              <CardDescription>
+                Showing the stock price for the selected timeframe
+              </CardDescription>
+            </CardHeader>
             <CardContent className='flex flex-col space-y-6'>
-              <ResponsiveContainer width="100%" height={400}>
-                <LineChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Line type="monotone" dataKey="close" stroke="#8884d8" activeDot={{ r: 8 }} />
-                  <Line type="monotone" dataKey="open" stroke="#82ca9d" />
-                </LineChart>
-              </ResponsiveContainer>
+              <ChartContainer config={chartConfig}>
+                <AreaChart
+                  accessibilityLayer
+                  data={chartData}
+                  margin={{
+                    left: 12,
+                    right: 12,
+                  }}
+                >
+                  <CartesianGrid vertical={false} />
+                  <XAxis
+                    dataKey="date"
+                    tickLine={false}
+                    axisLine={false}
+                    tickMargin={10}
+                    tickFormatter={(value) => format(value, "dd-MM / HH:mm")}
+                  />
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent indicator="dot" />}
+                  />
+                  <ChartLegend content={<ChartLegendContent />} />
+                  <Area
+                    dataKey="open"
+                    type="natural"
+                    fill="var(--color-open)"
+                    fillOpacity={0.4}
+                    stroke="var(--color-open)"
+                    stackId="a"
+                  />
+                  <Area
+                    dataKey="close"
+                    type="natural"
+                    fill="var(--color-close)"
+                    fillOpacity={0.4}
+                    stroke="var(--color-close)"
+                    stackId="a"
+                  />
+                </AreaChart>
+              </ChartContainer>
             </CardContent>
           </Card>
         </div>

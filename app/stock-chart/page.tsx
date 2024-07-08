@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import DateRangePicker from "@/components/pages-components/stock-chart/date-range-picker";
 import TimeframeSelect from "@/components/pages-components/stock-chart/timeframe-select";
 import { toast } from "@/components/ui/use-toast";
-import getStockChart from "@/features/functions/stock-chart";
+import { getStockChart } from "@/features/functions/stock.action";
 import { StockInput } from "@/components/pages-components/stock-chart/stock-input";
 import { format } from "date-fns";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"

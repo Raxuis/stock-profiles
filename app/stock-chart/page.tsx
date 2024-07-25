@@ -154,7 +154,7 @@ export default function StockChart() {
             <CardHeader className='flex flex-col space-y-2'>
               <CardTitle>Stock Chart</CardTitle>
               <CardDescription>
-                Showing the stock price for the selected timeframe
+                Showing the stock price for the selected timeframe.
               </CardDescription>
             </CardHeader>
             <CardContent className='flex flex-col space-y-6'>

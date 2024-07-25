@@ -29,7 +29,7 @@ const StockProfile = () => {
   const [localStockSymbolFormatted, setLocalStockSymbolFormatted] = useState<StockDatasType[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = () => {
       if (typeof window !== 'undefined') {
         const localStockSymbol = localStorage.getItem('stockSymbol') || '';
         if (localStockSymbol) {

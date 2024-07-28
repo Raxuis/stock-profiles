@@ -106,7 +106,7 @@ export default function StockChart() {
                     <Input placeholder="AAPL" {...field} />
                   </div>
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-400" />
               </FormItem>
             )}
           />
@@ -114,14 +114,14 @@ export default function StockChart() {
             <FormItem className="flex-1">
               <FormLabel>Date</FormLabel>
               <DateRangePicker date={field.value} setDate={field.onChange} />
-              <FormMessage className="shad-error" />
+              <FormMessage className="text-red-400" />
             </FormItem>
           )} />
           <FormField name="timeframe" render={({ field }) => (
             <FormItem className="flex-1">
               <FormLabel>Timeframe</FormLabel>
               <TimeframeSelect timeframe={field.value} setTimeFrame={field.onChange} />
-              <FormMessage className="shad-error" />
+              <FormMessage className="text-red-400" />
             </FormItem>
           )} />
 

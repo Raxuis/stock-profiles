@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,6 @@ import DateRangePicker from "@/components/pages-components/stock-chart/date-rang
 import TimeframeSelect from "@/components/pages-components/stock-chart/timeframe-select";
 import { toast } from "@/components/ui/use-toast";
 import { getStockChart } from "@/features/functions/stock.action";
-import { StockInput } from "@/components/pages-components/stock-chart/stock-input";
 import { format } from "date-fns";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
@@ -17,10 +16,10 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+
 import {
   ChartConfig,
   ChartContainer,
@@ -31,36 +30,9 @@ import {
 } from "@/components/ui/chart"
 
 import createQuery from "@/features/stock-profile/createQuery";
-
-
-const letterRegex = /^[A-Z]+$/;
-
-const StockSchema = z.string().regex(letterRegex, {
-  message: "Stock's symbol must contain only capital letters.",
-}).max(5, {
-  message: "Stock's symbol mustn't be more than 5 characters.",
-}).min(2, {
-  message: "Stock's symbol must be at least 2 characters.",
-});
-
-const TimeframeSchema = z.enum([
-  '1min', '5min',
-  '15min', '30min',
-  '1hour', '4hour'
-]);
-
-const DateRangeSchema = z.object({
-  from: z.date(),
-  to: z.date(),
-});
-
-const FormSchema = z.object({
-  symbol: StockSchema,
-  timeframe: TimeframeSchema,
-  date: DateRangeSchema,
-});
-
-type FormSchemaType = z.infer<typeof FormSchema>;
+import { StockChartValidationSchema } from "@/lib/validation";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 type StockData = {
   date: string;
@@ -69,6 +41,15 @@ type StockData = {
 };
 
 export default function StockChart() {
+
+  const form = useForm<z.infer<typeof StockChartValidationSchema>>({
+    resolver: zodResolver(StockChartValidationSchema),
+    defaultValues: {
+      symbol: "",
+      timeframe: "1hour",
+      date: { from: new Date(), to: new Date() },
+    },
+  })
 
   const chartConfig = {
     open: {
@@ -80,26 +61,15 @@ export default function StockChart() {
       color: "#8884d8",
     },
   } satisfies ChartConfig;
-
-
-  const { handleSubmit, control, formState: { errors } } = useForm<FormSchemaType>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      symbol: "",
-      timeframe: "1hour",
-      date: { from: new Date(), to: new Date() },
-    },
-  });
-
   const [chartData, setChartData] = useState<StockData[]>([]);
 
-  const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
+  const onSubmit = async (values: z.infer<typeof StockChartValidationSchema>) => {
     try {
       const response: StockData[] = await getStockChart({
-        symbol: data.symbol,
-        timeframe: data.timeframe,
-        from: format(data.date.from, "yyyy-MM-dd"),
-        to: format(data.date.to, "yyyy-MM-dd"),
+        symbol: values.symbol,
+        timeframe: values.timeframe,
+        from: format(values.date.from, "yyyy-MM-dd"),
+        to: format(values.date.to, "yyyy-MM-dd"),
       });
 
       const sortedData = response.sort((a: StockData, b: StockData) => new Date(a.date).getTime() - new Date(b.date).getTime());
@@ -107,7 +77,7 @@ export default function StockChart() {
 
 
       setChartData(sortedData);
-      await createQuery(data.symbol, "StockChart");
+      await createQuery(values.symbol, "StockChart");
       toast({
         title: "Nice One 🥳",
         description: "Congratulations! That's a hell of a query!",
@@ -123,30 +93,41 @@ export default function StockChart() {
 
   return (
     <div className="w-full space-y-6">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <Controller
-          name="symbol"
-          control={control}
-          render={({ field }) => <StockInput stock={field.value} setStock={field.onChange} />}
-        />
-        {errors.symbol && <p className="text-red-500">{errors.symbol.message}</p>}
+      <Form form={form} onSubmit={onSubmit}>
+        <div className="space-y-6">
+          <FormField
+            control={form.control}
+            name="symbol"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Stock</FormLabel>
+                <FormControl>
+                  <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Input placeholder="AAPL" {...field} />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField name="date" render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Date</FormLabel>
+              <DateRangePicker date={field.value} setDate={field.onChange} />
+              <FormMessage className="shad-error" />
+            </FormItem>
+          )} />
+          <FormField name="timeframe" render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Timeframe</FormLabel>
+              <TimeframeSelect timeframe={field.value} setTimeFrame={field.onChange} />
+              <FormMessage className="shad-error" />
+            </FormItem>
+          )} />
 
-        <Controller
-          name="date"
-          control={control}
-          render={({ field }) => <DateRangePicker date={field.value} setDate={field.onChange} />}
-        />
-        {errors.date && <p className="text-red-500">{errors.date.message}</p>}
-
-        <Controller
-          name="timeframe"
-          control={control}
-          render={({ field }) => <TimeframeSelect timeframe={field.value} setTimeFrame={field.onChange} />}
-        />
-        {errors.timeframe && <p>{errors.timeframe.message}</p>}
-
-        <Button type="submit" className="max-sm:w-full">Submit</Button>
-      </form>
+          <Button type="submit" className="max-sm:w-full">Submit</Button>
+        </div>
+      </Form>
 
       {chartData.length > 0 && (
         <div className='flex justify-center'>
@@ -173,7 +154,7 @@ export default function StockChart() {
                     tickLine={false}
                     axisLine={false}
                     tickMargin={10}
-                    tickFormatter={(value) => format(value, "dd-MM / HH:mm")}
+                    tickFormatter={(value) => format(value, "yyyy-MM-dd / HH:mm")}
                   />
                   <ChartTooltip
                     cursor={false}

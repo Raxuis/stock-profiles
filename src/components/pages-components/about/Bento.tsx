@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { buttonVariants } from '../../ui/button';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { FaGithub, FaStackOverflow, FaTwitter, FaYoutube } from "react-icons/fa";
-import { Link } from 'next-view-transitions';
 import ReactCountryFlag from "react-country-flag"
 import { TextGenerateEffect } from "../../ui/text-generate-effect";
 
@@ -73,12 +72,12 @@ const HeaderBlock = () => {
   return <Block className='col-span-12 row-span-2 md:col-span-6'>
     <Image src='/edited-raph.jpg' alt='raphael-avatar' priority={false} width={50} height={50} className='mb-4 size-14 rounded-full object-cover' />
     <TextGenerateEffect words={words} />
-    <Link href='https://raphaelraclot.vercel.app/contact' className={buttonVariants(
+    <a target='_blank' href='https://raphaelraclot.vercel.app/contact' className={buttonVariants(
       {
         variant: 'link',
         size: 'sm',
       }
-    )}>Contact Me <ArrowTopRightIcon /> </Link>
+    )}>Contact Me <ArrowTopRightIcon /> </a>
   </Block>
 }
 

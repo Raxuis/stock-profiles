@@ -11,7 +11,6 @@ import { getStockChart } from "@/features/functions/stock.action";
 import { format } from "date-fns";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
-
 import {
   Card,
   CardContent,
@@ -31,7 +30,15 @@ import {
 
 import createQuery from "@/features/stock-profile/createQuery";
 import { StockChartValidationSchema } from "@/lib/validation";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from "@/components/ui/form";
+
 import { Input } from "@/components/ui/input";
 
 type StockData = {

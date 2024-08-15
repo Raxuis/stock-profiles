@@ -5,6 +5,7 @@ import { QueryType } from "@prisma/client";
 
 export default async function createQuery(symbol: string, type: QueryType) {
   const user = await currentUser();
+
   if (!user) {
     throw new Error("User not found");
   }

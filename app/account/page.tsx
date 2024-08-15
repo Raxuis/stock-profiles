@@ -38,7 +38,7 @@ export default async function Home() {
     <>
       <p className="mt-6 text-center text-3xl sm:mt-10">Welcome {user.name}! 👋</p>
       <p className="text-center">{user.plan === 'FREE' ? 'You have a free account.' : 'You have a premium account.'}</p>
-      <p>You've done {userQueriesCount} / {MAX_USER_QUERIES} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
+      <p>You&apos;ve done {userQueriesCount} / {MAX_USER_QUERIES} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
       {userQueriesCount >= MAX_USER_QUERIES && (
         <p className="text-center text-sm">
           You have reached the limit of {MAX_USER_QUERIES} queries. Please subscribe to our PREMIUM plan.

@@ -47,7 +47,7 @@ export default async function Home() {
       <Progress value={
         userQueriesCount
       } max={MAX_USER_QUERIES} />
-      <Table>
+      <Table className="*:cursor-default">
         <TableCaption className="mr-10">Your 10 last queries.</TableCaption>
         <TableHeader>
           <TableRow>

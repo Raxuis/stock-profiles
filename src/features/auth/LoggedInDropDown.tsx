@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Activity, Building2, Fingerprint, Home, LogOut, User } from "lucide-react";
+import { Activity, Building2, Fingerprint, Home, LogOut, User, List } from "lucide-react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 import Link from "next/link"
@@ -28,6 +28,12 @@ export const LoggedInDropDown = () => {
           <Link href="/account" className="w-full">
             <User size={16} className="mr-2" />
             Account
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/stock-list" className="w-full">
+            <List size={16} className="mr-2" />
+            Stock List
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>

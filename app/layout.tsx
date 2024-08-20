@@ -6,6 +6,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "@/components/ui/toaster"
 import { Header } from "@/layout/Header";
 import { Layout } from "@/components/layout";
+import TanStackProviders from "@/providers/TanstackProviders";
 
 
 const inter = Inter({
@@ -32,7 +33,9 @@ export default function RootLayout({
             <Toaster />
             <Layout>
               <Header />
-              {children}
+              <TanStackProviders>
+                {children}
+              </TanStackProviders>
             </Layout>
           </body>
         </html>

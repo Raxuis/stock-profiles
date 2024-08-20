@@ -4,6 +4,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getStockList } from '@/features/functions/stock.action';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { FaSpinner } from 'react-icons/fa';
 
 const MAX_STOCKS = 10;  // Default  maximum number of stocks to display
 
@@ -14,7 +15,7 @@ const StockList = () => {
   });
 
   if (isLoading || isFetching) {
-    return <div>Loading stocks...</div>;
+    return <div className='flex items-center justify-center gap-4 text-sm'>Loading stocks<FaSpinner className='animate-spin' /></div>;
   }
 
   if (isError) {

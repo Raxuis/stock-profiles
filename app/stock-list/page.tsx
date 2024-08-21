@@ -4,15 +4,20 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getStockList } from '@/features/functions/stock.action';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { FaSpinner } from 'react-icons/fa';
 import { Input } from '@/components/ui/input';
 import { VscLoading } from "react-icons/vsc";
 import { useQueryState } from 'nuqs'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { MoreVertical } from 'lucide-react';
+import { Slider } from "@/components/ui/slider";
 
-const MAX_STOCKS = 10;  // Default maximum number of stocks to display
+
+const MAX_STOCKS = 30;  // Maximum number of stocks to display
 
 const StockList = () => {
   const [stock, setStock] = useQueryState('stock');
+  const [maxStocks, setMaxStocks] = useState(10);  // Default to 10 stocks
   const { data, isLoading, isError, error, isFetching } = useQuery({
     queryKey: ['stocks'],
     queryFn: () => getStockList(),
@@ -38,14 +43,29 @@ const StockList = () => {
 
   return (
     <div className='flex flex-col items-center justify-center gap-4'>
-      <Input
-        placeholder='Search by symbol or name'
-        className='w-full'
-        value={stock || ''}
-        onChange={e => setStock(e.target.value)}
-      />
+      <div className='flex w-full items-center justify-between gap-4'>
+        <Input
+          className='grow'
+          placeholder='Search by symbol or name'
+          value={stock || ''}
+          onChange={e => setStock(e.target.value)}
+        />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button size="icon" variant="outline" className="size-8">
+              <MoreVertical className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem className='flex flex-col items-center justify-center gap-4'>
+              <label htmlFor="maxStocksSlider">Max stocks: {maxStocks}</label>
+              <Slider max={MAX_STOCKS} min={1} value={[maxStocks]} onValueChange={(value) => setMaxStocks(value[0] ?? 1)} />
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
       <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
-        {filteredData.slice(0, MAX_STOCKS).map((stock: any) => (
+        {filteredData.slice(0, maxStocks).map((stock: any) => (
           <Card key={stock?.symbol || 'unknown'} className='w-full'>
             <CardHeader className='flex flex-col items-center px-10 py-6'>
               {stock?.symbol && (

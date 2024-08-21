@@ -59,11 +59,6 @@ const StockList = () => {
                 </CardDescription>
               )}
             </CardHeader>
-            {/* <CardContent className='flex flex-col space-y-6'>
-              <div className='flex gap-4'>
-                {stock?.price && <p className='text-xl'>Price: {stock.price} {stock?.currency}</p>}
-              </div>
-            </CardContent> */}
           </Card>
         ))}
       </div>

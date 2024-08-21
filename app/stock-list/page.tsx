@@ -6,6 +6,7 @@ import { getStockList } from '@/features/functions/stock.action';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FaSpinner } from 'react-icons/fa';
 import { Input } from '@/components/ui/input';
+import { VscLoading } from "react-icons/vsc";
 import { useQueryState } from 'nuqs'
 
 const MAX_STOCKS = 10;  // Default maximum number of stocks to display
@@ -24,8 +25,8 @@ const StockList = () => {
 
   if (isLoading || isFetching) {
     return (
-      <div className='flex items-center justify-center gap-4 text-sm'>
-        Loading stocks <FaSpinner className='animate-spin' />
+      <div className='flex items-center justify-center gap-4 text-lg'>
+        Loading stocks <VscLoading className='animate-spin' />
       </div>
     );
   }
@@ -37,7 +38,6 @@ const StockList = () => {
 
   return (
     <div className='flex flex-col items-center justify-center gap-4'>
-      <h1 className='text-2xl font-bold'>Stock List</h1>
       <Input
         placeholder='Search by symbol or name'
         className='w-full'
@@ -59,11 +59,11 @@ const StockList = () => {
                 </CardDescription>
               )}
             </CardHeader>
-            <CardContent className='flex flex-col space-y-6'>
+            {/* <CardContent className='flex flex-col space-y-6'>
               <div className='flex gap-4'>
                 {stock?.price && <p className='text-xl'>Price: {stock.price} {stock?.currency}</p>}
               </div>
-            </CardContent>
+            </CardContent> */}
           </Card>
         ))}
       </div>

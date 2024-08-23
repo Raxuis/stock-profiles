@@ -3,7 +3,9 @@ import { LandingPrimaryImageCtaSection } from '@/components/landing/cta/LandingP
 import { LandingSocialProof } from '@/components/landing/social-proof/LandingSocialProof';
 import { motion } from 'framer-motion';
 import { ConfettiButton } from './confetti';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions'
+
+
 const LandingSection = () => {
   return (
     <motion.div
@@ -23,7 +25,7 @@ const LandingSection = () => {
         textPosition="center"
       >
         <ConfettiButton asChild>
-          <Link href={"/stock-profile"}>
+          <Link href={"/stock-list"}>
             Try it now
           </Link>
         </ConfettiButton>

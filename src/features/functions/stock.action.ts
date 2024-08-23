@@ -1,29 +1,7 @@
 "use server";
 import axios from 'axios';
 import { env } from '@/env';
-import { z } from 'zod';
-const letterRegex = /^[A-Z]*$/;
-
-const TimeframeSchema = z.enum(
-  ['1min', '5min',
-    '15min', '30min',
-    '1hour', '4hour']
-);
-
-const StockSchema = z.string().regex(letterRegex, {
-  message: "Stock's symbol must contain only capital letters.",
-}).max(5, {
-  message: "Stock's symbol mustn't be more than 5 characters.",
-}).min(2, {
-  message: "Stock's symbol must be at least 2 characters.",
-});
-
-type GetStockChartProps = {
-  symbol: z.infer<typeof StockSchema>,
-  timeframe: z.infer<typeof TimeframeSchema>,
-  from: string,
-  to: string,
-}
+import { GetStockChartProps } from '@/lib/validation';
 
 
 export async function getStockChart({ symbol, timeframe, from, to }: GetStockChartProps) {

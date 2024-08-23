@@ -7,17 +7,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { VscLoading } from "react-icons/vsc";
 import { AiOutlineStock } from "react-icons/ai";
-import { useQueryState } from 'nuqs'
+import { useQueryState } from 'nuqs';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { MoreVertical } from 'lucide-react';
 import { Slider } from "@/components/ui/slider";
 import { useSession } from 'next-auth/react';
-
+import { useRouter } from 'next/navigation';
 
 const MAX_STOCKS = 30;  // Maximum number of stocks to display
 
 const StockList = () => {
+  const router = useRouter();
   const [stock, setStock] = useQueryState('stock');
   const [maxStocks, setMaxStocks] = useState(10);  // Default to 10 stocks
   const { data, isLoading, isError, error, isFetching } = useQuery({
@@ -45,7 +46,7 @@ const StockList = () => {
 
   if (isLoading || isFetching) {
     return (
-      <div className='flex items-center justify-center gap-4 text-lg'>
+      <div className='mt-10 flex items-center justify-center gap-4 text-lg'>
         <AiOutlineStock className='size-6 animate-pulse' />  Loading stocks <VscLoading className='animate-spin' />
       </div>
     );
@@ -94,6 +95,12 @@ const StockList = () => {
                   {stock.name}
                 </CardDescription>
               )}
+              <Button
+                onClick={() => router.push(`/stock-profile?stock=${stock.symbol}`)}
+                className="mt-10 h-10 w-full"
+              >
+                Read More
+              </Button>
             </CardHeader>
           </Card>
         ))}

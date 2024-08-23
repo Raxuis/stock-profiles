@@ -12,22 +12,22 @@ import { toast } from "@/components/ui/use-toast";
 import type { StockDatasType } from "@/types/StockDatas.type";
 import createQuery from '@/features/stock-profile/createQuery';
 import { useSession } from 'next-auth/react';
+import { useQueryState } from 'nuqs';
+import { SymbolSchema } from '@/lib/validation';
 
-const letterRegex = /^[A-Z]+$/;
 let stocksData: StockDatasType[];
 
 const FormSchema = z.object({
-  symbol: z.string().regex(letterRegex, {
-    message: "Stock's symbol must contain only capital letters.",
-  }).max(5, {
-    message: "Stock's symbol mustn't be more than 5 characters.",
-  }).min(2, {
-    message: "Stock's symbol must be at least 2 characters.",
-  }),
+  symbol: SymbolSchema
 });
 
 const StockProfile = () => {
   const [localStockSymbolFormatted, setLocalStockSymbolFormatted] = useState<StockDatasType[]>([]);
+  const [stock, setStock] = useQueryState('stock');
+
+  useEffect(() => {
+    console.log(stock);
+  }, [stock]);
 
   useEffect(() => {
     const fetchData = () => {
@@ -45,11 +45,12 @@ const StockProfile = () => {
   const form = useZodForm({
     schema: FormSchema,
     defaultValues: {
-      symbol: "",
+      symbol: stock || '',
     },
   });
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    console.log(data);
     try {
       stocksData = await getStockProfile(data.symbol);
       const date = new Date();
@@ -120,7 +121,11 @@ const StockProfile = () => {
             <FormItem>
               <FormLabel>Stock&apos;s Symbol</FormLabel>
               <FormControl>
-                <Input autoFocus placeholder="Symbol" {...field} />
+                <Input
+                  autoFocus
+                  placeholder="Symbol"
+                  {...field}
+                />
               </FormControl>
               <FormMessage>{form.formState.errors.symbol?.message}</FormMessage>
             </FormItem>

@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Image from '@/components/shared/Image';
 import { GlowBg } from '@/components/shared/ui/glow-bg';
 import { VideoPlayer } from '@/components/shared/VideoPlayer';
+import LetterPullup from '@/components/magicui/letter-pullup';
 
 const LandingPrimaryCtaContent = ({
   className,
@@ -37,9 +38,7 @@ const LandingPrimaryCtaContent = ({
       {leadingComponent}
 
       {title ? (
-        <h1 className="lg:leading-14 text-4xl font-semibold md:max-w-xl lg:text-5xl">
-          {title}
-        </h1>
+        <LetterPullup words={"Stocks Profiles"} delay={0.1} className='text-4xl font-semibold text-white md:max-w-xl lg:text-5xl' />
       ) : (
         titleComponent
       )}

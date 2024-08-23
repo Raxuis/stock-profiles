@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { Header } from "@/layout/Header";
 import { Layout } from "@/components/layout";
 import TanStackProviders from "@/providers/TanstackProviders";
+import { DockDemo } from "@/components/magicui/DockDemo";
 
 
 const inter = Inter({
@@ -37,6 +38,7 @@ export default function RootLayout({
                 {children}
               </TanStackProviders>
             </Layout>
+            <DockDemo />
           </body>
         </html>
       </ViewTransitions>

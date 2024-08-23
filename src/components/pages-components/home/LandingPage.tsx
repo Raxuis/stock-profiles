@@ -4,8 +4,9 @@ import { ProblemsSection } from '@/components/pages-components/home/ProblemsSect
 import LandingSection from '@/components/pages-components/home/LandingSection';
 import { BorderBeam } from '@/components/magicui/border-beam';
 import Image from 'next/image';
+import CompaniesStack from '@/components/CompaniesStack';
 
-export default function LandingPage() {
+export default function LandingPage(props) {
   return (
     <>
       <LandingSection />
@@ -14,6 +15,7 @@ export default function LandingPage() {
         <BorderBeam size={250} duration={12} delay={9} />
       </div>
       <ProblemsSection />
+      <CompaniesStack />
     </>
   )
 }

@@ -25,7 +25,7 @@ export const ProblemsSection = () => {
           type: "spring",
           stiffness: 100,
           duration: 0.5
-        }} className="flex min-h-screen shrink-0 scale-[0.9] flex-col items-center justify-start space-y-6 py-16 text-center [perspective:800px] sm:scale-100 sm:py-32"
+        }} className="flex shrink-0 scale-[0.9] flex-col items-center justify-start space-y-6 py-14 text-center [perspective:800px] sm:scale-100 sm:py-28"
       >
         <div>
           <p className='text-3xl'>We will help you invest on the best stocks!</p>

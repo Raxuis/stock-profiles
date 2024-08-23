@@ -50,6 +50,7 @@ type StockData = {
 
 export default function StockChart() {
 
+  const [chartData, setChartData] = useState<StockData[]>([]);
 
   const form = useForm<z.infer<typeof StockChartValidationSchema>>({
     resolver: zodResolver(StockChartValidationSchema),
@@ -61,6 +62,7 @@ export default function StockChart() {
   })
 
   const { data: session, status } = useSession();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -83,7 +85,6 @@ export default function StockChart() {
       color: "#8884d8",
     },
   } satisfies ChartConfig;
-  const [chartData, setChartData] = useState<StockData[]>([]);
 
   const onSubmit = async (values: z.infer<typeof StockChartValidationSchema>) => {
     try {

@@ -11,7 +11,7 @@ export async function DockDemo() {
   const user = await currentUser();
 
   return (
-    <div className="fixed bottom-2 flex w-full justify-center">
+    <div className="fixed bottom-2 z-50 flex w-full justify-center">
       <div className="relative">
         <Dock magnification={60} distance={100}>
           <DockIcon className="bg-black/10 p-3 dark:bg-white/10">

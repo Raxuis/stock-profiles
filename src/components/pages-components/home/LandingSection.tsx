@@ -19,8 +19,6 @@ const LandingSection = () => {
       <LandingPrimaryImageCtaSection
         title="Stocks Profiles"
         description="Dive into detailed profiles of companies, exploring their financial performance, market trends, and potential investment opportunities. From stock history to analyst ratings, our platform offers a wealth of data to empower your investment decisions."
-        imageSrc="/stocks-profiles.png"
-        imageAlt="Stocks-Profile"
         imagePosition="center"
         textPosition="center"
       >

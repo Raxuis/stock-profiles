@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getStockList } from '@/features/functions/stock.action';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +11,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Button } from '@/components/ui/button';
 import { MoreVertical } from 'lucide-react';
 import { Slider } from "@/components/ui/slider";
+import { useSession } from 'next-auth/react';
 
 
 const MAX_STOCKS = 30;  // Maximum number of stocks to display
@@ -22,6 +23,19 @@ const StockList = () => {
     queryKey: ['stocks'],
     queryFn: () => getStockList(),
   });
+
+  const { data: session, status } = useSession();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      setIsLoggedIn(true);
+    }
+  }, [status]);
+
+  if (!isLoggedIn) {
+    return <p>You are not logged in, please log in to see stock-list page.</p>;
+  }
 
   const filteredData = data?.filter((item: any) =>
     item?.symbol?.toLowerCase().includes(stock?.toLowerCase() || '') ||
@@ -39,6 +53,7 @@ const StockList = () => {
   if (isError) {
     return <div>Error: {(error as Error).message}</div>;
   }
+
 
 
   return (

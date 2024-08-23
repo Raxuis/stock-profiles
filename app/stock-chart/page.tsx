@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -40,6 +40,7 @@ import {
 } from "@/components/ui/form";
 
 import { Input } from "@/components/ui/input";
+import { useSession } from "next-auth/react";
 
 type StockData = {
   date: string;
@@ -49,6 +50,7 @@ type StockData = {
 
 export default function StockChart() {
 
+
   const form = useForm<z.infer<typeof StockChartValidationSchema>>({
     resolver: zodResolver(StockChartValidationSchema),
     defaultValues: {
@@ -57,6 +59,19 @@ export default function StockChart() {
       date: { from: new Date(), to: new Date() },
     },
   })
+
+  const { data: session, status } = useSession();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      setIsLoggedIn(true);
+    }
+  }, [status]);
+
+  if (!isLoggedIn) {
+    return <p>You are not logged in, please log in to see stock-chart page.</p>;
+  }
 
   const chartConfig = {
     open: {

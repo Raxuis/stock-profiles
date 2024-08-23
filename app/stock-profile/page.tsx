@@ -11,6 +11,7 @@ import { z } from "zod";
 import { toast } from "@/components/ui/use-toast";
 import type { StockDatasType } from "@/types/StockDatas.type";
 import createQuery from '@/features/stock-profile/createQuery';
+import { useSession } from 'next-auth/react';
 
 const letterRegex = /^[A-Z]+$/;
 let stocksData: StockDatasType[];
@@ -96,6 +97,19 @@ const StockProfile = () => {
       return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
     }
   };
+
+  const { data: session, status } = useSession();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      setIsLoggedIn(true);
+    }
+  }, [status]);
+
+  if (!isLoggedIn) {
+    return <p>You are not logged in, please log in to see stock-profile page.</p>;
+  }
 
   return (
     <>

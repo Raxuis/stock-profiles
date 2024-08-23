@@ -6,6 +6,7 @@ import { getStockList } from '@/features/functions/stock.action';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { VscLoading } from "react-icons/vsc";
+import { AiOutlineStock } from "react-icons/ai";
 import { useQueryState } from 'nuqs'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
@@ -45,7 +46,7 @@ const StockList = () => {
   if (isLoading || isFetching) {
     return (
       <div className='flex items-center justify-center gap-4 text-lg'>
-        Loading stocks <VscLoading className='animate-spin' />
+        <AiOutlineStock className='size-6 animate-pulse' />  Loading stocks <VscLoading className='animate-spin' />
       </div>
     );
   }

@@ -96,7 +96,6 @@ export default function StockChart() {
       });
 
       const sortedData = response.sort((a: StockData, b: StockData) => new Date(a.date).getTime() - new Date(b.date).getTime());
-      console.log(sortedData);
 
 
       setChartData(sortedData);

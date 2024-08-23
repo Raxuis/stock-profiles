@@ -1,12 +1,15 @@
 import React from "react";
 
 import { Dock, DockIcon } from "@/components/magicui/dock";
-import { Activity, Building2, Fingerprint, Home, LogOut, User, List } from "lucide-react";
+import { Activity, Building2, Fingerprint, Home, User, List } from "lucide-react";
 import Link from "next/link";
+import { currentUser } from "@/auth/current-user";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
-export function DockDemo() {
+export async function DockDemo() {
+  const user = await currentUser();
+
   return (
     <div className="fixed bottom-2 flex w-full justify-center">
       <div className="relative">
@@ -16,26 +19,30 @@ export function DockDemo() {
               <Home className="size-full" />
             </Link>
           </DockIcon>
-          <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
-            <Link href="/account" className="size-full">
-              <User className="size-full" />
-            </Link>
-          </DockIcon>
-          <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
-            <Link href="/stock-list" className="size-full">
-              <List className="size-full" />
-            </Link>
-          </DockIcon>
-          <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
-            <Link href="/stock-profile" className="size-full">
-              <Building2 className="size-full" />
-            </Link>
-          </DockIcon>
-          <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
-            <Link href="/stock-chart" className="size-full">
-              <Activity className="size-full" />
-            </Link>
-          </DockIcon>
+          {user && (
+            <>
+              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+                <Link href="/account" className="size-full">
+                  <User className="size-full" />
+                </Link>
+              </DockIcon>
+              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+                <Link href="/stock-list" className="size-full">
+                  <List className="size-full" />
+                </Link>
+              </DockIcon>
+              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+                <Link href="/stock-profile" className="size-full">
+                  <Building2 className="size-full" />
+                </Link>
+              </DockIcon>
+              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+                <Link href="/stock-chart" className="size-full">
+                  <Activity className="size-full" />
+                </Link>
+              </DockIcon>
+            </>
+          )}
           <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
             <Link href="/about" className="size-full">
               <Fingerprint className="size-full" />

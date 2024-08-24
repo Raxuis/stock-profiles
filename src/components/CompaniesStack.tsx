@@ -40,7 +40,7 @@ export const projects = [
   {
     image: "/mcdonals.svg",
     text: "McDonald's",
-    link: "https://mcdonals.com",
+    link: "https://www.mcdonalds.com",
   },
 ];
 

@@ -5,7 +5,9 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { ContactSchema } from '@/lib/validation';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2 } from 'lucide-react';
+import { HiMiniPaperAirplane } from "react-icons/hi2";
+import { motion } from 'framer-motion'; // Add this import
+
 import { sendContactForm } from '@/features/contact/contact.action';
 import { toast } from 'sonner';
 import { Input } from './ui/input';
@@ -34,21 +36,21 @@ const ContactForm = () => {
     }
   }
   return (
-    <Form form={form} onSubmit={onSubmit} className="mx-auto mt-10 w-full max-w-md space-y-4 max-sm:px-2">
+    <Form form={form} onSubmit={onSubmit} className="mx-auto mt-10 w-full max-w-md space-y-6 max-sm:px-4">
       <FormField control={form.control} name="name" render={({ field }) => (
         <FormItem>
-          <FormLabel>Your name</FormLabel>
+          <FormLabel className="text-lg font-semibold">Your name</FormLabel>
           <FormControl>
-            <Input placeholder="John Doe" {...field} />
+            <Input placeholder="John Doe" {...field} className="rounded-md border p-2" />
           </FormControl>
           <FormMessage />
         </FormItem>
       )} />
       <FormField control={form.control} name="email" render={({ field }) => (
         <FormItem>
-          <FormLabel>Your email</FormLabel>
+          <FormLabel className="text-lg font-semibold">Your email</FormLabel>
           <FormControl>
-            <Input placeholder="john.doe@example.com" {...field} />
+            <Input placeholder="john.doe@example.com" {...field} className="rounded-md border p-2" />
           </FormControl>
           <FormMessage />
         </FormItem>
@@ -58,15 +60,25 @@ const ContactForm = () => {
         name="message"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Your message</FormLabel>
+            <FormLabel className="text-lg font-semibold">Your message</FormLabel>
             <FormControl>
-              <Textarea placeholder="A recommendation, a question, or anything else..." {...field} />
+              <Textarea placeholder="A recommendation, a question, or anything else..." {...field} className="rounded-md border p-2" />
             </FormControl>
             <FormMessage />
           </FormItem>
         )}
       />
-      <Button type="submit">{isLoading ? <Loader2 className="animate-spin" /> : "Send"}</Button>
+      <Button type="submit" className="w-full">
+        {isLoading ? (
+          <motion.div
+            initial={{ x: -20 }}
+            animate={{ x: 20 }}
+            transition={{ duration: 1, repeat: Infinity, repeatType: "loop" }}
+          >
+            <HiMiniPaperAirplane />
+          </motion.div>
+        ) : "Send"}
+      </Button>
     </Form>
   )
 }

@@ -44,3 +44,7 @@ yarn-error.log*
 # IDE files
 .idea
 .vscode
+
+# cursor files
+.cursorignore
+.cursorrules

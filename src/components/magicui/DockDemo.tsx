@@ -4,6 +4,7 @@ import { Dock, DockIcon } from "@/components/magicui/dock";
 import { Activity, Building2, Fingerprint, Home, User, List } from "lucide-react";
 import Link from "next/link";
 import { currentUser } from "@/auth/current-user";
+import { QuestionMarkIcon } from "@radix-ui/react-icons";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -39,6 +40,11 @@ export async function DockDemo() {
               <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
                 <Link href="/stock-chart" className="size-full">
                   <Activity className="size-full" />
+                </Link>
+              </DockIcon>
+              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+                <Link href="/contact" className="size-full">
+                  <QuestionMarkIcon className="size-full" />
                 </Link>
               </DockIcon>
             </>

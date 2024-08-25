@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getStockList } from '@/features/functions/stock.action';
+import { getStockList } from '@/features/stocks/stock.action';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { VscLoading } from "react-icons/vsc";

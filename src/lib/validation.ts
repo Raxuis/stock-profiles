@@ -41,3 +41,9 @@ export type GetStockChartProps = {
   from: string,
   to: string,
 }
+
+export const ContactSchema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
+  name: z.string().min(1, { message: "Name is required" }),
+  message: z.string().min(1, { message: "Message is required" })
+});

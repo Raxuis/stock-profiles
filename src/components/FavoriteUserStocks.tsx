@@ -14,7 +14,7 @@ const FavoriteUserStocks = ({ favoriteStocks }: { favoriteStocks: { symbol: stri
         <tbody>
           {favoriteStocks.map((stock) => (
             <tr key={stock.symbol}>
-              <td>{stock.symbol}</td>
+              <td>- {stock.symbol}</td>
             </tr>
           ))}
         </tbody>

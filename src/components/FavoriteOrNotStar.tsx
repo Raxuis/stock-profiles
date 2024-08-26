@@ -19,6 +19,7 @@ const FavoriteOrNotStar = ({ symbol, userId }: { symbol: string; userId: string 
   const handleFavoriteClick = async () => {
     setIsFavorite(!isFavorite);
     await axios.post('/api/toggle-favorite', { symbol, userId });
+    window.location.reload();
   };
 
   return (

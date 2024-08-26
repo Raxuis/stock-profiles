@@ -1,28 +1,26 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+"use client";
+import React from 'react';
 
-const FavoriteUserStocks = ({ favoriteStocks }: { favoriteStocks: string[] }) => {
-  if (favoriteStocks.length < 1) {
-    return <p className="text-center">No favorite stocks</p>
-  }
+const FavoriteUserStocks = ({ favoriteStocks }: { favoriteStocks: { symbol: string }[] }) => {
+  if (favoriteStocks.length === 0) return <div>No favorite stocks</div>;
   return (
     <div>
-      <p className="text-center">Your Favorite Stocks</p>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Symbol</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
+      <table>
+        <thead>
+          <tr>
+            <th>Symbol</th>
+          </tr>
+        </thead>
+        <tbody>
           {favoriteStocks.map((stock) => (
-            <TableRow key={stock}>
-              <TableCell>{stock}</TableCell>
-            </TableRow>
+            <tr key={stock.symbol}>
+              <td>{stock.symbol}</td>
+            </tr>
           ))}
-        </TableBody>
-      </Table>
+        </tbody>
+      </table>
     </div>
-  )
-}
+  );
+};
 
-export default FavoriteUserStocks
+export default FavoriteUserStocks;

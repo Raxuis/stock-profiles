@@ -13,8 +13,13 @@ import {
 import { MAX_USER_QUERIES } from "@/constants/maxUserQueries";
 import { Separator } from "@/components/ui/separator";
 import FavoriteUserStocks from "@/components/FavoriteUserStocks";
+import FavoriteOrNotStar from "@/components/FavoriteOrNotStar";
 
-export default async function Home() {
+function isString(value: unknown): value is string {
+  return typeof value === 'string';
+}
+
+export default async function Account() {
   const user = await currentUser();
   if (!user) {
     return <p className="text-center text-3xl">Please sign in</p>;
@@ -45,6 +50,10 @@ export default async function Home() {
     },
   });
 
+  const favoriteStockData = favoriteStocks?.favoriteStocks
+    ?.filter(isString)
+    .map(stock => ({ symbol: stock })) || [];
+
   return (
     <>
       <p className="mt-6 text-center text-3xl sm:mt-10">Welcome {user.name}! 👋</p>
@@ -55,9 +64,7 @@ export default async function Home() {
           You have reached the limit of {MAX_USER_QUERIES} queries. Please subscribe to our PREMIUM plan.
         </p>
       )}
-      <Progress value={
-        userQueriesCount
-      } max={MAX_USER_QUERIES} />
+      <Progress value={userQueriesCount} max={MAX_USER_QUERIES} />
       <Table className="*:cursor-default">
         <TableCaption className="mr-10">Your 10 last queries.</TableCaption>
         <TableHeader>
@@ -70,8 +77,11 @@ export default async function Home() {
         <TableBody>
           {userQueries.map((query, index) => (
             <TableRow key={query.symbol}>
-              <TableCell className="font-medium">
-                {query.symbol} <span className="font-semibold">{index === 0 && '(most recent)'}</span>
+              <TableCell className="flex items-center gap-1 font-medium">
+                <div className="flex items-center">
+                  {query.symbol} <span className="font-semibold">{index === 0 && '(most recent)'}</span>
+                </div>
+                <FavoriteOrNotStar symbol={query.symbol} userId={user.id} />
               </TableCell>
               <TableCell className="text-center">{query.type}</TableCell>
               <TableCell className="text-right">{query.createdAt.toLocaleString()}</TableCell>
@@ -80,7 +90,7 @@ export default async function Home() {
         </TableBody>
       </Table>
       <Separator className="my-6" />
-      <FavoriteUserStocks favoriteStocks={favoriteStocks?.favoriteStocks || []} />
+      <FavoriteUserStocks favoriteStocks={favoriteStockData} />
     </>
   );
 }

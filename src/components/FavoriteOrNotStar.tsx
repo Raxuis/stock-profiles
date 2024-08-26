@@ -21,7 +21,7 @@ const FavoriteOrNotStar = ({ symbol, userId }: { symbol: string; userId: string 
   const handleFavoriteClick = async () => {
     setIsFavorite(!isFavorite);
     await axios.post('/api/toggle-favorite', { symbol, userId });
-    router.refresh(); // Refreshing the page to update the favorite status
+    router.push(`/account`);
   };
 
   return (

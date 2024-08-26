@@ -15,6 +15,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -41,6 +42,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { useSession } from "next-auth/react";
+import { exportAsPDF } from "@/features/export/export";
 
 type StockData = {
   date: string;
@@ -113,6 +115,11 @@ export default function StockChart() {
     }
   };
 
+  const handleExport = () => {
+    const chartDataString = JSON.stringify(chartData, null, 2);
+    exportAsPDF(chartDataString, "stock-chart.pdf");
+  };
+
   return (
     <div className="w-full space-y-6">
       <Form form={form} onSubmit={onSubmit}>
@@ -154,12 +161,6 @@ export default function StockChart() {
       {chartData.length > 0 && (
         <div className='flex justify-center'>
           <Card className='mx-auto w-full p-4 pt-8'>
-            <CardHeader className='flex flex-col space-y-2'>
-              <CardTitle>Stock Chart</CardTitle>
-              <CardDescription>
-                Showing the stock price for the selected timeframe.
-              </CardDescription>
-            </CardHeader>
             <CardContent className='flex flex-col space-y-6'>
               <ChartContainer config={chartConfig}>
                 <AreaChart
@@ -202,6 +203,9 @@ export default function StockChart() {
                 </AreaChart>
               </ChartContainer>
             </CardContent>
+            <CardFooter>
+              <Button onClick={handleExport} className="max-sm:w-full">Export Chart datas to PDF</Button>
+            </CardFooter>
           </Card>
         </div>
       )}

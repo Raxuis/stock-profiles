@@ -50,6 +50,7 @@
     "embla-carousel-react": "^8.0.4",
     "eslint-plugin-tailwindcss": "^3.15.1",
     "framer-motion": "^11.1.9",
+    "jspdf": "^2.5.1",
     "lucide-react": "^0.373.0",
     "next": "^14.2.4",
     "next-auth": "5.0.0-beta.19",

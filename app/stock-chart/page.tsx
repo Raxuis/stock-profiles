@@ -53,6 +53,7 @@ type StockData = {
 export default function StockChart() {
 
   const [chartData, setChartData] = useState<StockData[]>([]);
+  const [exportSymbol, setExportSymbol] = useState<string>(""); // State to store the export symbol to avoid user changing it
 
   const form = useForm<z.infer<typeof StockChartValidationSchema>>({
     resolver: zodResolver(StockChartValidationSchema),
@@ -99,8 +100,9 @@ export default function StockChart() {
 
       const sortedData = response.sort((a: StockData, b: StockData) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-
       setChartData(sortedData);
+      setExportSymbol(values.symbol);
+
       await createQuery(values.symbol, "StockChart");
       toast({
         title: "Nice One 🥳",
@@ -117,7 +119,7 @@ export default function StockChart() {
 
   const handleExport = () => {
     const chartDataString = JSON.stringify(chartData, null, 2);
-    exportAsPDF(chartDataString, "stock-chart.pdf");
+    exportAsPDF(chartDataString, `${exportSymbol}-datas.pdf`);
   };
 
   return (

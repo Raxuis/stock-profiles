@@ -13,6 +13,13 @@ const FavoriteUserStocks = ({ favoriteStocks }: { favoriteStocks: string[] }) =>
             <TableHead>Symbol</TableHead>
           </TableRow>
         </TableHeader>
+        <TableBody>
+          {favoriteStocks.map((stock) => (
+            <TableRow key={stock}>
+              <TableCell>{stock}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
       </Table>
     </div>
   )

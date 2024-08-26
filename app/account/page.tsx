@@ -11,6 +11,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { MAX_USER_QUERIES } from "@/constants/maxUserQueries";
+import { Separator } from "@/components/ui/separator";
+import FavoriteUserStocks from "@/components/FavoriteUserStocks";
 
 export default async function Home() {
   const user = await currentUser();
@@ -32,6 +34,15 @@ export default async function Home() {
       createdAt: "desc",
     },
     take: 10
+  });
+
+  const favoriteStocks = await prisma.user.findUnique({
+    where: {
+      id: user.id,
+    },
+    select: {
+      favoriteStocks: true,
+    },
   });
 
   return (
@@ -68,6 +79,8 @@ export default async function Home() {
           ))}
         </TableBody>
       </Table>
+      <Separator className="my-6" />
+      <FavoriteUserStocks favoriteStocks={favoriteStocks?.favoriteStocks || []} />
     </>
   );
 }

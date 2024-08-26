@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const FavoriteOrNotStar = ({ symbol, userId }: { symbol: string; userId: string }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     // Fetching initial favorite status from the server
@@ -19,7 +21,7 @@ const FavoriteOrNotStar = ({ symbol, userId }: { symbol: string; userId: string 
   const handleFavoriteClick = async () => {
     setIsFavorite(!isFavorite);
     await axios.post('/api/toggle-favorite', { symbol, userId });
-    window.location.reload();
+    router.refresh(); // Refreshing the page to update the favorite status
   };
 
   return (

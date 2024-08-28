@@ -19,6 +19,10 @@ function isString(value: unknown): value is string {
   return typeof value === 'string';
 }
 
+function formatQueryType(type: string): string {
+  return type.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, ''); // Example : Changes StockChart to stock-chart | StockProfile to stock-profile
+}
+
 export default async function Account() {
   const user = await currentUser();
   if (!user) {
@@ -85,7 +89,7 @@ export default async function Account() {
                 </div>
                 <FavoriteOrNotStar symbol={query.symbol} userId={user.id} isFavorite={favoriteSymbols.includes(query.symbol)} />
               </TableCell>
-              <TableCell className="text-center">{query.type}</TableCell>
+              <TableCell className="text-center">{formatQueryType(query.type)}</TableCell>
               <TableCell className="text-right">{query.createdAt.toLocaleString()}</TableCell>
             </TableRow>
           ))}

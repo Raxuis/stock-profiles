@@ -1,4 +1,4 @@
-<div align="center" id="top"> 
+<div align="center" id="top">
   <img src="https://i.pinimg.com/564x/4f/1d/69/4f1d69018176870ca7a94c1e8a50c824.jpg" alt="Stocks Profiles" />
 
 &#xa0;
@@ -10,7 +10,7 @@
 
 <p align="center">
 
-  <a href="https://prisma.io"> 
+  <a href="https://prisma.io">
     <img width="122" height="20" src="https://made-with.prisma.io/dark.svg" alt="Prisma" />
   </a>
 
@@ -24,7 +24,7 @@
 </p>
 
 <p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#dart-about">About</a> &#xa0; | &#xa0;
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
@@ -41,10 +41,14 @@ Stocks Profiles is a web application that allows users to view and analyze stock
 
 ## :sparkles: Features
 
-:heavy_check_mark: Login with Google / GitHub\
-:heavy_check_mark: Get a stock profile\
-:heavy_check_mark: Get a stock chart\
-:heavy_check_mark: Manage your queries
+:unlock: Login with Google / GitHub\
+:bar_chart: Get a stock profile\
+:book: Get a stock list\
+:chart: Get a stock chart\
+:interrobang: Manage your queries\
+:star: Add stocks to your favorites\
+:star2: View your favorite stocks\
+:bust_in_silhouette: View your profile
 
 ## :rocket: Technologies
 

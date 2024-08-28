@@ -1,25 +1,30 @@
 "use client";
 import React from 'react';
+import { useRouter } from 'next/navigation';
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from './ui/table';
 
 const FavoriteUserStocks = ({ favoriteStocks }: { favoriteStocks: { symbol: string }[] }) => {
+  const router = useRouter();
   if (favoriteStocks.length === 0) return <div>No favorite stocks</div>;
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Symbol</th>
-          </tr>
-        </thead>
-        <tbody>
+    <>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Symbol</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {favoriteStocks.map((stock) => (
-            <tr key={stock.symbol}>
-              <td>- {stock.symbol}</td>
-            </tr>
+            <TableRow className="cursor-pointer" key={stock.symbol} onClick={() => {
+              router.push(`/stock-profile?stock=${stock.symbol}`);
+            }}>
+              <TableCell>- {stock.symbol}</TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
-    </div>
+        </TableBody>
+      </Table>
+    </>
   );
 };
 

@@ -54,6 +54,8 @@ export default async function Account() {
     ?.filter(isString)
     .map(stock => ({ symbol: stock })) || [];
 
+  const favoriteSymbols = favoriteStockData.map(stock => stock.symbol);
+
   return (
     <>
       <p className="mt-6 text-center text-3xl sm:mt-10">Welcome {user.name}! 👋</p>
@@ -81,7 +83,7 @@ export default async function Account() {
                 <div className="flex items-center">
                   {query.symbol} {index === 0 && <span className="font-semibold">(most recent)</span>}
                 </div>
-                <FavoriteOrNotStar symbol={query.symbol} userId={user.id} />
+                <FavoriteOrNotStar symbol={query.symbol} userId={user.id} isFavorite={favoriteSymbols.includes(query.symbol)} />
               </TableCell>
               <TableCell className="text-center">{query.type}</TableCell>
               <TableCell className="text-right">{query.createdAt.toLocaleString()}</TableCell>

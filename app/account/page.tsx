@@ -79,7 +79,7 @@ export default async function Account() {
             <TableRow key={query.symbol}>
               <TableCell className="flex items-center gap-1 font-medium">
                 <div className="flex items-center">
-                  {query.symbol} <span className="font-semibold">{index === 0 && '(most recent)'}</span>
+                  {query.symbol} {index === 0 && <span className="font-semibold">(most recent)</span>}
                 </div>
                 <FavoriteOrNotStar symbol={query.symbol} userId={user.id} />
               </TableCell>

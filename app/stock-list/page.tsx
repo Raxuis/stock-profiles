@@ -100,7 +100,7 @@ const StockList = () => {
                 className='flex w-full items-center justify-center'
                 onClick={() => {
                   setShowFavorites(!showFavorites);
-                  setDisabledSlider(true);
+                  setDisabledSlider(!showFavorites);
                 }}
               >
                 <FaStar className={showFavorites ? "text-yellow-500" : "text-gray-500"} />

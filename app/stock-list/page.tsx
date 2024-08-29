@@ -15,6 +15,9 @@ import { Slider } from "@/components/ui/slider";
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FaStar } from 'react-icons/fa6';
+import { requiredCurrentUser } from '@/auth/current-user';
+import { prisma } from '@/prisma';
+import { getUserFavorites } from '@/server/getUserFavorites';
 
 const MAX_STOCKS = 30;  // Maximum number of stocks to display
 
@@ -22,6 +25,7 @@ const StockList = () => {
   const router = useRouter();
   const [stock, setStock] = useQueryState('stock');
   const [maxStocks, setMaxStocks] = useState(10);  // Default to 10 stocks
+  const [showFavorites, setShowFavorites] = useState(false);
   const { data, isLoading, isError, error, isFetching } = useQuery({
     queryKey: ['stocks'],
     queryFn: () => getStockList(),
@@ -30,20 +34,31 @@ const StockList = () => {
   const { data: session, status } = useSession();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [favoriteStocks, setFavoriteStocks] = useState<string[]>([]);
+
   useEffect(() => {
     if (status === 'authenticated') {
       setIsLoggedIn(true);
     }
   }, [status]);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      getUserFavorites().then(favorites => {
+        setFavoriteStocks(favorites as string[]);
+      });
+    }
+  }, [isLoggedIn]);
+
   if (!isLoggedIn) {
     return <p>You are not logged in, please log in to see stock-list page.</p>;
   }
 
-  const filteredData = data?.filter((item: any) =>
-    item?.symbol?.toLowerCase().includes(stock?.toLowerCase() || '') ||
-    item?.name?.toLowerCase().includes(stock?.toLowerCase() || '')
-  ) || [];
+  const filteredData = data?.filter((item: any) => {
+    const matchesSearch = item?.symbol?.toLowerCase().includes(stock?.toLowerCase() || '') ||
+      item?.name?.toLowerCase().includes(stock?.toLowerCase() || '');
+    return showFavorites ? (matchesSearch && favoriteStocks.includes(item.symbol)) : matchesSearch;
+  }) || [];
 
   if (isLoading || isFetching) {
     return (
@@ -56,8 +71,6 @@ const StockList = () => {
   if (isError) {
     return <div>Error: {(error as Error).message}</div>;
   }
-
-
 
   return (
     <div className='flex flex-col items-center justify-center gap-4'>
@@ -81,10 +94,12 @@ const StockList = () => {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className='flex w-full items-center justify-center'>
-              <Button variant="outline" className='flex w-full items-center justify-center'>
-                <FaStar className="text-yellow-500" onClick={() => {
-                  console.log('clicked');
-                }} />
+              <Button
+                variant="outline"
+                className='flex w-full items-center justify-center'
+                onClick={() => setShowFavorites(!showFavorites)}
+              >
+                <FaStar className={showFavorites ? "text-yellow-500" : "text-gray-500"} />
               </Button>
             </DropdownMenuItem>
           </DropdownMenuContent>

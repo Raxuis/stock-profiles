@@ -15,8 +15,7 @@ import { Slider } from "@/components/ui/slider";
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FaStar } from 'react-icons/fa6';
-import { requiredCurrentUser } from '@/auth/current-user';
-import { prisma } from '@/prisma';
+import { motion } from 'framer-motion';
 import { getUserFavorites } from '@/server/getUserFavorites';
 
 const MAX_STOCKS = 30;  // Maximum number of stocks to display
@@ -111,26 +110,34 @@ const StockList = () => {
       </div>
       <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
         {filteredData.slice(0, maxStocks).map((stock: any) => (
-          <Card key={stock?.symbol || 'unknown'} className='w-full'>
-            <CardHeader className='flex flex-col items-center px-10 py-6'>
-              {stock?.symbol && (
-                <CardTitle className='flex items-center'>
-                  {stock.symbol} {stock?.type && `(${stock.type})`}
-                </CardTitle>
-              )}
-              {stock?.name && (
-                <CardDescription>
-                  {stock.name}
-                </CardDescription>
-              )}
-              <Button
-                onClick={() => router.push(`/stock-profile?stock=${stock.symbol}`)}
-                className="mt-10 h-10 w-full"
-              >
-                Read More
-              </Button>
-            </CardHeader>
-          </Card>
+          <motion.div
+            key={stock?.symbol || 'unknown'}
+            className='w-full'
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Card className='w-full'>
+              <CardHeader className='flex flex-col items-center px-10 py-6'>
+                {stock?.symbol && (
+                  <CardTitle className='flex items-center'>
+                    {stock.symbol} {stock?.type && `(${stock.type})`}
+                  </CardTitle>
+                )}
+                {stock?.name && (
+                  <CardDescription>
+                    {stock.name}
+                  </CardDescription>
+                )}
+                <Button
+                  onClick={() => router.push(`/stock-profile?stock=${stock.symbol}`)}
+                  className="mt-10 h-10 w-full"
+                >
+                  Read More
+                </Button>
+              </CardHeader>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </div>

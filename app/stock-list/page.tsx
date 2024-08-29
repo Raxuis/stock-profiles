@@ -26,6 +26,7 @@ const StockList = () => {
   const [stock, setStock] = useQueryState('stock');
   const [maxStocks, setMaxStocks] = useState(10);  // Default to 10 stocks
   const [showFavorites, setShowFavorites] = useState(false);
+  const [disabledSlider, setDisabledSlider] = useState(false);
   const { data, isLoading, isError, error, isFetching } = useQuery({
     queryKey: ['stocks'],
     queryFn: () => getStockList(),
@@ -88,7 +89,7 @@ const StockList = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem className='flex flex-col items-center justify-center gap-4'>
+            <DropdownMenuItem className='flex flex-col items-center justify-center gap-4' disabled={disabledSlider}>
               <label htmlFor="maxStocksSlider">Max stocks: {maxStocks}</label>
               <Slider max={MAX_STOCKS} min={1} value={[maxStocks]} onValueChange={(value) => setMaxStocks(value[0] ?? 1)} />
             </DropdownMenuItem>
@@ -97,7 +98,10 @@ const StockList = () => {
               <Button
                 variant="outline"
                 className='flex w-full items-center justify-center'
-                onClick={() => setShowFavorites(!showFavorites)}
+                onClick={() => {
+                  setShowFavorites(!showFavorites);
+                  setDisabledSlider(true);
+                }}
               >
                 <FaStar className={showFavorites ? "text-yellow-500" : "text-gray-500"} />
               </Button>

@@ -108,14 +108,29 @@ const StockList = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
+      <motion.div className='grid grid-cols-1 gap-4 sm:grid-cols-2' initial="initial" animate="animate" transition={{
+        staggerChildren: 0.1
+      }}>
         {filteredData.slice(0, maxStocks).map((stock: any) => (
           <motion.div
             key={stock?.symbol || 'unknown'}
+            variants={{
+              initial: {
+                opacity: 0,
+                y: 20,
+              },
+              animate: {
+                opacity: 1,
+                y: 0,
+              },
+            }}
+            transition={{
+              type: 'spring',
+              stiffness: 200,
+              damping: 20,
+              mass: 2
+            }}
             className='w-full'
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
           >
             <Card className='w-full'>
               <CardHeader className='flex flex-col items-center px-10 py-6'>
@@ -139,7 +154,7 @@ const StockList = () => {
             </Card>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

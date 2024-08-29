@@ -8,12 +8,13 @@ import { Input } from '@/components/ui/input';
 import { VscLoading } from "react-icons/vsc";
 import { AiOutlineStock } from "react-icons/ai";
 import { useQueryState } from 'nuqs';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { MoreVertical } from 'lucide-react';
 import { Slider } from "@/components/ui/slider";
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { FaStar } from 'react-icons/fa6';
 
 const MAX_STOCKS = 30;  // Maximum number of stocks to display
 
@@ -77,6 +78,14 @@ const StockList = () => {
             <DropdownMenuItem className='flex flex-col items-center justify-center gap-4'>
               <label htmlFor="maxStocksSlider">Max stocks: {maxStocks}</label>
               <Slider max={MAX_STOCKS} min={1} value={[maxStocks]} onValueChange={(value) => setMaxStocks(value[0] ?? 1)} />
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className='flex w-full items-center justify-center'>
+              <Button variant="outline" className='flex w-full items-center justify-center'>
+                <FaStar className="text-yellow-500" onClick={() => {
+                  console.log('clicked');
+                }} />
+              </Button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

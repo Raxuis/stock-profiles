@@ -38,7 +38,7 @@ export const projects = [
     link: "https://nike.com",
   },
   {
-    image: "/mcdonals.svg",
+    image: "/mcdonalds.svg",
     text: "McDonald's",
     link: "https://www.mcdonalds.com",
   },

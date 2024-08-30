@@ -1,5 +1,6 @@
 import { SVGProps } from 'react';
 import { Cursor } from '@/components/core/Cursor';
+import Image from 'next/image';
 
 const MouseIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
@@ -54,6 +55,41 @@ export function Cursor2({ children, text }: { children: React.ReactNode, text: s
         </div>
       </Cursor>
       {children}
+    </div>
+  );
+}
+
+export function Cursor3({ imageSrc, imageAlt, children }: { imageSrc: string, imageAlt: string, children: React.ReactNode }) {
+  return (
+    <div>
+      <div>
+        <Cursor
+          attachToParent
+          variants={{
+            initial: { height: 0, opacity: 0, scale: 0.3 },
+            animate: { height: 'auto', opacity: 1, scale: 1 },
+            exit: { height: 0, opacity: 0, scale: 0.3 },
+          }}
+          transition={{
+            type: 'spring',
+            duration: 0.3,
+            bounce: 0.1,
+          }}
+          className='overflow-hidden'
+          springConfig={{
+            bounce: 0.01,
+          }}
+        >
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={500}
+            height={500}
+            className='rounded-lg border bg-background'
+          />
+        </Cursor>
+        {children}
+      </div>
     </div>
   );
 }

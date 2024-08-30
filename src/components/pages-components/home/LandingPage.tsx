@@ -5,7 +5,7 @@ import LandingSection from '@/components/pages-components/home/LandingSection';
 import { BorderBeam } from '@/components/magicui/border-beam';
 import Image from 'next/image';
 import CompaniesStack from '@/components/CompaniesStack';
-import { Cursor2 } from '@/components/cursor/CursorFunction';
+import { Cursor2 } from '@/components/cursor/CursorFunctions';
 
 export default function LandingPage(props) {
   return (

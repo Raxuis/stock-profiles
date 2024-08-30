@@ -4,9 +4,10 @@ import { LandingSocialProof } from '@/components/landing/social-proof/LandingSoc
 import { motion } from 'framer-motion';
 import { ConfettiButton } from './confetti';
 import { Link } from 'next-view-transitions'
+import { Cursor3 } from '@/components/cursor/CursorFunctions';
 
 
-const LandingSection = () => {
+const LandingSection = (props) => {
   return (
     <motion.div
       initial={{
@@ -30,9 +31,11 @@ const LandingSection = () => {
           </Link>
         </ConfettiButton>
 
-        <Button size="xl" variant="outline" asChild>
-          <a href="/about">Read more</a>
-        </Button>
+        <Cursor3 imageSrc="/about-creator.png" imageAlt="About Stocks-Profiles Creator">
+          <Button size="xl" variant="outline">
+            <Link href="/about">Read more</Link>
+          </Button>
+        </Cursor3>
 
         <LandingSocialProof
           className="mt-6 flex w-full justify-center"

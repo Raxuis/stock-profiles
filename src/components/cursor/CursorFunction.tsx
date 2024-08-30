@@ -32,7 +32,7 @@ const MouseIcon = (props: SVGProps<SVGSVGElement>) => {
 
 export function Cursor2({ children, text }: { children: React.ReactNode, text: string }) {
   return (
-    <div className='py-12'>
+    <div>
       <div className='overflow-hidden rounded-lg'>
         <Cursor
           attachToParent

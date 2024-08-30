@@ -32,30 +32,28 @@ const MouseIcon = (props: SVGProps<SVGSVGElement>) => {
 
 export function Cursor2({ children, text }: { children: React.ReactNode, text: string }) {
   return (
-    <div>
-      <div className='overflow-hidden rounded-lg'>
-        <Cursor
-          attachToParent
-          variants={{
-            initial: { scale: 0.3, opacity: 0 },
-            animate: { scale: 1, opacity: 1 },
-            exit: { scale: 0.3, opacity: 0 },
-          }}
-          transition={{
-            ease: 'easeInOut',
-            duration: 0.15,
-          }}
-          className='left-12 top-4'
-        >
-          <div>
-            <MouseIcon className='size-6' />
-            <div className='ml-4 mt-1 rounded-[4px] bg-destructive px-2 py-0.5 text-destructive-foreground'>
-              {text}
-            </div>
+    <div className='overflow-hidden rounded-lg'>
+      <Cursor
+        attachToParent
+        variants={{
+          initial: { scale: 0.3, opacity: 0 },
+          animate: { scale: 1, opacity: 1 },
+          exit: { scale: 0.3, opacity: 0 },
+        }}
+        transition={{
+          ease: 'easeInOut',
+          duration: 0.15,
+        }}
+        className='left-12 top-4'
+      >
+        <div>
+          <MouseIcon className='size-6' />
+          <div className='ml-4 mt-1 rounded-[4px] bg-destructive px-2 py-0.5 text-destructive-foreground'>
+            {text}
           </div>
-        </Cursor>
-        {children}
-      </div>
+        </div>
+      </Cursor>
+      {children}
     </div>
   );
 }

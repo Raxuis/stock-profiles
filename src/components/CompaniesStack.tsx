@@ -46,7 +46,7 @@ export const projects = [
 
 export default function CompaniesStack() {
   return (
-    <div className="flex flex-col items-center justify-center space-y-10">
+    <div className="mb-8 flex flex-col items-center justify-center space-y-10">
       <p className="text-2xl font-bold">Stocks we provide</p>
       <div className="mx-auto max-w-5xl px-8">
         <HoverEffect items={projects} />

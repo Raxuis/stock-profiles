@@ -42,13 +42,13 @@ export async function DockDemo() {
                   <Activity className="size-full" />
                 </Link>
               </DockIcon>
-              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
-                <Link href="/contact" className="size-full">
-                  <QuestionMarkIcon className="size-full" />
-                </Link>
-              </DockIcon>
             </>
           )}
+          <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+            <Link href="/contact" className="size-full">
+              <QuestionMarkIcon className="size-full" />
+            </Link>
+          </DockIcon>
           <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
             <Link href="/about" className="size-full">
               <Fingerprint className="size-full" />

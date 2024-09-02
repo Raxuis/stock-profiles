@@ -36,7 +36,7 @@ const ContactForm = () => {
     }
   }
   return (
-    <Form form={form} onSubmit={onSubmit} className="mx-auto  w-full max-w-md space-y-6">
+    <Form form={form} onSubmit={onSubmit} className="w-full max-w-xl space-y-6">
       <FormField control={form.control} name="name" render={({ field }) => (
         <FormItem>
           <FormLabel className="text-lg font-semibold">Your name</FormLabel>

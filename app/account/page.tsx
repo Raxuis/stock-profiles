@@ -61,15 +61,17 @@ export default async function Account() {
   const favoriteSymbols = favoriteStockData.map(stock => stock.symbol);
 
   return (
-    <>
-      <p className="mt-6 text-center text-3xl sm:mt-10">Welcome {user.name}! 👋</p>
-      <p className="text-center">{user.plan === 'FREE' ? 'You have a free account.' : 'You have a premium account.'}</p>
-      <p>You&apos;ve done {userQueriesCount} / {MAX_USER_QUERIES} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
-      {userQueriesCount >= MAX_USER_QUERIES && (
-        <p className="text-center text-sm">
-          You have reached the limit of {MAX_USER_QUERIES} queries. Please subscribe to our PREMIUM plan.
-        </p>
-      )}
+    <div className="space-y-4 max-sm:mb-20">
+      <div className="space-y-4">
+        <p className="mt-6 text-center text-3xl sm:mt-10">Welcome {user.name}! 👋</p>
+        <p className="text-center">{user.plan === 'FREE' ? 'You have a free account.' : 'You have a premium account.'}</p>
+        <p>You&apos;ve done {userQueriesCount} / {MAX_USER_QUERIES} {userQueriesCount <= 1 ? "query" : "queries"}!</p>
+        {userQueriesCount >= MAX_USER_QUERIES && (
+          <p className="text-center text-sm">
+            You have reached the limit of {MAX_USER_QUERIES} queries. Please subscribe to our PREMIUM plan.
+          </p>
+        )}
+      </div>
       <Progress value={userQueriesCount} max={MAX_USER_QUERIES} />
       <Table className="*:cursor-default">
         <TableCaption className="mr-10">Your 10 last queries.</TableCaption>
@@ -97,6 +99,6 @@ export default async function Account() {
       </Table>
       <Separator className="my-6" />
       <FavoriteUserStocks favoriteStocks={favoriteStockData} />
-    </>
+    </div>
   );
 }

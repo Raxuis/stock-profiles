@@ -14,6 +14,7 @@ import createQuery from '@/features/stock-profile/createQuery';
 import { useSession } from 'next-auth/react';
 import { useQueryState } from 'nuqs';
 import { SymbolSchema } from '@/lib/validation';
+import { cn } from '@/lib/utils';
 
 let stocksData: StockDatasType[];
 
@@ -24,10 +25,6 @@ const FormSchema = z.object({
 const StockProfile = () => {
   const [localStockSymbolFormatted, setLocalStockSymbolFormatted] = useState<StockDatasType[]>([]);
   const [stock, setStock] = useQueryState('stock');
-
-  useEffect(() => {
-    console.log(stock);
-  }, [stock]);
 
   useEffect(() => {
     const fetchData = () => {
@@ -152,7 +149,7 @@ const StockProfile = () => {
                     {stock.changes && <Badge value={stock.changes} currency={stock.currency} />}
                   </div>
                 </div>
-                {stock.website && <a href={stock.website} target='_blank' className={buttonVariants({ variant: 'outline', size: 'lg' })}>Website: {stock.website}</a>}
+                {stock.website && <a href={stock.website} target='_blank' className={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'text-ellipsis overflow-hidden')}>{stock.website}</a>}
               </CardContent>
             </Card>
           ))}

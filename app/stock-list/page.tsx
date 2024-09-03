@@ -3,12 +3,27 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getStockList } from '@/features/stocks/stock.action';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
+
 import { Input } from '@/components/ui/input';
 import { VscLoading } from "react-icons/vsc";
 import { AiOutlineStock } from "react-icons/ai";
 import { useQueryState } from 'nuqs';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
+
 import { Button } from '@/components/ui/button';
 import { MoreVertical } from 'lucide-react';
 import { Slider } from "@/components/ui/slider";

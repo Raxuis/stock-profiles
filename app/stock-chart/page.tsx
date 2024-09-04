@@ -139,7 +139,7 @@ export default function StockChart() {
   return (
     <div className="w-full space-y-6">
       <Form form={form} onSubmit={onSubmit}>
-        <div className="space-y-6">
+        <div className="space-y-2 sm:space-y-6">
           <FormField
             control={form.control}
             name="symbol"
@@ -147,7 +147,7 @@ export default function StockChart() {
               <FormItem className="flex-1">
                 <FormLabel>Stock</FormLabel>
                 <FormControl>
-                  <div className="grid w-full max-w-sm items-center gap-1.5">
+                  <div className="grid w-full items-center gap-1.5 sm:max-w-sm">
                     <Input placeholder="AAPL" {...field} />
                   </div>
                 </FormControl>
@@ -176,8 +176,8 @@ export default function StockChart() {
 
       {chartData.length > 0 && (
         <div className='flex justify-center'>
-          <Card className='mx-auto w-full p-4 pt-8 max-sm:mb-20'>
-            <CardContent className='flex flex-col space-y-6'>
+          <Card className='mx-auto w-full p-2 max-sm:mb-20 sm:p-4'>
+            <CardContent>
               <ChartContainer config={chartConfig}>
                 <AreaChart
                   accessibilityLayer

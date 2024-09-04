@@ -21,7 +21,7 @@ export default function TimeframeSelect({ timeframe, setTimeFrame }: TimeFramePr
 
   return (
     <Select onValueChange={(value: string) => setTimeFrame(value as TimeframeType)} >
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-full sm:w-[180px]">
         <SelectValue placeholder="Select a Timeframe" />
       </SelectTrigger>
       <SelectContent>

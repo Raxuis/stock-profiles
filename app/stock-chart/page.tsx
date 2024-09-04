@@ -139,7 +139,7 @@ export default function StockChart() {
   return (
     <div className="w-full space-y-6">
       <Form form={form} onSubmit={onSubmit}>
-        <div className="space-y-2 sm:space-y-6">
+        <div className="space-y-2">
           <FormField
             control={form.control}
             name="symbol"
@@ -170,7 +170,7 @@ export default function StockChart() {
             </FormItem>
           )} />
 
-          <Button type="submit" className="max-sm:w-full">Submit</Button>
+          <Button type="submit" className="max-sm:w-full" style={{ marginTop: '1rem' }}>Submit</Button>
         </div>
       </Form>
 

@@ -19,10 +19,14 @@ interface DatePickerProps {
   setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>
 }
 
-
 export default function DateRangePicker({
-  className, date, setDate
-}: DatePickerProps) {
+      className, date, setDate
+    }) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Reset time to midnight
+  const maxDate = new Date(today);
+  maxDate.setDate(today.getDate() - 1); // Set max date to yesterday
+
   return (
     <div className={cn("grid gap-2", className)}>
       <Popover>
@@ -58,7 +62,7 @@ export default function DateRangePicker({
             selected={date}
             onSelect={setDate}
             numberOfMonths={1}
-            toDate={new Date()}
+            toDate={maxDate} // Set max date to yesterday
           />
         </PopoverContent>
       </Popover>

@@ -68,13 +68,15 @@ export default function StockChart() {
 
   const [chartData, setChartData] = useState<StockData[]>([]);
   const [exportSymbol, setExportSymbol] = useState<string>(""); // State to store the export symbol to avoid user changing it
+  const currentDay = new Date();
+  const dateWithoutCurrentDay = new Date(currentDay.setDate(currentDay.getDate() - 1));
 
   const form = useForm<z.infer<typeof StockChartValidationSchema>>({
     resolver: zodResolver(StockChartValidationSchema),
     defaultValues: {
       symbol: "",
       timeframe: "1hour",
-      date: { from: new Date(), to: new Date() },
+      date: { from: dateWithoutCurrentDay, to: dateWithoutCurrentDay },
     },
   })
 

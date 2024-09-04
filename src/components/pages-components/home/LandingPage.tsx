@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import { ProblemsSection } from '@/components/pages-components/home/ProblemsSection';
 import LandingSection from '@/components/pages-components/home/LandingSection';
@@ -13,7 +12,7 @@ export default function LandingPage(props) {
       <LandingSection />
       <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
         <Cursor2 text="Website screenshot">
-          <img src="/stocks-profiles.png" alt="Hero Image" className='size-full object-contain' />
+          <Image src="/stocks-profiles.png" alt="Hero Image" width={1000} height={500} className='size-full object-contain' priority />
           <BorderBeam size={250} duration={12} delay={9} />
         </Cursor2>
       </div>

@@ -8,7 +8,7 @@ const Banner = () => {
   return (
     <>
       <Link href="/" className="group flex flex-1 items-center gap-2">
-        <Image src="/icon.png" priority={true} width={30} height={30} alt="stocks-profiles-logo" className="duration-500 group-hover:scale-105" />
+        <Image src="/icon.png" priority width={30} height={30} alt="stocks-profiles-logo" className="duration-500 group-hover:scale-105" />
         <motion.p
           className="text-lg"
           animate={

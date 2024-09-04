@@ -20,8 +20,8 @@ interface DatePickerProps {
 }
 
 export default function DateRangePicker({
-      className, date, setDate
-    }) {
+  className, date, setDate
+}: DatePickerProps) {
   const today = new Date();
   today.setHours(0, 0, 0, 0); // Reset time to midnight
   const maxDate = new Date(today);

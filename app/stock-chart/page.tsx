@@ -238,7 +238,7 @@ export default function StockChart() {
                       setOpen(false);
                     }}>Export as PDF</Button>
                     <Button variant="outline" className="max-sm:w-full" onClick={() => {
-                      exportAsCSV(chartDataString, `${exportSymbol}-datas.csv`);
+                      exportAsCSV(chartData, `${exportSymbol}-datas.csv`);
                       setOpen(false);
                     }}>Export as CSV</Button>
                   </AlertDialogFooter>

@@ -28,15 +28,25 @@ export const exportAsPDF = (data: any, filename: string) => {
 };
 
 export const exportAsCSV = (data: any, filename: string) => {
-  console.log(data);
-  // Ensure data is an array
+  // Ensuring data is an array
   if (!Array.isArray(data)) {
     console.error("Data is not an array:", data);
     return;
   }
 
-  // Convert array of objects to array of arrays
-  const csvData = data.map((row: any) => Object.values(row)).map((rowArray: any) => rowArray.join(",")).join("\n");
+  const header = ["Date", "Open", "Low", "High", "Close", "Volume"];
+
+  const csvData = [
+    header.join(","), // Adding header row to make it more understandable
+    ...data.map((row: any) => [
+      row.date,
+      row.open,
+      row.low,
+      row.high,
+      row.close,
+      row.volume,
+    ].join(","))
+  ].join("\n");
 
   const blob = new Blob([csvData], { type: "text/csv" });
   const url = URL.createObjectURL(blob);

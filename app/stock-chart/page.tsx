@@ -176,7 +176,7 @@ export default function StockChart() {
 
       {chartData.length > 0 && (
         <div className='flex justify-center'>
-          <Card className='mx-auto w-full p-4 pt-8'>
+          <Card className='mx-auto w-full p-4 pt-8 max-sm:mb-20'>
             <CardContent className='flex flex-col space-y-6'>
               <ChartContainer config={chartConfig}>
                 <AreaChart
@@ -231,18 +231,20 @@ export default function StockChart() {
                         <AlertDialogTitle>Export Chart datas</AlertDialogTitle>
                         <AlertDialogDescription>Are you sure you want to export the chart datas?</AlertDialogDescription>
                       </div>
-                      <Plus size={24} className="rotate-45 text-white self-start cursor-pointer duration-300 hover:text-red-500" onClick={() => setOpen(false)} />
+                      <Plus size={24} className="rotate-45 cursor-pointer self-start text-white duration-300 hover:text-red-500" onClick={() => setOpen(false)} />
                     </div>
                   </AlertDialogHeader>
                   <AlertDialogFooter className="mt-2">
-                    <Button variant="outline" className="max-sm:w-full" onClick={() => {
-                      exportAsPDF(chartDataString, `${exportSymbol}-datas.pdf`);
-                      setOpen(false);
-                    }}>Export as PDF</Button>
-                    <Button variant="outline" className="max-sm:w-full" onClick={() => {
-                      exportAsCSV(chartData, `${exportSymbol}-datas.csv`);
-                      setOpen(false);
-                    }}>Export as CSV</Button>
+                    <div className="flex items-center justify-between gap-2">
+                      <Button variant="outline" className="bg-red-700 text-white hover:bg-red-800 hover:text-white max-sm:w-full" onClick={() => {
+                        exportAsPDF(chartDataString, `${exportSymbol}-datas.pdf`);
+                        setOpen(false);
+                      }}>Export as PDF</Button>
+                      <Button variant="outline" className="bg-green-700 text-white hover:bg-green-800 hover:text-white max-sm:w-full" onClick={() => {
+                        exportAsCSV(chartData, `${exportSymbol}-datas.csv`);
+                        setOpen(false);
+                      }}>Export as CSV</Button>
+                    </div>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>

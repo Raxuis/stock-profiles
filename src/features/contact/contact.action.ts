@@ -12,6 +12,10 @@ export async function sendContactForm(data: z.infer<typeof ContactSchema>) {
 
   if (!res.ok) {
     const err = await res.json();
+    // Check if the error message indicates too many requests
+    if (err.error === 'Too many requests. Please wait a minute before sending another email.') {
+      throw new Error("You already sent an email. Please wait a minute before trying again.");
+    }
     throw new Error(err.message);
   }
 

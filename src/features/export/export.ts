@@ -26,3 +26,14 @@ export const exportAsPDF = (data: any, filename: string) => {
 
   doc.save(filename);
 };
+
+export const exportAsCSV = (data: any, filename: string) => {
+  const csvData = data.map((row: any) => row.join(",")).join("\n");
+  const blob = new Blob([csvData], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+};

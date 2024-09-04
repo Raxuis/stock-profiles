@@ -29,8 +29,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-import createQuery from "@/features/stock-profile/createQuery";
-import { StockChartValidationSchema } from "@/lib/validation";
 import {
   Form,
   FormControl,
@@ -40,9 +38,25 @@ import {
   FormMessage
 } from "@/components/ui/form";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
+import createQuery from "@/features/stock-profile/createQuery";
+import { StockChartValidationSchema } from "@/lib/validation";
+
 import { Input } from "@/components/ui/input";
 import { useSession } from "next-auth/react";
-import { exportAsPDF } from "@/features/export/export";
+import { exportAsCSV, exportAsPDF } from "@/features/export/export";
+import { Plus } from "lucide-react";
 
 type StockData = {
   date: string;
@@ -67,6 +81,7 @@ export default function StockChart() {
   const { data: session, status } = useSession();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -117,10 +132,7 @@ export default function StockChart() {
     }
   };
 
-  const handleExport = () => {
-    const chartDataString = JSON.stringify(chartData, null, 2);
-    exportAsPDF(chartDataString, `${exportSymbol}-datas.pdf`);
-  };
+  const chartDataString = JSON.stringify(chartData, null, 2);
 
   return (
     <div className="w-full space-y-6">
@@ -206,7 +218,32 @@ export default function StockChart() {
               </ChartContainer>
             </CardContent>
             <CardFooter>
-              <Button onClick={handleExport} className="max-sm:w-full">Export Chart datas to PDF</Button>
+              <AlertDialog open={open} onOpenChange={setOpen}>
+                <AlertDialogTrigger asChild>
+                  <Button variant="outline" className="max-sm:w-full">Export Chart datas</Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col space-y-2">
+                        <AlertDialogTitle>Export Chart datas</AlertDialogTitle>
+                        <AlertDialogDescription>Are you sure you want to export the chart datas?</AlertDialogDescription>
+                      </div>
+                      <Plus size={24} className="rotate-45 text-white self-start cursor-pointer duration-300 hover:text-red-500" onClick={() => setOpen(false)} />
+                    </div>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter className="mt-2">
+                    <Button variant="outline" className="max-sm:w-full" onClick={() => {
+                      exportAsPDF(chartDataString, `${exportSymbol}-datas.pdf`);
+                      setOpen(false);
+                    }}>Export as PDF</Button>
+                    <Button variant="outline" className="max-sm:w-full" onClick={() => {
+                      exportAsCSV(chartDataString, `${exportSymbol}-datas.csv`);
+                      setOpen(false);
+                    }}>Export as CSV</Button>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </CardFooter>
           </Card>
         </div>

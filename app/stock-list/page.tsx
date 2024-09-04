@@ -32,7 +32,7 @@ import { useRouter } from 'next/navigation';
 import { FaStar } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
 import { getUserFavorites } from '@/server/getUserFavorites';
-import { MAX_STOCKS } from '@/constants/maxStocks';
+import { MAX_STOCKS } from '@/constants';
 
 const StockList = () => {
   const router = useRouter();

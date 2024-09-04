@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { MAX_USER_QUERIES } from "@/constants/maxUserQueries";
+import { MAX_USER_QUERIES } from "@/constants";
 import { Separator } from "@/components/ui/separator";
 import FavoriteUserStocks from "@/components/FavoriteUserStocks";
 import FavoriteOrNotStar from "@/components/FavoriteOrNotStar";

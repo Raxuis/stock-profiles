@@ -48,7 +48,6 @@ export async function getStockList() {
         apikey: env.STOCKS_API_KEY
       }
     });
-
     return response.data.length < 1 ? (() => { throw new Error(); })() : response.data;
   } catch (error) {
     throw new Error(String(error));

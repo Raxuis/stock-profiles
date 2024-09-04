@@ -32,8 +32,7 @@ import { useRouter } from 'next/navigation';
 import { FaStar } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
 import { getUserFavorites } from '@/server/getUserFavorites';
-
-const MAX_STOCKS = 30;  // Maximum number of stocks to display
+import { MAX_STOCKS } from '@/constants/maxStocks';
 
 const StockList = () => {
   const router = useRouter();

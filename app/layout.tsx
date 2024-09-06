@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { ViewTransitions } from "next-view-transitions";
@@ -18,7 +19,7 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Stocks Profiles",
   description: "Welcome to Stocks Profiles, your ultimate destination for comprehensive information on every stock.",
   metadataBase: new URL(getServerUrl())

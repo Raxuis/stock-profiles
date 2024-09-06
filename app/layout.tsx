@@ -11,7 +11,7 @@ import { Header } from "@/layout/Header";
 import { Layout } from "@/components/layout";
 import TanStackProviders from "@/providers/TanstackProviders";
 import { DockDemo } from "@/components/magicui/DockDemo";
-import { getServerUrl } from "@/get-server-url";
+// import { getServerUrl } from "@/get-server-url";
 
 
 const inter = Inter({
@@ -22,7 +22,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Stocks Profiles",
   description: "Welcome to Stocks Profiles, your ultimate destination for comprehensive information on every stock.",
-  metadataBase: new URL(getServerUrl())
+  // metadataBase: new URL(getServerUrl())
 };
 
 export default function RootLayout({

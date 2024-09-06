@@ -20,7 +20,7 @@ const LandingSection = () => {
       viewport={{ once: true }} >
 
       <LandingPrimaryImageCtaSection
-        title="Stocks Profiles"
+        title="Stock Profiles"
         description="Dive into detailed profiles of companies, exploring their financial performance, market trends, and potential investment opportunities. From stock history to analyst ratings, our platform offers a wealth of data to empower your investment decisions."
         imagePosition="center"
         textPosition="center"
@@ -31,7 +31,7 @@ const LandingSection = () => {
           </Link>
         </ConfettiButton>
 
-        <Cursor3 imageSrc="/about-creator.png" imageAlt="About Stocks-Profiles Creator">
+        <Cursor3 imageSrc="/about-creator.png" imageAlt="About Stock-Profiles Creator">
           <Button size="xl" variant="outline">
             <Link href="/about">Read more</Link>
           </Button>

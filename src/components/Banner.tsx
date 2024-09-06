@@ -28,7 +28,7 @@ const Banner = () => {
               duration: 0.5,
               ease: "easeInOut",
             }
-          }>Stocks Profiles</motion.p>
+          }>Stock Profiles</motion.p>
       </Link>
     </>
   )

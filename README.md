@@ -1,12 +1,12 @@
 <div align="center" id="top">
-  <img src="https://i.pinimg.com/564x/4f/1d/69/4f1d69018176870ca7a94c1e8a50c824.jpg" alt="Stocks Profiles" />
+  <img src="https://i.pinimg.com/564x/4f/1d/69/4f1d69018176870ca7a94c1e8a50c824.jpg" alt="Stock Profiles" />
 
 &#xa0;
 
-  <!-- <a href="https://stocksprofiles.netlify.app">Demo</a> -->
+  <!-- <a href="https://stockprofiles.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Stocks Profiles</h1>
+<h1 align="center">Stock Profiles</h1>
 
 <p align="center">
 
@@ -14,13 +14,13 @@
     <img width="122" height="20" src="https://made-with.prisma.io/dark.svg" alt="Prisma" />
   </a>
 
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Raxuis/stocks-profiles?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Raxuis/stock-profiles?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Raxuis/stocks-profiles?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Raxuis/stock-profiles?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Raxuis/stocks-profiles?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Raxuis/stock-profiles?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/Raxuis/stocks-profiles?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/Raxuis/stock-profiles?color=56BEB8">
 </p>
 
 <p align="center">
@@ -37,7 +37,7 @@
 
 ## :dart: About
 
-Stocks Profiles is a web application that allows users to view and analyze stock prices. It provides a user-friendly interface for navigating through various stocks and their corresponding data.
+Stock Profiles is a web application that allows users to view and analyze stock prices. It provides a user-friendly interface for navigating through various stock and their corresponding data.
 
 ## :sparkles: Features
 
@@ -46,8 +46,8 @@ Stocks Profiles is a web application that allows users to view and analyze stock
 :book: Get a stock list\
 :chart: Get a stock chart\
 :interrobang: Manage your queries\
-:star: Add stocks to your favorites\
-:star2: View your favorite stocks\
+:star: Add stock to your favorites\
+:star2: View your favorite stock\
 :bust_in_silhouette: View your profile
 
 ## :rocket: Technologies
@@ -71,13 +71,13 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [
 1. **Clone this project**
 
    ```bash
-   $ git clone https://github.com/Raxuis/stocks-profiles
+   $ git clone https://github.com/Raxuis/stock-profiles
    ```
 
 2. **Access the project directory**
 
    ```bash
-   $ cd stocks-profiles
+   $ cd stock-profiles
    ```
 
 3. **Install dependencies**

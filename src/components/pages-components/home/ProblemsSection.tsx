@@ -35,8 +35,8 @@ export const ProblemsSection = () => {
         </div>
         <Tabs defaultValue="before">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="before">Before Stocks-Profiles</TabsTrigger>
-            <TabsTrigger value="after">After Stocks-Profiles</TabsTrigger>
+            <TabsTrigger value="before">Before Stock-Profiles</TabsTrigger>
+            <TabsTrigger value="after">After Stock-Profiles</TabsTrigger>
           </TabsList>
           <TabsContent value="before">
             <Card>

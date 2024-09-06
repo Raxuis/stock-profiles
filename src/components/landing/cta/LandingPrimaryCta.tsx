@@ -38,7 +38,7 @@ const LandingPrimaryCtaContent = ({
       {leadingComponent}
 
       {title ? (
-        <LetterPullup words={"Stocks Profiles"} delay={0.1} className='text-4xl font-semibold text-white md:max-w-xl lg:text-5xl' />
+        <LetterPullup words={"Stock Profiles"} delay={0.1} className='text-4xl font-semibold text-white md:max-w-xl lg:text-5xl' />
       ) : (
         titleComponent
       )}

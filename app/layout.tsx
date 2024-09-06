@@ -20,8 +20,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Stocks Profiles",
-  description: "Welcome to Stocks Profiles, your ultimate destination for comprehensive information on every stock.",
+  title: "Stock Profiles",
+  description: "Welcome to Stock Profiles, your ultimate destination for comprehensive information on every stock.",
   metadataBase: new URL(getServerUrl())
 };
 

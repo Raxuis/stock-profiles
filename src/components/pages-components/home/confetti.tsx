@@ -34,7 +34,7 @@ export type ConfettiRef = Api | null;
 
 const ConfettiContext = createContext<Api>({} as Api);
 
-const Confetti = forwardRef<ConfettiRef, Props>((props, ref) => {
+const Confetti = forwardRef<ConfettiRef, Props>(function Confetti(props, ref) { // Added display name
   const {
     options,
     globalOptions = { resize: true, useWorker: true },

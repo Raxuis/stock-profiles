@@ -1,6 +1,6 @@
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 
-const Badge = ({ value, currency }) => {
+const Badge = ({ value, currency }: { value: number, currency: string }) => {
   const isPositive = value > 0
   const isNegative = value < 0
 

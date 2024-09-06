@@ -7,7 +7,7 @@ import { Link } from 'next-view-transitions'
 import { Cursor3 } from '@/components/cursor/CursorFunctions';
 
 
-const LandingSection = (props) => {
+const LandingSection = () => {
   return (
     <motion.div
       initial={{

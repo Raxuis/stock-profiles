@@ -15,41 +15,41 @@ export async function DockDemo() {
     <div className="fixed bottom-2 z-50 flex w-full justify-center">
       <div className="relative">
         <Dock magnification={60} distance={100}>
-          <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+          <DockIcon className="bg-black/10 px-3 dark:bg-white/10">
             <Link href="/" className="size-full">
               <Home className="size-full" />
             </Link>
           </DockIcon>
           {user && (
             <>
-              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+              <DockIcon className="bg-black/10 px-3 dark:bg-white/10">
                 <Link href="/account" className="size-full">
                   <User className="size-full" />
                 </Link>
               </DockIcon>
-              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+              <DockIcon className="bg-black/10 px-3 dark:bg-white/10">
                 <Link href="/stock-list" className="size-full">
                   <List className="size-full" />
                 </Link>
               </DockIcon>
-              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+              <DockIcon className="bg-black/10 px-3 dark:bg-white/10">
                 <Link href="/stock-profile" className="size-full">
                   <Building2 className="size-full" />
                 </Link>
               </DockIcon>
-              <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+              <DockIcon className="bg-black/10 px-3 dark:bg-white/10">
                 <Link href="/stock-chart" className="size-full">
                   <Activity className="size-full" />
                 </Link>
               </DockIcon>
             </>
           )}
-          <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+          <DockIcon className="bg-black/10 px-3 dark:bg-white/10">
             <Link href="/contact" className="size-full">
               <QuestionMarkIcon className="size-full" />
             </Link>
           </DockIcon>
-          <DockIcon className="bg-black/10 p-3 dark:bg-white/10">
+          <DockIcon className="bg-black/10 px-3 dark:bg-white/10">
             <Link href="/about" className="size-full">
               <Fingerprint className="size-full" />
             </Link>

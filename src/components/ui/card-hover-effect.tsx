@@ -9,7 +9,7 @@ export const HoverEffect = ({
   className,
 }: {
   items: {
-    image: string | React.ReactNode;
+    image: string;
     text: string;
     link: string;
   }[];
@@ -51,9 +51,9 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card className="flex flex-col items-center justify-center">
-            <CardTitle>
+            <CardTitle className="flex items-center justify-center">
               {typeof item.image === 'string' ? (
-                <Image src={item.image} alt={item.text} width={100} height={100} className="size-full" />
+                <Image src={item.image} alt={item.text} width={100} height={100} className="size-full max-h-16 max-w-16" />
               ) : (
                 <CardImage>{item.image}</CardImage>
               )}
@@ -74,7 +74,9 @@ export const CardImage = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="flex size-full">{children}</div>
+    <div className="flex size-full">{
+      children
+    }</div>
   );
 };
 

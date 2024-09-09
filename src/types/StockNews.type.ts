@@ -5,7 +5,7 @@ export type StockNewsType = {
   site: string;
   tags: string[];
   tickers: string[];
-  time: Number;
+  time: number;
   title: string;
   url: string;
 }

@@ -14,6 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import createQuery from '@/features/stock-profile/createQuery';
 import { useSession } from 'next-auth/react';
 import { AiOutlineLoading } from 'react-icons/ai';
+import { formatDistance } from 'date-fns';
 
 
 const StockNews = () => {
@@ -41,6 +42,8 @@ const StockNews = () => {
       setIsLoading(true);
       const response = await getStockNews(data.symbol, data.number);
       setNews(response.stories);
+      console.log(response);
+      console.log(typeof (response.stories));
       await createQuery(data.symbol, "StockNews");
       toast({
         title: "📈 Wow 📈",
@@ -111,7 +114,10 @@ const StockNews = () => {
             <Card key={news.url} className='w-full'>
               <CardHeader className='flex items-center gap-4 px-10 py-6'>
                 {news.favicon_url && <img src={news.favicon_url} alt={news.title} className='size-20' />}
-                {news.title && <CardTitle className='flex items-center'> {news.title}</CardTitle>}
+                <div className='flex flex-col gap-2'>
+                  {news.title && <CardTitle className='flex items-center'> {news.title}</CardTitle>}
+                  {news.time && <CardDescription className='text-xs'>{formatDistance(new Date(news.time), new Date())} ago</CardDescription>}
+                </div>
               </CardHeader>
               <CardContent className='flex flex-col space-y-6'>
                 {news.description && <CardDescription>{news.description}</CardDescription>}

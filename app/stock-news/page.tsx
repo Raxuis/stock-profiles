@@ -1,5 +1,5 @@
 "use client";
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { useZodForm, Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
 import { z } from 'zod';
@@ -8,7 +8,9 @@ import { Input } from '@/components/ui/input';
 import { getStockNews } from '@/features/stocks/stock.action';
 import { useState } from 'react';
 import { StockNewsType } from '@/types/StockNews.type';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 
 
 const StockNews = () => {
@@ -78,21 +80,26 @@ const StockNews = () => {
         <Button type="submit" className='mt-3 max-sm:w-full'>Search</Button>
       </Form>
       {news.length > 0 && (
-        <div className='mt-8 flex justify-center'>
+        <div className='mt-8 flex w-full flex-col justify-center gap-4'>
           {news.map((news: StockNewsType) => (
-            <Card key={news.url} className='w-full sm:w-2/3 md:w-1/2'>
+            <Card key={news.url} className='w-full'>
               <CardHeader className='flex items-center px-10 py-6'>
                 {news.favicon_url && <img src={news.favicon_url} alt={news.title} className='size-20' />}
                 <div className='flex flex-col space-y-1.5 p-6'>
                   {news.title && <CardTitle className='flex items-center'> {news.title}</CardTitle>}
-                  {news.description && <CardDescription>Queried: {news.description}</CardDescription>}
                 </div>
               </CardHeader>
               <CardContent className='flex flex-col space-y-6 '>
-                <div className='space-y-4 px-2'>
-                  Test
-                </div>
+                {news.description && <CardDescription>{news.description}</CardDescription>}
+                {news.description && <a href={news.url} target='_blank' className={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'text-ellipsis overflow-hidden')}>{news.url}</a>}
               </CardContent>
+              <CardFooter className='flex items-center justify-between px-10 py-6'>
+                {news.tags && news.tags.map((tag: string, idx: number) => (
+                  <Badge key={idx}>
+                    {tag.toUpperCase()}
+                  </Badge>
+                ))}
+              </CardFooter>
             </Card>
           ))}
         </div>

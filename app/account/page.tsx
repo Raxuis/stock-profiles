@@ -20,7 +20,7 @@ function isString(value: unknown): value is string {
 }
 
 function formatQueryType(type: string): string {
-  return type.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, ''); // Example : Changes StockChart to stock-chart | StockProfile to stock-profile
+  return type.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, ''); // Example : Changes StockChart to stock-chart | StockProfile to stock-profile | StockNews to stock-news
 }
 
 export default async function Account() {

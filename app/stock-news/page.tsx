@@ -11,6 +11,7 @@ import { StockNewsType } from '@/types/StockNews.type';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import createQuery from '@/features/stock-profile/createQuery';
 
 
 const StockNews = () => {
@@ -28,6 +29,7 @@ const StockNews = () => {
     try {
       const response = await getStockNews(data.symbol, data.number);
       setNews(response.stories);
+      await createQuery(data.symbol, "StockNews");
       toast({
         title: "📈 Wow 📈",
         description: (
@@ -91,7 +93,7 @@ const StockNews = () => {
                 {news.description && <CardDescription>{news.description}</CardDescription>}
                 {news.description && <a href={news.url} target='_blank' className={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'text-ellipsis overflow-hidden')}>{news.url}</a>}
               </CardContent>
-              <CardFooter className='flex items-center justify-between px-10 py-6'>
+              <CardFooter className='flex items-center justify-between gap-2 px-10 py-6'>
                 {news.tags && news.tags.map((tag: string, idx: number) => (
                   <Badge key={idx}>
                     {tag.toUpperCase()}

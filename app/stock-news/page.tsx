@@ -13,8 +13,10 @@ import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import createQuery from '@/features/stock-profile/createQuery';
 import { useSession } from 'next-auth/react';
-import { AiOutlineLoading } from 'react-icons/ai';
+import { AiOutlineLoading, AiOutlineShareAlt } from 'react-icons/ai';
 import { formatDistance } from 'date-fns';
+import { ConfettiButton } from "@/components/magicui/confetti";
+
 
 
 const StockNews = () => {
@@ -23,6 +25,7 @@ const StockNews = () => {
   const { data: session, status } = useSession();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isCopied, setIsCopied] = useState<boolean[]>(Array(news.length).fill(false));
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -36,6 +39,23 @@ const StockNews = () => {
       symbol: 'AAPL'
     },
   });
+
+  const copyLink = (index: number, link: string) => {
+    navigator.clipboard.writeText(link);
+    setIsCopied(prev => {
+      const newCopied = [...prev];
+      newCopied[index] = true; // Setting the copied state for the specific index
+      return newCopied;
+    });
+
+    setTimeout(() => {
+      setIsCopied(prev => {
+        const newCopied = [...prev];
+        newCopied[index] = false; // Resetting the copied state for the specific index
+        return newCopied;
+      });
+    }, 2000);
+  }
 
   const onSubmit = async (data: z.infer<typeof FormNewsSchema>) => {
     try {
@@ -108,7 +128,7 @@ const StockNews = () => {
       </Form>
       {news.length > 0 && (
         <div className='mt-8 flex w-full flex-col justify-center gap-4'>
-          {news.map((news: StockNewsType) => (
+          {news.map((news: StockNewsType, index: number) => (
             <Card key={news.url} className='w-full'>
               <CardHeader className='flex items-center gap-4 px-10 py-6'>
                 {news.favicon_url && <img src={news.favicon_url} alt={news.title} className='size-20' />}
@@ -119,14 +139,29 @@ const StockNews = () => {
               </CardHeader>
               <CardContent className='flex flex-col space-y-6'>
                 {news.description && <CardDescription>{news.description}</CardDescription>}
-                {news.description && <a href={news.url} target='_blank' className={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'text-ellipsis overflow-hidden')}>{news.url}</a>}
               </CardContent>
-              <CardFooter className='flex items-center justify-between gap-2 px-10 py-6'>
-                {news.tags && news.tags.map((tag: string, idx: number) => (
-                  <Badge key={idx}>
-                    {tag.toUpperCase()}
-                  </Badge>
-                ))}
+              <CardFooter className='flex items-center justify-between px-10 py-6'>
+                <div className='flex gap-2'>
+                  {news.tags && news.tags.map((tag: string, idx: number) => (
+                    <Badge key={idx}>
+                      {tag.toUpperCase()}
+                    </Badge>
+                  ))}
+                </div>
+                <div className='flex items-center gap-2'>
+                  <Button variant='outline' size='lg' asChild>
+                    <a href={news.url} target='_blank'>Read More</a>
+                  </Button>
+                  <ConfettiButton asChild variant='outline' size='lg' className='cursor-pointer text-white'>
+                    <p onClick={() => copyLink(index, news.url)}>
+                      {
+                        isCopied[index]
+                          ? "Copied"
+                          : <AiOutlineShareAlt size={16} />
+                      }
+                    </p>
+                  </ConfettiButton>
+                </div>
               </CardFooter>
             </Card>
           ))}

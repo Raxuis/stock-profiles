@@ -6,17 +6,26 @@ import { z } from 'zod';
 import { FormNewsSchema } from '@/lib/validation';
 import { Input } from '@/components/ui/input';
 import { getStockNews } from '@/features/stocks/stock.action';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StockNewsType } from '@/types/StockNews.type';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import createQuery from '@/features/stock-profile/createQuery';
+import { useSession } from 'next-auth/react';
 
 
 const StockNews = () => {
 
   const [news, setNews] = useState<StockNewsType[]>([]);
+  const { data: session, status } = useSession();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      setIsLoggedIn(true);
+    }
+  }, [status]);
 
   const form = useZodForm({
     schema: FormNewsSchema,
@@ -45,6 +54,10 @@ const StockNews = () => {
       });
     }
   };
+
+  if (!isLoggedIn) {
+    return <p>You are not logged in, please log in to see stock-news page.</p>;
+  }
 
   return (
     <>

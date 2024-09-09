@@ -13,14 +13,10 @@ import type { StockDatasType } from "@/types/StockDatas.type";
 import createQuery from '@/features/stock-profile/createQuery';
 import { useSession } from 'next-auth/react';
 import { useQueryState } from 'nuqs';
-import { SymbolSchema } from '@/lib/validation';
+import { FormProfileSchema } from '@/lib/validation';
 import { cn } from '@/lib/utils';
 
 let stocksData: StockDatasType[];
-
-const FormSchema = z.object({
-  symbol: SymbolSchema
-});
 
 const StockProfile = () => {
   const [localStockSymbolFormatted, setLocalStockSymbolFormatted] = useState<StockDatasType[]>([]);
@@ -40,13 +36,13 @@ const StockProfile = () => {
   }, []);
 
   const form = useZodForm({
-    schema: FormSchema,
+    schema: FormProfileSchema,
     defaultValues: {
       symbol: stock || '',
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+  const onSubmit = async (data: z.infer<typeof FormProfileSchema>) => {
     try {
       stocksData = await getStockProfile(data.symbol);
       const date = new Date();

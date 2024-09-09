@@ -53,3 +53,16 @@ export async function getStockList() {
     throw new Error(String(error));
   }
 }
+
+export async function getStockNews(symbol: string, number: number) {
+  try {
+    const response = await axios.get(`https://api.tickertick.com/feed?q=z:${symbol}&n=${number}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    return response.data.length < 1 ? (() => { throw new Error(); })() : response.data;
+  } catch (error) {
+    throw new Error(String(error));
+  }
+}

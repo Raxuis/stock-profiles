@@ -83,13 +83,11 @@ const StockNews = () => {
         <div className='mt-8 flex w-full flex-col justify-center gap-4'>
           {news.map((news: StockNewsType) => (
             <Card key={news.url} className='w-full'>
-              <CardHeader className='flex items-center px-10 py-6'>
+              <CardHeader className='flex items-center gap-4 px-10 py-6'>
                 {news.favicon_url && <img src={news.favicon_url} alt={news.title} className='size-20' />}
-                <div className='flex flex-col space-y-1.5 p-6'>
-                  {news.title && <CardTitle className='flex items-center'> {news.title}</CardTitle>}
-                </div>
+                {news.title && <CardTitle className='flex items-center'> {news.title}</CardTitle>}
               </CardHeader>
-              <CardContent className='flex flex-col space-y-6 '>
+              <CardContent className='flex flex-col space-y-6'>
                 {news.description && <CardDescription>{news.description}</CardDescription>}
                 {news.description && <a href={news.url} target='_blank' className={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'text-ellipsis overflow-hidden')}>{news.url}</a>}
               </CardContent>

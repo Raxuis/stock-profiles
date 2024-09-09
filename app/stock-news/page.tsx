@@ -42,8 +42,6 @@ const StockNews = () => {
       setIsLoading(true);
       const response = await getStockNews(data.symbol, data.number);
       setNews(response.stories);
-      console.log(response);
-      console.log(typeof (response.stories));
       await createQuery(data.symbol, "StockNews");
       toast({
         title: "📈 Wow 📈",

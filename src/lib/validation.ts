@@ -54,5 +54,10 @@ export const FormProfileSchema = z.object({
 
 export const FormNewsSchema = z.object({
   symbol: SymbolSchema,
-  number: z.number().min(1, { message: "Number is required" })
+  number: z.preprocess(
+    (a) => parseInt(z.string().parse(a), 10),
+    z.number().positive().min(1, {
+      message: "Number must be a positive number",
+    })
+  ),
 });

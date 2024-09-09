@@ -5,11 +5,10 @@ import { toast } from "@/components/ui/use-toast";
 import { z } from 'zod';
 import { FormNewsSchema } from '@/lib/validation';
 import { Input } from '@/components/ui/input';
+import { getStockNews } from '@/features/stocks/stock.action';
 
 
 const StockNews = () => {
-
-
   const form = useZodForm({
     schema: FormNewsSchema,
     defaultValues: {
@@ -20,6 +19,8 @@ const StockNews = () => {
 
   const onSubmit = async (data: z.infer<typeof FormNewsSchema>) => {
     try {
+      const response = await getStockNews(data.symbol, data.number);
+      console.log(response);
       toast({
         title: "📈 Wow 📈",
         description: (

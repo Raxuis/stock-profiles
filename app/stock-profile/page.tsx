@@ -15,6 +15,7 @@ import { useSession } from 'next-auth/react';
 import { useQueryState } from 'nuqs';
 import { FormProfileSchema } from '@/lib/validation';
 import { cn } from '@/lib/utils';
+import { AiOutlineLoading } from 'react-icons/ai';
 
 let stocksData: StockDatasType[];
 
@@ -127,7 +128,13 @@ const StockProfile = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className='mt-3 max-sm:w-full'>Search</Button>
+        <Button type="submit" className='mt-3 max-sm:w-full'>
+          {
+            isLoading
+              ? <AiOutlineLoading className='animate-spin' />
+              : 'Search'
+          }
+        </Button>
       </Form>
       {localStockSymbolFormatted && (
         <div className='mt-8 flex justify-center'>

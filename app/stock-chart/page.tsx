@@ -54,6 +54,7 @@ import { Input } from "@/components/ui/input";
 import { useSession } from "next-auth/react";
 import { exportAsCSV, exportAsPDF } from "@/features/export/export";
 import { Plus } from "lucide-react";
+import { AiOutlineLoading } from "react-icons/ai";
 
 type StockData = {
   date: string;
@@ -170,7 +171,13 @@ export default function StockChart() {
             </FormItem>
           )} />
 
-          <Button type="submit" className="max-sm:w-full" style={{ marginTop: '1rem' }}>Submit</Button>
+          <Button type="submit" className="max-sm:w-full" style={{ marginTop: '1rem' }}>
+            {
+              isLoading
+                ? <AiOutlineLoading className='animate-spin' />
+                : 'Submit'
+            }
+          </Button>
         </div>
       </Form>
 

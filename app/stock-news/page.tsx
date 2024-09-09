@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import createQuery from '@/features/stock-profile/createQuery';
 import { useSession } from 'next-auth/react';
+import { AiOutlineLoading } from 'react-icons/ai';
 
 
 const StockNews = () => {
@@ -96,7 +97,13 @@ const StockNews = () => {
             <FormMessage>{form.formState.errors.number?.message}</FormMessage>
           </FormItem>
         )} />
-        <Button type="submit" className='mt-3 max-sm:w-full'>Search</Button>
+        <Button type="submit" className='mt-3 max-sm:w-full'>
+          {
+            isLoading
+              ? <AiOutlineLoading className='animate-spin' />
+              : 'Search'
+          }
+        </Button>
       </Form>
       {news.length > 0 && (
         <div className='mt-8 flex w-full flex-col justify-center gap-4'>

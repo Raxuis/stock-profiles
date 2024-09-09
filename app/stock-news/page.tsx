@@ -20,6 +20,7 @@ const StockNews = () => {
   const [news, setNews] = useState<StockNewsType[]>([]);
   const { data: session, status } = useSession();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -36,6 +37,7 @@ const StockNews = () => {
 
   const onSubmit = async (data: z.infer<typeof FormNewsSchema>) => {
     try {
+      setIsLoading(true);
       const response = await getStockNews(data.symbol, data.number);
       setNews(response.stories);
       await createQuery(data.symbol, "StockNews");
@@ -45,6 +47,7 @@ const StockNews = () => {
           <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">That&apos;s one small step for man, one giant leap for Stocks!</p>
         ),
       });
+      setIsLoading(false);
     } catch (error) {
       toast({
         title: "❌ You entered a wrong symbol ❌",
@@ -52,6 +55,7 @@ const StockNews = () => {
           <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 text-red-500">Please, try rewriting your Stock Symbol. 😀</p>
         ),
       });
+      setIsLoading(false);
     }
   };
 

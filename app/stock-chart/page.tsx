@@ -65,6 +65,7 @@ export default function StockChart() {
 
   const [chartData, setChartData] = useState<StockData[]>([]);
   const [exportSymbol, setExportSymbol] = useState<string>(""); // State to store the export symbol to avoid user changing it
+  const [isLoading, setIsLoading] = useState(false);
   const currentDay = new Date();
   const dateWithoutCurrentDay = new Date(currentDay.setDate(currentDay.getDate() - 1));
 
@@ -105,6 +106,7 @@ export default function StockChart() {
 
   const onSubmit = async (values: z.infer<typeof StockChartValidationSchema>) => {
     try {
+      setIsLoading(true);
       const response: StockData[] = await getStockChart({
         symbol: values.symbol,
         timeframe: values.timeframe,
@@ -122,12 +124,13 @@ export default function StockChart() {
         title: "Nice One 🥳",
         description: "Congratulations! That's a hell of a query!",
       });
+      setIsLoading(false);
     } catch (error) {
-      console.log(error);
       toast({
         title: "An error occurred",
         description: "❌ Something badly occurred. Please try again ❌",
       });
+      setIsLoading(false);
     }
   };
 

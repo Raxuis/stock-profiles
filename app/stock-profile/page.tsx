@@ -24,6 +24,7 @@ const StockProfile = () => {
 
   const { data: session, status } = useSession();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -53,6 +54,7 @@ const StockProfile = () => {
 
   const onSubmit = async (data: z.infer<typeof FormProfileSchema>) => {
     try {
+      setIsLoading(true);
       stocksData = await getStockProfile(data.symbol);
       const date = new Date();
       const isoDate = date.toISOString();
@@ -72,6 +74,7 @@ const StockProfile = () => {
       localStorage.setItem("stockSymbol", JSON.stringify(stocksData));
       setLocalStockSymbolFormatted(stocksData);
       await createQuery(data.symbol, "StockProfile");
+      setIsLoading(false);
     } catch (error) {
       toast({
         title: "❌ You entered a wrong symbol ❌",
@@ -79,6 +82,7 @@ const StockProfile = () => {
           <p className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 text-red-500">Please, try rewriting your Stock Symbol. 😀</p>
         ),
       });
+      setIsLoading(false);
     }
   };
 

@@ -5,8 +5,9 @@ import { BorderBeam } from '@/components/magicui/border-beam';
 import Image from 'next/image';
 import CompaniesStack from '@/components/CompaniesStack';
 import { Cursor2 } from '@/components/cursor/CursorFunctions';
+import { BorderBeamUser } from './BorderBeamUser';
 
-export default function LandingPage() {
+export default function LandingPage(props) {
   return (
     <>
       <LandingSection />
@@ -17,6 +18,7 @@ export default function LandingPage() {
         </Cursor2>
       </div>
       <ProblemsSection />
+      <BorderBeamUser />
       <CompaniesStack />
     </>
   )

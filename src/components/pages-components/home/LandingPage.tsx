@@ -7,7 +7,7 @@ import CompaniesStack from '@/components/CompaniesStack';
 import { Cursor2 } from '@/components/cursor/CursorFunctions';
 import { BorderBeamUser } from './BorderBeamUser';
 
-export default function LandingPage(props) {
+export default function LandingPage() {
   return (
     <>
       <LandingSection />

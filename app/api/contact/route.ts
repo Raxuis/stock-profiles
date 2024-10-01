@@ -15,6 +15,9 @@ export async function POST(request: NextRequest) {
   }
 
   const { email, name, message } = await request.json();
+  if (!email || !name || !message) {
+    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+  }
 
   const transport = nodemailer.createTransport({
     service: 'gmail',

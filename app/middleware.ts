@@ -4,7 +4,8 @@ import type { NextRequest } from 'next/server';
 const rateLimitMap = new Map<string, { count: number; timestamp: number }>();
 
 export function middleware(req: NextRequest) {
-  const ip = req.ip || req.headers.get('x-forwarded-for') || 'localhost';
+  // Removed req.ip because it's not available since v15.0.0
+  const ip = req.headers.get('x-forwarded-for') || 'localhost';
   const rateLimit = rateLimitMap.get(ip) || { count: 0, timestamp: Date.now() };
 
   // Checking if the user exceeded the request limit

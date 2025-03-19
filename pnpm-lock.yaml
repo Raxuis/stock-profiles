@@ -138,8 +138,8 @@ importers:
         specifier: ^11.1.9
         version: 11.3.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       jspdf:
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^3.0.1
+        version: 3.0.1
       lucide-react:
         specifier: ^0.373.0
         version: 0.373.0(react@18.2.0)
@@ -303,10 +303,6 @@ packages:
     resolution: {integrity: sha512-PQU8/Oi5gfjzb0MkhMGVX0Dg877phPzsQdK54+C7ubukCeZPjyvuSAx1vVtWEYVWp2oQvjgG/C6QiDoeC7S10A==}
     peerDependencies:
       '@prisma/client': '>=2.26.0 || >=3 || >=4 || >=5'
-
-  '@babel/runtime@7.25.4':
-    resolution: {integrity: sha512-DSgLeL/FNcpXuzav5wfYvHCGvynXkJbn3Zvc3823AEe9nPwW9IK4UoCSS5yGymmQzN0pCPvivtgS6/8U2kkm1w==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/runtime@7.26.10':
     resolution: {integrity: sha512-2WJMeRQPHKSPemqk/awGrAiuFfzBmOIPXKizAsVhWH9YJqLZ0H+HS4c8loHGgW6utJ3E/ejXQUsiGaQy2NZ9Fw==}
@@ -1588,8 +1584,8 @@ packages:
   canvas-confetti@1.9.3:
     resolution: {integrity: sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==}
 
-  canvg@3.0.10:
-    resolution: {integrity: sha512-qwR2FRNO9NlzTeKIPIKpnTY6fqwuYSequ8Ru8c0YkYU7U0oW+hLUvWadLvAu1Rl72OMNiFhoLu4f8eUjQ7l/+Q==}
+  canvg@3.0.11:
+    resolution: {integrity: sha512-5ON+q7jCTgMp9cjpu4Jo6XbvfYwSB2Ow3kzHKfIyJfaCAOHLbdKPQqGKgfED/R5B+3TFFfe8pegYA+b423SRyA==}
     engines: {node: '>=10.0.0'}
 
   canvg@4.0.3:
@@ -1655,8 +1651,8 @@ packages:
     resolution: {integrity: sha512-yCEafptTtb4bk7GLEQoM8KVJpxAfdBJYaXyzQEgQQQgYrZiDp8SJmGKlYza6CYjEDNstAdNdKA3UuoULlEbS6w==}
     engines: {node: '>=12.13'}
 
-  core-js@3.38.1:
-    resolution: {integrity: sha512-OP35aUorbU3Zvlx7pjsFdu1rGNnD4pgw/CWoYzRY3t2EzoVT7shKHY1dlAy3f41cGIO7ZDPQimhGFTlEYkG/Hw==}
+  core-js@3.41.0:
+    resolution: {integrity: sha512-SJ4/EHwS36QMJd6h/Rg+GyR4A5xE0FSI3eZ+iBVpfqf1x0eTSg1smWLHrA+2jQThZSh97fmSgFSU8B61nxosxA==}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -2354,8 +2350,8 @@ packages:
     resolution: {integrity: sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==}
     hasBin: true
 
-  jspdf@3.0.0:
-    resolution: {integrity: sha512-QvuQZvOI8CjfjVgtajdL0ihrDYif1cN5gXiF9lb9Pd9JOpmocvnNyFO9sdiJ/8RA5Bu8zyGOUjJLj5kiku16ug==}
+  jspdf@3.0.1:
+    resolution: {integrity: sha512-qaGIxqxetdoNnFQQXxTKUD9/Z7AloLaw94fFsOiJMxbfYdBbrBuhWmbzI8TVjrw7s3jBY1PFHofBKMV/wZPapg==}
 
   jsx-ast-utils@3.3.5:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
@@ -3311,10 +3307,6 @@ snapshots:
       - '@simplewebauthn/browser'
       - '@simplewebauthn/server'
       - nodemailer
-
-  '@babel/runtime@7.25.4':
-    dependencies:
-      regenerator-runtime: 0.14.1
 
   '@babel/runtime@7.26.10':
     dependencies:
@@ -4579,11 +4571,11 @@ snapshots:
 
   canvas-confetti@1.9.3: {}
 
-  canvg@3.0.10:
+  canvg@3.0.11:
     dependencies:
       '@babel/runtime': 7.26.10
       '@types/raf': 3.4.3
-      core-js: 3.38.1
+      core-js: 3.41.0
       raf: 3.4.1
       regenerator-runtime: 0.13.11
       rgbcolor: 1.0.1
@@ -4660,7 +4652,7 @@ snapshots:
     dependencies:
       is-what: 4.1.16
 
-  core-js@3.38.1:
+  core-js@3.41.0:
     optional: true
 
   cross-spawn@7.0.6:
@@ -4808,7 +4800,7 @@ snapshots:
 
   dom-helpers@5.2.1:
     dependencies:
-      '@babel/runtime': 7.25.4
+      '@babel/runtime': 7.26.10
       csstype: 3.1.3
 
   dompurify@3.2.4:
@@ -5527,15 +5519,15 @@ snapshots:
     dependencies:
       minimist: 1.2.8
 
-  jspdf@3.0.0:
+  jspdf@3.0.1:
     dependencies:
       '@babel/runtime': 7.26.10
       atob: 2.1.2
       btoa: 1.2.1
       fflate: 0.8.2
     optionalDependencies:
-      canvg: 3.0.10
-      core-js: 3.38.1
+      canvg: 3.0.11
+      core-js: 3.41.0
       dompurify: 3.2.4
       html2canvas: 1.4.1
 
@@ -5971,7 +5963,7 @@ snapshots:
 
   react-transition-group@4.4.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.25.4
+      '@babel/runtime': 7.26.10
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1

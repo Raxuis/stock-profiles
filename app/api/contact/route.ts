@@ -6,7 +6,7 @@ import Mail from 'nodemailer/lib/mailer';
 const emailRateLimitMap = new Map<string, { count: number; timestamp: number }>();
 
 export async function POST(request: NextRequest) {
-  const ip = request.ip || request.headers.get('x-forwarded-for') || 'localhost';
+  const ip = request.headers.get('x-forwarded-for') || 'localhost';
   const rateLimit = emailRateLimitMap.get(ip) || { count: 0, timestamp: Date.now() };
 
   // Check if the user exceeded the email limit (e.g., 1 email per minute)

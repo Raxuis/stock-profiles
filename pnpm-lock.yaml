@@ -16,7 +16,7 @@ importers:
         version: 3.10.0(react-hook-form@7.58.1(react@18.2.0))
       '@next-auth/prisma-adapter':
         specifier: ^1.0.7
-        version: 1.0.7(@prisma/client@5.22.0(prisma@5.19.1))(next-auth@5.0.0-beta.19(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0))
+        version: 1.0.7(@prisma/client@5.22.0(prisma@5.19.1))(next-auth@5.0.0-beta.19(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0))
       '@prisma/client':
         specifier: ^5.22.0
         version: 5.22.0(prisma@5.19.1)
@@ -147,26 +147,26 @@ importers:
         specifier: ^5.1.5
         version: 5.1.5
       next:
-        specifier: ^15.5.9
-        version: 15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^15.5.10
+        version: 15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-auth:
         specifier: 5.0.0-beta.19
-        version: 5.0.0-beta.19(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0)
+        version: 5.0.0-beta.19(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0)
       next-safe-action:
         specifier: ^6.2.0
-        version: 6.2.0(ajv@6.12.6)(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        version: 6.2.0(ajv@6.12.6)(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-view-transitions:
         specifier: ^0.1.1
-        version: 0.1.1(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 0.1.1(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       nodemailer:
         specifier: 7.0.11
         version: 7.0.11
       nuqs:
         specifier: ^1.20.0
-        version: 1.20.0(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 1.20.0(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       prisma:
         specifier: ~5.19.1
         version: 5.19.1
@@ -590,8 +590,8 @@ packages:
       '@prisma/client': '>=2.26.0 || >=3'
       next-auth: ^4
 
-  '@next/env@15.5.9':
-    resolution: {integrity: sha512-4GlTZ+EJM7WaW2HEZcyU317tIQDjkQIyENDLxYJfSWlfqguN+dHkZgyQTV/7ykvobU7yEH5gKvreNrH4B6QgIg==}
+  '@next/env@15.5.10':
+    resolution: {integrity: sha512-plg+9A/KoZcTS26fe15LHg+QxReTazrIOoKKUC3Uz4leGGeNPgLHdevVraAAOX0snnUs3WkRx3eUQpj9mreG6A==}
 
   '@next/eslint-plugin-next@14.2.30':
     resolution: {integrity: sha512-mvVsMIutMxQ4NGZEMZ1kiBNc+la8Xmlk30bKUmCPQz2eFkmsLv54Mha8QZarMaCtSPkkFA1TMD+FIZk0l/PpzA==}
@@ -1713,8 +1713,8 @@ packages:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
     engines: {node: '>= 6'}
 
-  caniuse-lite@1.0.30001764:
-    resolution: {integrity: sha512-9JGuzl2M+vPL+pz70gtMF9sHdMFbY9FJaQBi186cHKH3pSzDvzoUJUPV6fqiKIMyXbud9ZLg4F3Yza1vJ1+93g==}
+  caniuse-lite@1.0.30001770:
+    resolution: {integrity: sha512-x/2CLQ1jHENRbHg5PSId2sXq1CIO1CISvwWAj027ltMVG2UNgW+w9oH2+HzgEIRFembL8bUlXtfbBHR1fCg2xw==}
 
   canvas-confetti@1.9.3:
     resolution: {integrity: sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==}
@@ -2654,8 +2654,8 @@ packages:
       react: ^18.2.0
       react-dom: ^18.2.0
 
-  next@15.5.9:
-    resolution: {integrity: sha512-agNLK89seZEtC5zUHwtut0+tNrc0Xw4FT/Dg+B/VLEo9pAcS9rtTKpek3V6kVcVwsB2YlqMaHdfZL4eLEVYuCg==}
+  next@15.5.10:
+    resolution: {integrity: sha512-r0X65PNwyDDyOrWNKpQoZvOatw7BcsTPRKdwEqtc9cj3wv7mbBIk9tKed4klRaFXJdX0rugpuMTHslDrAU1bBg==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
@@ -3120,8 +3120,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  semver@7.7.3:
-    resolution: {integrity: sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==}
+  semver@7.7.4:
+    resolution: {integrity: sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -3700,12 +3700,12 @@ snapshots:
       '@tybys/wasm-util': 0.9.0
     optional: true
 
-  '@next-auth/prisma-adapter@1.0.7(@prisma/client@5.22.0(prisma@5.19.1))(next-auth@5.0.0-beta.19(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0))':
+  '@next-auth/prisma-adapter@1.0.7(@prisma/client@5.22.0(prisma@5.19.1))(next-auth@5.0.0-beta.19(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0))':
     dependencies:
       '@prisma/client': 5.22.0(prisma@5.19.1)
-      next-auth: 5.0.0-beta.19(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0)
+      next-auth: 5.0.0-beta.19(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0)
 
-  '@next/env@15.5.9': {}
+  '@next/env@15.5.10': {}
 
   '@next/eslint-plugin-next@14.2.30':
     dependencies:
@@ -4833,7 +4833,7 @@ snapshots:
 
   camelcase-css@2.0.1: {}
 
-  caniuse-lite@1.0.30001764: {}
+  caniuse-lite@1.0.30001770: {}
 
   canvas-confetti@1.9.3: {}
 
@@ -5638,7 +5638,7 @@ snapshots:
 
   is-bun-module@2.0.0:
     dependencies:
-      semver: 7.7.3
+      semver: 7.7.4
 
   is-callable@1.2.7: {}
 
@@ -5887,18 +5887,18 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next-auth@5.0.0-beta.19(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0):
+  next-auth@5.0.0-beta.19(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nodemailer@7.0.11)(react@18.2.0):
     dependencies:
       '@auth/core': 0.32.0(nodemailer@7.0.11)
-      next: 15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next: 15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
     optionalDependencies:
       nodemailer: 7.0.11
 
-  next-safe-action@6.2.0(ajv@6.12.6)(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
+  next-safe-action@6.2.0(ajv@6.12.6)(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
     dependencies:
       '@decs/typeschema': 0.12.2(ajv@6.12.6)(zod@3.25.67)
-      next: 15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next: 15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
     optionalDependencies:
       zod: 3.25.67
@@ -5924,17 +5924,17 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  next-view-transitions@0.1.1(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next-view-transitions@0.1.1(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      next: 15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next: 15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@next/env': 15.5.9
+      '@next/env': 15.5.10
       '@swc/helpers': 0.5.15
-      caniuse-lite: 1.0.30001764
+      caniuse-lite: 1.0.30001770
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -5957,10 +5957,10 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  nuqs@1.20.0(next@15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+  nuqs@1.20.0(next@15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:
       mitt: 3.0.1
-      next: 15.5.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next: 15.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
   oauth4webapi@2.17.0: {}
 
@@ -6350,7 +6350,7 @@ snapshots:
 
   semver@7.7.2: {}
 
-  semver@7.7.3: {}
+  semver@7.7.4: {}
 
   server-only@0.0.1: {}
 
@@ -6380,7 +6380,7 @@ snapshots:
     dependencies:
       '@img/colour': 1.0.0
       detect-libc: 2.1.2
-      semver: 7.7.3
+      semver: 7.7.4
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.34.5
       '@img/sharp-darwin-x64': 0.34.5
